@@ -1,0 +1,10 @@
+Query:
+{query}
+
+Retrieved documents (JSON; `doc_id` is canonical and must be preserved exactly in citations):
+{retrieved_docs_json}
+
+GIVEN gold per-document notes (ground truth for document-level evidence use):
+<GOLD_PER_DOC_NOTES>
+{per_doc_notes_json}
+</GOLD_PER_DOC_NOTES>

@@ -1,0 +1,11 @@
+\begin{table}[htbp]\centering{\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l rrr r@{}}\toprule
+\textbf{Metric} & \textbf{med.\ $\Delta$} & \textbf{min} & \textbf{$+/12$} & \textbf{sign $p$}\\\midrule
+Refusal F1 & \textbf{+0.651} & +0.474 & \textbf{12/12} & \textbf{$<$0.001}\\
+Decision accuracy & \textbf{+0.135} & +0.082 & \textbf{12/12} & \textbf{$<$0.001}\\
+Factual Grounding & +0.175 & -0.051 & 9/12 & 0.146\\
+Behaviour Adherence & \textbf{+0.054} & -0.031 & \textbf{11/12} & \textbf{0.006}\\
+Single-Truth Recall & +0.010 & -0.073 & 7/12 & 0.774\\
+\bottomrule\end{tabular}}
+\caption{\textbf{Paired effect of trace supervision} across the twelve model$\times$prompt end-to-end cells. Refusal calibration and decision accuracy improve in every cell. Single-Truth Recall does not improve; Factual Grounding improves inconsistently because its gain is concentrated in the minimal-prompt condition (\S\ref{sec:whatdoesnot}).}
+\label{tab:paired}\end{table}

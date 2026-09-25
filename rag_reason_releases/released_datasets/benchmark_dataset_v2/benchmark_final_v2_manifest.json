@@ -1,0 +1,53 @@
+{
+  "source_file": "data/Benchmark Dataset/benchmark_final_v2.jsonl",
+  "backup_file": "data/Benchmark Dataset/benchmark_final_v2.pre_sanitize_backup.jsonl",
+  "rows": 933,
+  "top_level_fields": [
+    "id",
+    "query",
+    "retrieved_docs",
+    "conflict_type",
+    "conflict_reason",
+    "gold_answer",
+    "per_doc_notes",
+    "answerable_under_evidence",
+    "conflict_category_id"
+  ],
+  "retrieved_doc_fields": [
+    "doc_id",
+    "snippet",
+    "source_url",
+    "timestamp"
+  ],
+  "per_doc_note_fields": [
+    "doc_id",
+    "verdict",
+    "key_fact",
+    "quote",
+    "verdict_reason",
+    "source_quality",
+    "_vote_tally",
+    "_winner_model",
+    "_all_verdicts"
+  ],
+  "notes": [
+    "Input file was rewritten in place after creating a backup.",
+    "Top-level merge provenance fields were removed.",
+    "retrieved_docs reduced to doc_id/snippet/source_url/timestamp only.",
+    "per_doc_notes reduced to the repo local benchmark note schema only.",
+    "Doc IDs were canonicalized to d1..dN and matching note/text references were remapped.",
+    "Irrelevant notes with leftover key_fact text were cleared.",
+    "One HTML-escaped doc_id mismatch between docs and notes was repaired during normalization."
+  ],
+  "stats": {
+    "rows": 933,
+    "rows_with_noncanonical_doc_ids": 805,
+    "rows_with_doc_note_alignment_repairs": 1,
+    "rows_with_extra_top_level_keys_removed": 933,
+    "docs_with_extra_keys_removed": 770,
+    "notes_with_extra_keys_removed": 10,
+    "irrelevant_key_facts_cleared": 10,
+    "doc_id_text_remaps_applied": 805,
+    "conflict_type_normalized": 0
+  }
+}

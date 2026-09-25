@@ -1,0 +1,20 @@
+{\footnotesize\setlength{\tabcolsep}{3.6pt}
+\begin{longtable}{@{}ll l rrr rr@{}}
+\caption{\textbf{Complete committee-internal agreement.} Agreement among the three judge models on the 300-response agreement frame. This is agreement among model judges under a fixed prompt and serving protocol; it is not human inter-annotator agreement and must not be reported as such.}\label{tab:cifull}\\
+\toprule \textbf{Subset} & \textbf{Metric} & \textbf{Judge pair} & $n$ & \textbf{agr} & $\kappa$ & $P_{pos}$ & $P_{neg}$\\\midrule\endfirsthead
+\toprule \textbf{Subset} & \textbf{Metric} & \textbf{Judge pair} & $n$ & \textbf{agr} & $\kappa$ & $P_{pos}$ & $P_{neg}$\\\midrule\endhead
+\bottomrule\endfoot
+300-response frame & Behaviour & \textit{alpha / mean pairwise} & 300 & & 0.4568 / 0.4699 & & \\
+ & & DeepSeek-32B vs Mistral-4 & 300 & 0.730 & 0.368 & 0.810 & 0.532\\
+ & & DeepSeek-32B vs Qwen-397B & 300 & 0.853 & 0.611 & 0.903 & 0.703\\
+ & & Mistral-4 vs Qwen-397B & 300 & 0.743 & 0.431 & 0.806 & 0.621\\
+ & STR strict & \textit{alpha / mean pairwise} & 215 & & 0.6780 / 0.6874 & & \\
+ & & DeepSeek-32B vs Mistral-4 & 215 & 0.809 & 0.613 & 0.839 & 0.766\\
+ & & DeepSeek-32B vs Qwen-397B & 215 & 0.944 & 0.874 & 0.958 & 0.915\\
+ & & Mistral-4 vs Qwen-397B & 215 & 0.791 & 0.575 & 0.825 & 0.740\\
+ & FG claim & \textit{alpha / mean pairwise} & 477 & & 0.8706 / 0.8705 & & \\
+ & & DeepSeek-32B vs Mistral-4 & 477 & 0.950 & 0.886 & 0.963 & 0.924\\
+ & & DeepSeek-32B vs Qwen-397B & 477 & 0.941 & 0.869 & 0.956 & 0.913\\
+ & & Mistral-4 vs Qwen-397B & 477 & 0.937 & 0.857 & 0.953 & 0.903\\
+\addlinespace
+\end{longtable}}

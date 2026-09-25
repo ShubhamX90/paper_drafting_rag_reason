@@ -1,0 +1,47 @@
+You are given the following structured information about a retrieval-augmented generation (RAG) query and the retrieved evidence notes.
+
+Query:
+{QUERY}
+
+Per-document evidence notes (each note contains: doc_id, verdict, key_fact, quote, verdict_reason, source_quality):
+{PER_DOC_NOTES_JSON}
+
+---
+
+Your task has three parts:
+
+1. DETERMINE conflict_type
+   Examine only the non-irrelevant documents (verdict = "supports" or "partially supports").
+   Apply this order:
+     a) direct contradiction within same scope -> "Conflicting opinions or research outcomes"
+     b) purely older-vs-newer update -> "Conflict due to outdated information"
+     c) false or misleading claim refuted by stronger docs -> "Conflict due to misinformation"
+     d) compatible different facets -> "Complementary information"
+     e) aligned evidence -> "No conflict"
+
+   Important benchmark reminders:
+   - If the notes preserve an older revision / prior name / stale state and newer notes preserve the updated state for the same entity, that is usually "Conflict due to outdated information", not "No conflict".
+   - If relevant scientific notes bear on the same claim but one gives a measurement or conclusion that undercuts the claim, treat that as conflict-bearing evidence rather than collapsing to "No conflict".
+   - If the evidence truly does not preserve the benchmark source label, do not hallucinate it; label what the notes support.
+
+2. WRITE conflict_reason (<= 35 words, exactly one sentence)
+   - Reference real document IDs
+   - Explicitly name the mechanism: temporal, factual accuracy, contextual scope, methodological, or linguistic
+   - State which documents cluster together and why the chosen label applies
+
+3. SET answerable_under_evidence
+   - true iff at least one document verdict is "supports" or "partially supports"
+   - otherwise false
+
+Before finalizing, verify:
+  - conflict_type is one of the five valid labels with exact spelling
+  - conflict_reason references real doc IDs from the notes above
+  - conflict_reason <= 35 words
+  - conflict_reason names the causal mechanism
+
+Output ONLY this JSON object (no commentary, no markdown):
+{
+  "conflict_type": "...",
+  "conflict_reason": "...",
+  "answerable_under_evidence": true
+}

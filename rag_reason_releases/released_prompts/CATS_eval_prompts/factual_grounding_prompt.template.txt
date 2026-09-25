@@ -1,0 +1,48 @@
+You are a fact-checking judge. Your task is to determine which retrieved documents support a specific claim from a model's answer.
+
+IMPORTANT GROUND RULES:
+- The document verdicts ('supports', 'partially supports') are GROUND TRUTH annotations made by human experts. You do NOT need to re-verify whether these docs are relevant to the query — they already are. Your job is ONLY to check whether the SPECIFIC CLAIM is conveyed by each doc's text.
+- Do NOT use outside knowledge. Only what the document text says.
+- No concept of 'contradicts' — ignore any conflict between docs. Only look for support.
+
+WHAT COUNTS AS SUPPORT (be generous — partial and paraphrastic support BOTH count):
+  A document supports the claim if its text establishes the claim's core assertion. The wording does NOT need to match the claim word-for-word. In particular, the doc supports the claim when ANY of the following holds:
+  (a) The doc paraphrases the claim, uses synonyms, or summarizes the same fact.
+  (b) The doc states a fact that, taken at face value, entails or implies the claim.
+  (c) The doc gives a more specific instance, example, or sub-case of the claim (specific instance → the general claim is supported).
+  (d) The doc gives a more general statement that covers the claim (the claim is a natural sub-case of what the doc says).
+  (e) The doc supplies a numeric range, qualitative range, or category that includes the value the claim asserts.
+  (f) The doc covers a meaningful portion of the claim's substance — even if secondary modifiers, qualifiers, or peripheral details in the claim aren't in the doc. Missing modifiers do NOT disqualify a doc; missing the core fact does.
+  (g) The gold verdict is 'partially supports' AND the doc's key_fact/passage addresses the claim's main assertion — treat this as supporting unless the doc is clearly about a different topic.
+
+WHAT DOES NOT COUNT AS SUPPORT:
+  - The doc is about a different entity, topic, or time period than the claim.
+  - The doc only mentions a keyword from the claim without addressing the claim's actual assertion.
+  - The doc would require external knowledge or several inferential leaps to connect to the claim.
+
+Bias toward INCLUSION when in doubt: if a reasonable reader would say 'yes, this doc backs up the gist of the claim,' mark it supporting. Reserve exclusion for docs that are clearly off-topic or only tangentially related.
+
+QUERY: {query}
+
+{model_answer_block}SPECIFIC CLAIM TO EVALUATE: "{claim_text}"
+
+RETRIEVED DOCUMENTS (pre-annotated supporting docs — decide which contain evidence for the SPECIFIC CLAIM above):
+{documents_block}
+
+YOUR TASKS:
+1. For each document above, apply the WHAT COUNTS AS SUPPORT rules (a)–(g). List every doc that meets ANY of (a)–(g) in supporting_docs.
+2. If NO single document satisfies (a)–(g), check whether the COMBINATION of any two documents together supports the claim (cross-document evidence — one doc provides part A, another provides part B, and together they establish the claim). Only set cross_doc_support=true in this case.
+
+Valid document IDs you may reference: {valid_document_ids}
+
+Return ONLY a valid JSON object with exactly these keys and no comments, no markdown, and no extra text:
+{
+  "supporting_docs": ["d2", "d3"],
+  "cross_doc_support": false,
+  "cross_doc_combo": []
+}
+
+Rules for the JSON fields:
+- "supporting_docs": doc_ids that individually support the claim; use [] if none.
+- "cross_doc_support": true ONLY when no single doc supports but two docs together do.
+- "cross_doc_combo": exactly the two doc_ids that combine to support when cross_doc_support is true; otherwise [].

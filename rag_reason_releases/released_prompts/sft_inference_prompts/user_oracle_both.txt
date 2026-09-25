@@ -1,0 +1,17 @@
+You are given a query, retrieved documents, a GIVEN conflict type label, and GIVEN gold per-document notes.
+Use only this provided evidence.
+
+Query:
+{query}
+
+GIVEN conflict type label (copy verbatim in the label line):
+<CONFLICT_LABEL>{conflict_type}</CONFLICT_LABEL>
+
+Retrieved documents (JSON; `doc_id` is canonical and must be preserved exactly in your evidence trace and citations):
+{retrieved_docs_json}
+
+GIVEN gold per-document notes.
+These are ground truth for Stage 1 inside your think block. Preserve the order and content faithfully:
+<GOLD_PER_DOC_NOTES>
+{per_doc_notes_json}
+</GOLD_PER_DOC_NOTES>

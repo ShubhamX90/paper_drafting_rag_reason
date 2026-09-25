@@ -1,0 +1,21 @@
+\begin{table}[htbp]\centering{\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}l rr rr@{}}\toprule
+& \multicolumn{2}{c}{\textbf{Train}} & \multicolumn{2}{c}{\textbf{Benchmark}}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+\textbf{Conflict type} & $n$ & \% & $n$ & \%\\\midrule
+No conflict & 343 & 36.4 & 211 & 28.7\\
+Complementary & 286 & 30.3 & 221 & 30.0\\
+Conflicting opinions & 158 & 16.8 & 109 & 14.8\\
+Outdated & 136 & 14.4 & 158 & 21.5\\
+Misinformation & 20 & 2.1 & 37 & 5.0\\
+\midrule
+Answerable & 649 & 68.8 & 608 & 82.6\\
+Refusal-required & 294 & 31.2 & 128 & 17.4\\
+\midrule
+\textbf{Records} & \textbf{943} & & \textbf{736} & \\
+Retrieved documents & 6,642 & & 3,701 & \\
+Docs / record (mean) & 7.04 & & 5.03 & \\
+Unique source domains & 2,633 & & 1,431 & \\
+\bottomrule\end{tabular}}
+\caption{\textbf{Dataset composition and scale.} Conflict-type and answerability distribution of the training split (943 records, including validation) and the held-out benchmark (736). The benchmark is deliberately harder than the training distribution: fewer no-conflict cases ($28.7\%$ against $36.4\%$), a $1.5\times$ larger outdated-information share and a $2.4\times$ larger misinformation share. Full per-source composition in Appendix~\ref{app:data}.}
+\label{tab:data}\end{table}

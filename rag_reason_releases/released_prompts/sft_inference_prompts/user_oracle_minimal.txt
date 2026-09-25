@@ -1,0 +1,8 @@
+Query:
+{query}
+
+GIVEN conflict type label (ground truth):
+<CONFLICT_LABEL>{conflict_type}</CONFLICT_LABEL>
+
+Retrieved documents (JSON; `doc_id` is canonical and must be preserved exactly in citations):
+{retrieved_docs_json}

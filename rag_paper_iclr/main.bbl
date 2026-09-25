@@ -1,0 +1,352 @@
+\begin{thebibliography}{41}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Borgeaud et~al.(2022)Borgeaud, Mensch, Hoffmann, Cai, Rutherford,
+  Millican, van~den Driessche, Lespiau, Damoc, Clark, de~Las~Casas, Guy,
+  Menick, Ring, Hennigan, Huang, Maggiore, Jones, Cassirer, Brock, Paganini,
+  Irving, Vinyals, Osindero, Simonyan, Rae, Elsen, and Sifre]{borgeaud2022}
+Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza
+  Rutherford, Katie Millican, George van~den Driessche, Jean-Baptiste Lespiau,
+  Bogdan Damoc, Aidan Clark, Diego de~Las~Casas, Aurelia Guy, Jacob Menick,
+  Roman Ring, Tom Hennigan, Saffron Huang, Loren Maggiore, Chris Jones, Albin
+  Cassirer, Andy Brock, Michela Paganini, Geoffrey Irving, Oriol Vinyals, Simon
+  Osindero, Karen Simonyan, Jack~W. Rae, Erich Elsen, and Laurent Sifre.
+\newblock Improving language models by retrieving from trillions of tokens,
+  2022.
+\newblock URL \url{https://arxiv.org/abs/2112.04426}.
+
+\bibitem[Cattan et~al.(2025)Cattan, Jacovi, Ram, Herzig, Aharoni, Goldshtein,
+  Ofek, Szpektor, and Caciularu]{cattan2025dragged}
+Arie Cattan, Alon Jacovi, Ori Ram, Jonathan Herzig, Roee Aharoni, Sasha
+  Goldshtein, Eran Ofek, Idan Szpektor, and Avi Caciularu.
+\newblock {DRAG}ged into conflicts: Detecting and addressing conflicting
+  sources in search-augmented {LLM}s, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.08500}.
+
+\bibitem[Dettmers et~al.(2023)Dettmers, Pagnoni, Holtzman, and
+  Zettlemoyer]{dettmers2023qloraefficientfinetuningquantized}
+Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, and Luke Zettlemoyer.
+\newblock {QL}o{RA}: Efficient finetuning of quantized {LLM}s, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.14314}.
+
+\bibitem[Fan et~al.(2024)Fan, Ding, Ning, Wang, Li, Yin, Chua, and
+  Li]{fan2024surveyragmeetingllms}
+Wenqi Fan, Yujuan Ding, Liangbo Ning, Shijie Wang, Hengyun Li, Dawei Yin,
+  Tat-Seng Chua, and Qing Li.
+\newblock A survey on {RAG} meeting {LLM}s: Towards retrieval-augmented large
+  language models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.06211}.
+
+\bibitem[Fang et~al.(2024)Fang, Bai, Ni, Yang, Chen, and
+  Xu]{fang2024enhancingnoiserobustnessretrievalaugmented}
+Feiteng Fang, Yuelin Bai, Shiwen Ni, Min Yang, Xiaojun Chen, and Ruifeng Xu.
+\newblock Enhancing noise robustness of retrieval-augmented language models
+  with adaptive adversarial training, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.20978}.
+
+\bibitem[Gao et~al.(2024)Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun, Wang, and
+  Wang]{gao2024retrievalaugmentedgenerationlargelanguage}
+Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi~Dai,
+  Jiawei Sun, Meng Wang, and Haofen Wang.
+\newblock Retrieval-augmented generation for large language models: A survey,
+  2024.
+\newblock URL \url{https://arxiv.org/abs/2312.10997}.
+
+\bibitem[Guu et~al.(2020)Guu, Lee, Tung, Pasupat, and Chang]{guu2020realm}
+Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang.
+\newblock {REALM}: Retrieval-augmented language model pre-training.
+\newblock In \emph{Proceedings of the 37th International Conference on Machine
+  Learning}, 2020.
+
+\bibitem[Hofst{\"a}tter et~al.(2021)Hofst{\"a}tter, Lin, Yang, Lin, and
+  Hanbury]{hofstatter2021tasb}
+Sebastian Hofst{\"a}tter, Sheng-Chieh Lin, Jheng-Hong Yang, Jimmy Lin, and
+  Allan Hanbury.
+\newblock Efficiently teaching an effective dense retriever with balanced topic
+  aware sampling.
+\newblock In \emph{Proceedings of the 44th International ACM SIGIR Conference
+  on Research and Development in Information Retrieval}, pp.\  113--122, 2021.
+
+\bibitem[Hou et~al.(2024)Hou, Pascale, Carnerero-Cano, Tchrakian, Marinescu,
+  Daly, Padhi, and Sattigeri]{hou2024wikicontradict}
+Yufang Hou, Alessandra Pascale, Javier Carnerero-Cano, Tigran Tchrakian, Radu
+  Marinescu, Elizabeth Daly, Inkit Padhi, and Prasanna Sattigeri.
+\newblock {W}iki{C}ontradict: A benchmark for evaluating {LLM}s on real-world
+  knowledge conflicts from {W}ikipedia.
+\newblock In \emph{Advances in Neural Information Processing Systems 37:
+  Datasets and Benchmarks Track}, pp.\  109701--109747, 2024.
+
+\bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2021loralowrankadaptationlarge}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock {L}o{RA}: Low-rank adaptation of large language models, 2021.
+\newblock URL \url{https://arxiv.org/abs/2106.09685}.
+
+\bibitem[Huo et~al.(2025)Huo, Li, Qin, Qu, Li, Li, Ma, and
+  Cheng]{huo2025microact}
+Nan Huo, Jinyang Li, Bowen Qin, Ge~Qu, Xiaolong Li, Xiaodong Li, Chenhao Ma,
+  and Reynold Cheng.
+\newblock {M}icro-{A}ct: Mitigate knowledge conflict in question answering via
+  actionable self-reasoning.
+\newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, Vienna, Austria,
+  2025. Association for Computational Linguistics.
+\newblock URL \url{https://aclanthology.org/2025.acl-long.909/}.
+
+\bibitem[Izacard et~al.(2023)Izacard, Lewis, Lomeli, Hosseini, Petroni, Schick,
+  Dwivedi-Yu, Joulin, Riedel, and Grave]{izacard2023atlas}
+Gautier Izacard, Patrick Lewis, Maria Lomeli, Lucas Hosseini, Fabio Petroni,
+  Timo Schick, Jane Dwivedi-Yu, Armand Joulin, Sebastian Riedel, and Edouard
+  Grave.
+\newblock Atlas: Few-shot learning with retrieval augmented language models.
+\newblock \emph{Journal of Machine Learning Research}, 24\penalty0
+  (251):\penalty0 1--43, 2023.
+
+\bibitem[Jain et~al.(2023)Jain, yeh Chiang, Wen, Kirchenbauer, Chu, Somepalli,
+  Bartoldson, Kailkhura, Schwarzschild, Saha, Goldblum, Geiping, and
+  Goldstein]{jain2023neftune}
+Neel Jain, Ping yeh Chiang, Yuxin Wen, John Kirchenbauer, Hong-Min Chu,
+  Gowthami Somepalli, Brian~R. Bartoldson, Bhavya Kailkhura, Avi Schwarzschild,
+  Aniruddha Saha, Micah Goldblum, Jonas Geiping, and Tom Goldstein.
+\newblock {NEFT}une: Noisy embeddings improve instruction finetuning, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.05914}.
+
+\bibitem[Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot,
+  de~las Casas, Bressand, Lengyel, Lample, Saulnier, Lavaud, Lachaux, Stock,
+  Scao, Lavril, Wang, Lacroix, and Sayed]{jiang2023mistral7b}
+Albert~Q. Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
+  Devendra~Singh Chaplot, Diego de~las Casas, Florian Bressand, Gianna Lengyel,
+  Guillaume Lample, Lucile Saulnier, L{\'e}lio~Renard Lavaud, Marie-Anne
+  Lachaux, Pierre Stock, Teven~Le Scao, Thibaut Lavril, Thomas Wang,
+  Timoth{\'e}e Lacroix, and William~El Sayed.
+\newblock Mistral 7b, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.06825}.
+
+\bibitem[Jiayang et~al.(2024)Jiayang, Chan, Zhuang, Qiu, Zhang, Liu, Song,
+  Zhang, Liu, and Zhang]{jiayang2024econ}
+Cheng Jiayang, Chunkit Chan, Qianqian Zhuang, Lin Qiu, Tianhang Zhang, Tengxiao
+  Liu, Yangqiu Song, Yue Zhang, Pengfei Liu, and Zheng Zhang.
+\newblock {ECON}: On the detection and resolution of evidence conflicts.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  7816--7844, Miami, Florida, USA, 2024.
+  Association for Computational Linguistics.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and Kiela]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem[Liu et~al.(2025)Liu, Ning, Halder, Qi, Xiao, Htut, Zhang, John, Min,
+  Benajiba, and Roth]{liu2025opendomainquestionanswering}
+Siyi Liu, Qiang Ning, Kishaloy Halder, Zheng Qi, Wei Xiao, Phu~Mon Htut,
+  Yi~Zhang, Neha~Anna John, Bonan Min, Yassine Benajiba, and Dan Roth.
+\newblock Open domain question answering with conflicting contexts.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  NAACL 2025}, pp.\  1838--1854, Albuquerque, New Mexico, 2025. Association for
+  Computational Linguistics.
+
+\bibitem[Liu et~al.(2026)Liu, Zhang, Guo, Cao, Yuan, Sun, Liu, Hong, and
+  Ma]{liu2026craft}
+Yu~Liu, Wenxiao Zhang, Diandian Guo, Cong Cao, Fangfang Yuan, Qiang Sun,
+  Yanbing Liu, Jin~B. Hong, and Zhiyuan Ma.
+\newblock {CRAFT}: Calibrated reasoning with answer-faithful traces via
+  reinforcement learning for multi-hop question answering, 2026.
+\newblock URL \url{https://arxiv.org/abs/2602.01348}.
+
+\bibitem[{Llama Team, AI at Meta}(2024)]{dubey2024llama3}
+{Llama Team, AI at Meta}.
+\newblock The llama 3 herd of models, 2024.
+\newblock URL \url{https://arxiv.org/abs/2407.21783}.
+
+\bibitem[Ming et~al.(2025)Ming, Purushwalkam, Pandit, Ke, Nguyen, Xiong, and
+  Joty]{ming2025faitheval}
+Yifei Ming, Senthil Purushwalkam, Shrey Pandit, Zixuan Ke, Xuan-Phi Nguyen,
+  Caiming Xiong, and Shafiq Joty.
+\newblock {F}aith{E}val: Can your language model stay faithful to context, even
+  if ``the moon is made of marshmallows''.
+\newblock In \emph{The Thirteenth International Conference on Learning
+  Representations}, 2025.
+
+\bibitem[Muhamed et~al.(2025)Muhamed, Ribeiro, Dreyer, Smith, and
+  Diab]{muhamed2025refusalbench}
+Aashiq Muhamed, Leonardo F.~R. Ribeiro, Markus Dreyer, Virginia Smith, and
+  Mona~T. Diab.
+\newblock {R}efusal{B}ench: Generative evaluation of selective refusal in
+  grounded language models, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.10390}.
+
+\bibitem[Ram et~al.(2023)Ram, Levine, Dalmedigos, Muhlgay, Shashua,
+  Leyton-Brown, and Shoham]{ram-etal-2023-context}
+Ori Ram, Yoav Levine, Itay Dalmedigos, Dor Muhlgay, Amnon Shashua, Kevin
+  Leyton-Brown, and Yoav Shoham.
+\newblock In-context retrieval-augmented language models.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  11:\penalty0 1316--1331, 2023.
+
+\bibitem[Shi et~al.(2023)Shi, Chen, Misra, Scales, Dohan, Chi, Sch{\"a}rli, and
+  Zhou]{shi2023largelanguagemodelseasily}
+Freda Shi, Xinyun Chen, Kanishka Misra, Nathan Scales, David Dohan, Ed~Chi,
+  Nathanael Sch{\"a}rli, and Denny Zhou.
+\newblock Large language models can be easily distracted by irrelevant context,
+  2023.
+\newblock URL \url{https://arxiv.org/abs/2302.00093}.
+
+\bibitem[Song et~al.(2025)Song, Sim, Bhardwaj, Chieu, Majumder, and
+  Poria]{song2025trustalign}
+Maojia Song, Shang~Hong Sim, Rishabh Bhardwaj, Hai~Leong Chieu, Navonil
+  Majumder, and Soujanya Poria.
+\newblock Measuring and enhancing trustworthiness of {LLM}s in {RAG} through
+  grounded attributions and learning to refuse.
+\newblock In \emph{The Thirteenth International Conference on Learning
+  Representations}, 2025.
+\newblock arXiv:2409.11242.
+
+\bibitem[Su et~al.(2024)Su, Zhang, Qu, Zhu, Li, Sun, Li, Zhang, and
+  Cheng]{su2024conflictbankbenchmarkevaluatinginfluence}
+Zhaochen Su, Jun Zhang, Xiaoye Qu, Tong Zhu, Yanshu Li, Jiashuo Sun, Juntao Li,
+  Min Zhang, and Yu~Cheng.
+\newblock Conflictbank: A benchmark for evaluating the influence of knowledge
+  conflicts in {LLM}s, 2024.
+\newblock URL \url{https://arxiv.org/abs/2408.12076}.
+
+\bibitem[Vu et~al.(2024)Vu, Iyyer, Wang, Constant, Wei, Wei, Tar, Sung, Zhou,
+  Le, and Luong]{vu2024freshllms}
+Tu~Vu, Mohit Iyyer, Xuezhi Wang, Noah Constant, Jerry Wei, Jason Wei, Chris
+  Tar, Yun-Hsuan Sung, Denny Zhou, Quoc Le, and Thang Luong.
+\newblock {F}resh{LLM}s: Refreshing large language models with search engine
+  augmentation.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2024}, pp.\  13697--13720, Bangkok, Thailand, 2024. Association for
+  Computational Linguistics.
+
+\bibitem[Wan et~al.(2024)Wan, Wallace, and
+  Klein]{wan2024evidencelanguagemodelsconvincing}
+Alexander Wan, Eric Wallace, and Dan Klein.
+\newblock What evidence do language models find convincing?
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pp.\  7468--7484,
+  Bangkok, Thailand, 2024. Association for Computational Linguistics.
+
+\bibitem[Wang et~al.(2026)Wang, Li, Liu, and Shu]{wang2026conflictrag}
+Chenyu Wang, Yueyuan Li, Yingmin Liu, and Yang Shu.
+\newblock {C}onflict{RAG}: Detecting and resolving knowledge conflicts in
+  retrieval augmented generation, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.17301}.
+
+\bibitem[Wang et~al.(2025)Wang, Prasad, Stengel-Eskin, and
+  Bansal]{wang2025conflictingevidence}
+Han Wang, Archiki Prasad, Elias Stengel-Eskin, and Mohit Bansal.
+\newblock Retrieval-augmented generation with conflicting evidence, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.13079}.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le,
+  and Zhou]{wei2022cot}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia,
+  Ed~Chi, Quoc~V. Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem[Wu et~al.(2026)Wu, Wang, Sun, Lu, Zhang, and
+  Chen]{wu2026conflictaware}
+H.~Wu, C.~Wang, C.~Sun, C.~Lu, Z.~Zhang, and Y.~Chen.
+\newblock Conflict-aware {RAG}: Multi-stage learning with conflict signals for
+  robust retrieval-augmented generation.
+\newblock In \emph{Proceedings of the ACM Web Conference 2026}, pp.\
+  2114--2125, 2026.
+\newblock \doi{10.1145/3774904.3792289}.
+
+\bibitem[Xu et~al.(2024{\natexlab{a}})Xu, Qi, Guo, Wang, Wang, Zhang, and
+  Xu]{xu2024knowledgeconflictsllmssurvey}
+Rongwu Xu, Zehan Qi, Zhijiang Guo, Cunxiang Wang, Hongru Wang, Yue Zhang, and
+  Wei Xu.
+\newblock Knowledge conflicts for {LLM}s: A survey.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  8541--8565, Miami, Florida, USA,
+  2024{\natexlab{a}}. Association for Computational Linguistics.
+
+\bibitem[Xu et~al.(2024{\natexlab{b}})Xu, Gao, Yu, Bi, Shen, and
+  Cheng]{xu2024aliiceevaluatingpositionalfinegrained}
+Yilong Xu, Jinhua Gao, Xiaoming Yu, Baolong Bi, Huawei Shen, and Xueqi Cheng.
+\newblock {ALiiCE}: Evaluating positional fine-grained citation generation,
+  2024{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2406.13375}.
+
+\bibitem[Yang et~al.(2024)Yang, Yang, Zhang, Hui, Zheng, Yu,
+  et~al.]{yang2024qwen25}
+An~Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo~Zheng, Bowen Yu, et~al.
+\newblock Qwen2.5 technical report, 2024.
+\newblock URL \url{https://arxiv.org/abs/2412.15115}.
+
+\bibitem[Yang et~al.(2018)Yang, Qi, Zhang, Bengio, Cohen, Salakhutdinov, and
+  Manning]{yang2018hotpotqa}
+Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William~W. Cohen, Ruslan
+  Salakhutdinov, and Christopher~D. Manning.
+\newblock {H}otpot{QA}: A dataset for diverse, explainable multi-hop question
+  answering.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  2369--2380, Brussels, Belgium, 2018.
+  Association for Computational Linguistics.
+
+\bibitem[Ye et~al.(2026)Ye, Chen, Zhong, Xiao, Zhang, Wu, and
+  Shen]{ye2026seeingthrough}
+Hua Ye, Siyuan Chen, Ziqi Zhong, Canran Xiao, Haoliang Zhang, Yuhan Wu, and Fei
+  Shen.
+\newblock Seeing through the conflict: Transparent knowledge conflict handling
+  in retrieval-augmented generation, 2026.
+\newblock URL \url{https://arxiv.org/abs/2601.06842}.
+
+\bibitem[Yoran et~al.(2024)Yoran, Wolfson, Ram, and
+  Berant]{yoran2024makingretrievalaugmentedlanguagemodels}
+Ori Yoran, Tomer Wolfson, Ori Ram, and Jonathan Berant.
+\newblock Making retrieval-augmented language models robust to irrelevant
+  context.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations}, 2024.
+
+\bibitem[Yu et~al.(2024)Yu, Zhang, Pan, Cao, Ma, Li, Wang, and
+  Yu]{yu2024chainofnote}
+Wenhao Yu, Hongming Zhang, Xiaoman Pan, Peixin Cao, Kaixin Ma, Jian Li, Hongwei
+  Wang, and Dong Yu.
+\newblock Chain-of-note: Enhancing robustness in retrieval-augmented language
+  models.
+\newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  14672--14685, Miami, Florida, USA, 2024.
+  Association for Computational Linguistics.
+
+\bibitem[Zhang \& Choi(2021)Zhang and
+  Choi]{zhang2021situatedqaincorporatingextralinguisticcontexts}
+Michael J.~Q. Zhang and Eunsol Choi.
+\newblock {S}ituated{QA}: Incorporating extra-linguistic contexts into {QA}.
+\newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in
+  Natural Language Processing}, pp.\  7371--7387, Online and Punta Cana,
+  Dominican Republic, 2021. Association for Computational Linguistics.
+
+\bibitem[Zhang et~al.(2025)Zhang, Xiang, Xiao, Wang, Li, Wang, and
+  Su]{zhang2025faithfulrag}
+Qinggang Zhang, Zhishang Xiang, Yilin Xiao, Le~Wang, Junhui Li, Xinrun Wang,
+  and Jinsong Su.
+\newblock {F}aithful{RAG}: Fact-level conflict modeling for context-faithful
+  retrieval-augmented generation.
+\newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, Vienna, Austria,
+  2025. Association for Computational Linguistics.
+
+\bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
+  Li, Xing, Zhang, Gonzalez, and Stoica]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric~P. Xing, Hao Zhang, Joseph~E.
+  Gonzalez, and Ion Stoica.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
+\newblock In \emph{Advances in Neural Information Processing Systems 36:
+  Datasets and Benchmarks Track}, 2023.
+
+\end{thebibliography}

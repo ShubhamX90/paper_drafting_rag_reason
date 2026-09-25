@@ -1,0 +1,20 @@
+\begin{table}[htbp]\centering{\footnotesize\renewcommand{\arraystretch}{1.0}\setlength{\tabcolsep}{6.5pt}
+\begin{tabular}{@{}l rrrr@{}}\toprule
+\textbf{Method} & \textbf{Ref.\,F1} & \textbf{BA} & \textbf{FG} & \textbf{STR}\\\midrule
+\multicolumn{5}{@{}l}{\textit{Llama-3.1-8B}}\\
+CoN (prompt-only) & 0.000 & 0.632 & 0.609 & 0.658\\
+CoT (few-shot) & 0.302 & 0.716 & 0.635 & 0.678\\
+\textsc{trace-sft} (ours) & \textbf{0.926} & \textbf{0.805} & \textbf{0.852} & \textbf{0.727}\\
+\addlinespace[2pt]
+\multicolumn{5}{@{}l}{\textit{Mistral-7B}}\\
+CoN (prompt-only) & 0.000 & 0.685 & 0.522 & 0.676\\
+CoT (few-shot) & 0.525 & 0.657 & 0.417 & 0.528\\
+\textsc{trace-sft} (ours) & \textbf{0.826} & \textbf{0.793} & \textbf{0.796} & \textbf{0.644}\\
+\addlinespace[2pt]
+\multicolumn{5}{@{}l}{\textit{Qwen2.5-7B}}\\
+CoN (prompt-only) & 0.000 & 0.727 & 0.666 & 0.719\\
+CoT (few-shot) & 0.402 & \textbf{0.781} & 0.734 & \textbf{0.724}\\
+\textsc{trace-sft} (ours) & \textbf{0.911} & 0.780 & \textbf{0.838} & 0.687\\
+\bottomrule\end{tabular}}
+\caption{\textbf{External prompting comparators} on baseline models; \textsc{trace-sft} rows use the strict prompt, so every row receives a well-specified instruction. Both comparators reach usable answer content but neither acquires the answer/refuse decision.}
+\label{tab:comparators}\end{table}

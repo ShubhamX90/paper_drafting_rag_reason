@@ -1,0 +1,5 @@
+Query:
+{query}
+
+Retrieved documents:
+{retrieved_docs_json}

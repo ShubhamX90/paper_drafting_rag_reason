@@ -1,0 +1,16 @@
+\begin{table*}[htbp]\centering{\small\renewcommand{\arraystretch}{1.06}\setlength{\tabcolsep}{5.5pt}
+\begin{tabular}{@{}l@{\extracolsep{\fill}} ccc ccc ccc@{}}\toprule
+& \multicolumn{3}{c}{\textbf{+ gold conflict label}} & \multicolumn{3}{c}{\textbf{+ gold per-doc notes}} & \multicolumn{3}{c}{\textbf{+ both}}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+\textbf{Metric} & mean $\Delta$ & $+/n$ & $p$ & mean $\Delta$ & $+/n$ & $p$ & mean $\Delta$ & $+/n$ & $p$\\\midrule
+Behaviour Adherence & \textbf{+0.013} & 8/9 & \textbf{0.039} & +0.008 & 10/12 & \textbf{0.039} & +0.011 & 9/12 & 0.146\\
+Factual Grounding & -0.006 & 3/9 & 0.508 & \textbf{+0.047} & 12/12 & \textbf{0.000} & \textbf{+0.046} & 12/12 & \textbf{0.000}\\
+Answer Quality & -0.009 & 2/9 & 0.180 & \textbf{+0.044} & 12/12 & \textbf{0.000} & \textbf{+0.044} & 12/12 & \textbf{0.000}\\
+Citation sufficiency & -0.001 & 3/9 & 0.508 & \textbf{+0.028} & 12/12 & \textbf{0.000} & \textbf{+0.030} & 12/12 & \textbf{0.000}\\
+Strict grounded (cit.) & -0.007 & 3/9 & 0.508 & \textbf{+0.041} & 12/12 & \textbf{0.000} & \textbf{+0.044} & 12/12 & \textbf{0.000}\\
+Citation precision & -0.005 & 2/9 & 0.180 & \textbf{+0.033} & 12/12 & \textbf{0.000} & \textbf{+0.034} & 12/12 & \textbf{0.000}\\
+Single-Truth Recall & -0.005 & 3/9 & 0.508 & +0.026 & 9/12 & 0.146 & +0.025 & 8/12 & 0.388\\
+Decision accuracy & -0.003 & 2/9 & 0.180 & -0.002 & 5/12 & 0.774 & -0.004 & 5/12 & 0.774\\
+\bottomrule\end{tabular}}
+\caption{\textbf{Mechanism-matched oracle ablations (fine-tuned models).} Each intervention supplies gold information for one reasoning stage; a metric is \emph{targeted} if it depends on that stage. The gold conflict label moves Behaviour Adherence and nothing else; the gold per-document notes move every grounding and citation metric in $9/9$ cells and leave the answer/refusal decision untouched. $p$ is an exact two-sided sign test over model$\times$prompt cells. Qwen2.5-32B is excluded from the conflict-oracle columns because of the scoring artifact documented in Appendix~\ref{app:artifacts}; the $+/n$ column reports the exact number of cells contributing to each test ($n=9$ for the conflict oracle, $n=12$ otherwise).}
+\label{tab:oracle}\end{table*}

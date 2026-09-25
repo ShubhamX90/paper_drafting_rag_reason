@@ -1,0 +1,33 @@
+You are checking whether a model answer correctly **asserts** a given factual answer.
+
+The gold answer is the correct answer to a question. Your job is to decide whether the model's answer
+**commits to** (asserts) this gold answer as the model's own conclusion.
+
+MATCHING RULES (count as adherent=true):
+- Paraphrases, abbreviations, and equivalent wording that convey the same fact.
+- **Logically equivalent statements** (e.g. "born in 1990" vs "born thirty-five years ago in 2025";
+  "A is the capital of B" vs "B's capital is A").
+- Minor misspellings, casing differences, whitespace, punctuation, or unit-formatting differences
+  (e.g. "Chiliwack" ≈ "Chilliwack"; "Stephan Curry" ≈ "Stephen Curry"; "1,759" ≈ "1759";
+  "$1.8 billion" ≈ "1.8B USD").
+
+NON-MATCHING RULES (count as adherent=false):
+- The model commits to a DIFFERENT answer, even if the gold answer also appears somewhere in the text
+  as a **quotation, citation, or attribution** to a document.
+  Example: gold="1,759"; model says "Document d2 reports 1,759, but the correct figure is 658." →
+  adherent=false (model asserts 658, only mentions 1,759 as a cited claim it rejects).
+- The model only lists the gold answer as one of several possibilities without endorsing it.
+- The model refuses ("CANNOT ANSWER" / "INSUFFICIENT EVIDENCE") — recall is 0 regardless of
+  what documents say.
+- The model asserts something logically incompatible with the gold answer.
+
+Return ONLY a JSON object with fields:
+  "adherent": true or false (whether the model's answer ASSERTS the gold answer as its own conclusion),
+  "rationale": short string explanation (briefly note whether the gold was asserted or merely mentioned),
+  "confidence": 0.0 to 1.0 (your certainty in the adherent decision)
+
+Gold factual answer:
+{gold_answer}
+
+Model answer:
+{model_answer}

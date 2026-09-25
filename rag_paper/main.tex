@@ -1,0 +1,262 @@
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\providecommand{\DeclareUnicodeCharacter}[2]{}
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
+\DeclareUnicodeCharacter{2208}{\ensuremath{\in}}
+\DeclareUnicodeCharacter{2209}{\ensuremath{\not\in}}
+\usepackage{latexsym}
+\usepackage{textcomp}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{longtable}
+\usepackage{placeins}
+% Float placement: LaTeX defaults defer floats aggressively in two-column mode,
+% which strands columns in float-dense appendices. Relax the thresholds.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\usepackage{xcolor}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{wrappedverbatim}{Verbatim}{breaklines,breakanywhere,breaksymbol={}}
+\usepackage{etoolbox}
+\AtBeginEnvironment{wrappedverbatim}{\scriptsize}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\tcbset{mypromptstyle/.style={enhanced,breakable,boxrule=0.5pt,colframe=black,arc=4pt,
+  colback=gray!3,left=6pt,right=6pt,top=6pt,bottom=6pt,boxsep=2pt}}
+\makeatletter
+\newcommand{\PromptFile}[2]{%
+  \paragraph{#1}\leavevmode\par\@nobreakfalse\penalty0\vspace{-\parskip}%
+  \begin{tcolorbox}[mypromptstyle]
+  \VerbatimInput[fontsize=\scriptsize,breaklines=true,breakanywhere=true,breaksymbolleft={},breaksymbolright={}]{#2}
+  \end{tcolorbox}}
+\makeatother
+
+\title{From Evidence to Reasoning: Trace-Augmented Reasoning under Conflicting Evidence}
+\author{}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\begin{abstract}
+\vspace{-6pt}
+Retrieval-augmented generation is unreliable when retrieved documents disagree,
+go stale, or fail to support any answer. We attribute this to a deficit in
+\emph{judgment} rather than in answer generation, and separate the two
+empirically. We release a conflict-aware RAG benchmark of $1{,}679$ examples and
+$10{,}343$ retrieved documents, each annotated with a relevance judgment, an
+extracted supporting fact, a source-quality assessment, and complete annotator
+vote tallies. We supervise open-weight models to generate evidence traces
+comprising per-document adjudication, cross-document conflict analysis, and
+conflict-conditioned response synthesis, and evaluate them with CATS, which
+scores grounded refusal, behavioural adherence, factual grounding, and
+single-truth recall as separate components, each validated against an
+independent human study. Trace supervision transforms the refusal decision:
+refusal F1 rises from at most $0.429$ to at least $0.826$ across every model and
+prompt setting, and no baseline configuration exceeds the answer-everything
+baseline. Behaviour also becomes prompt-invariant: across a strict-to-minimal
+instruction ladder no trace-tuned model moves by more than the $\pm0.034$
+measurement noise on any component, against baseline spreads of up to $0.823$;
+grounding under the sparsest instruction is $0.792$--$0.857$ tuned against
+$0.031$--$0.108$ baseline. Answer
+quality does not improve: single-truth recall is unchanged ($p=0.77$), and the
+grounding advantage under well-specified prompts does not survive correction of
+two measurement artefacts we identify. Oracle ablations show that gold
+annotations for one stage move only the metrics that stage governs, and that the
+effects add, indicating the three stages are separable constructs. The human
+study finds behavioural adherence substantially less reliable than the other
+three components.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Retrieval-augmented generation conditions a generator on a small set of retrieved
+snippets, ideally with faithful attribution
+\citep{lewis2020rag,borgeaud2022,gao2024retrievalaugmentedgenerationlargelanguage,guu2020realm}.
+In practice, retrieval rarely returns a coherent evidence set, instead
+producing documents that vary in relevance, quality, credibility, and recency.
+The retrieved documents may contain conflicting claims, provide only partial
+support, or collectively be insufficient to answer the user's query.
+
+Such a set demands a sequence of judgments before a single word of the answer is
+written: which document says what, how the documents relate to one another and
+whether what remains is sufficient. A system that treats the snippets as
+interchangeable context produces a fluent, confidently wrong answer; a system
+that refuses whenever sources disagree is no better, since disagreement is often
+compatible with a properly scoped answer.
+
+Existing work addresses parts of this, but each stops short of a different part.
+\textit{DRAGged into Conflicts} \citep{cattan2025dragged} supervises the conflict
+label rather than the reasoning that produces it; \textit{Chain-of-Note}
+\citep{yu2024chainofnote} produces per-document notes without characterising how the
+retrieved set coheres; and \textit{Trust-Score}/\textit{Trust-Align}
+\citep{song2025trustalign} score refusal and citation behaviour without conditioning
+the expected response on the kind of conflict present. Closest in framing, \citet{wu2026conflictaware} also fine-tune open models on
+conflict signals, but derive those signals from generation probabilities rather
+than from an explicit textual record, \citet{wang2025conflictingevidence}
+resolve conflicting evidence by inference-time multi-agent debate rather than
+supervision, and \citet{wang2026conflictrag} pair a learned conflict detector
+with principled credibility scoring, where our source-quality field is a coarse
+URL heuristic. \citet{muhamed2025refusalbench} evaluate selective refusal
+under flawed context and independently find it to be a trainable capability,
+which is the deficit our results localise. The gap that remains is a single
+framework in which per-document reasoning, cross-document conflict inference and
+justified abstention are supervised together and evaluated together.
+
+We close that gap with a \emph{structured evidence trace}. Before answering, the
+model exposes a three-stage record of its own adjudication
+(Figure~\ref{fig:rag}): \textbf{Stage~1} assigns each snippet a verdict with an
+extracted key fact and a source-quality label; \textbf{Stage~2} aggregates those
+judgments into one of five conflict patterns, following the taxonomy of
+\citet{cattan2025dragged}; \textbf{Stage~3} produces a citation-linked answer or
+a justified abstention, conditioned on that pattern (\S\ref{sec:method}). The
+trace is emitted under a fixed output contract rather than as free-form
+reasoning, so it is machine-checkable and a failure is attributable to a stage
+rather than to the system as a whole. \citet{liu2026craft} share this philosophy,
+training auditable traces by reinforcement learning on multi-hop QA rather than
+supervising conflict adjudication. Prompting can produce conflict-aware answers; it cannot produce
+conflict-aware judgment, and separating the two empirically is this paper's
+central test.
+
+\paragraph{A benchmark that can carry the claim.} Testing this requires evaluation data the training distribution did not shape, so
+we built an independent 736-example benchmark with \emph{zero} identifier overlap
+with training, verified on the released files rather than asserted. Because
+open-web retrieval cannot surface some conflict regimes, a curated track supplies
+them and its composition is reported per class (\S\ref{sec:data}).
+
+\paragraph{Contributions.} \textbf{(1) A conflict-aware RAG resource}
+(\S\ref{sec:data}): 943 training/validation examples and a disjoint 736-example
+benchmark, with $10{,}343$ adjudicated evidence units carrying a verdict, key
+fact, snippet-anchored quote, rationale, source-quality label and the full
+annotator vote tally. \textbf{(2) Evidence that trace supervision buys judgment,
+not answer quality} (\S\ref{sec:results}): refusal calibration and
+prompt-invariance improve; single-truth recall and grounding under
+well-specified prompts do not. \textbf{(3) CATS} (\S\ref{sec:cats}): an
+evaluation framework scoring a conflict-aware response as four components rather
+than one number, each reported over its own applicability denominator and
+separately validated against an independent human study. \textbf{(4) Oracle
+ablations} (\S\ref{sec:oracle}): supplying gold information one stage at a time
+localises which stage limits the system and gives construct-validity evidence for
+the three-stage decomposition.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth]{Ragreason.png}
+    \caption{The evidence trace. The model adjudicates each retrieved
+    document, infers the cross-document conflict pattern and produces a
+    conflict-conditioned grounded answer or a justified refusal. Every stage is
+    emitted in a machine-checkable form, so a downstream failure can be
+    attributed to a stage rather than to the system as a whole.}
+    \label{fig:rag}
+\end{figure}
+
+% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Knowledge and Evidence Conflicts}
+
+We scope this paper to conflicts \emph{among retrieved documents}. Conflict
+between a model's parametric knowledge and retrieved evidence, the
+context--memory setting targeted by much recent work
+\citep{huo2025microact,zhang2025faithfulrag,ye2026seeingthrough}, is out of
+scope: our systems are evaluated only on whether they reason correctly over the
+supplied set.
+
+Retrieval-augmented generation conditions a model on documents drawn from a large
+corpus at generation time
+\citep{guu2020realm,lewis2020rag,izacard2023atlas,borgeaud2022,gao2024retrievalaugmentedgenerationlargelanguage,ram-etal-2023-context}.
+Retrieved documents routinely carry conflicting information, which complicates
+generation and has become a research area of its own
+\citep{xu2024knowledgeconflictsllmssurvey}. \textit{ConflictBank} \citep{su2024conflictbankbenchmarkevaluatinginfluence} evaluates how models handle conflicts within retrieved knowledge, within parametric knowledge and in their interplay, pairing Wikidata claims with naturally occurring or semantically constructed contradictory evidence. \textit{WikiContradict} \citep{hou2024wikicontradict} benchmarks factual and temporal robustness on real-world contradictions between Wikipedia passages, with human-annotated instances. \textit{ECON} \citep{jiayang2024econ} studies detection and resolution of evidence conflicts directly.
+\textit{DRAGged into Conflicts} \citep{cattan2025dragged} is closest to our
+setting: it proposes a conflict taxonomy spanning temporal, debatable,
+misinformation and complementary cases and demonstrates that models often fail
+to adapt their responses without explicit conflict-aware guidance. Most of this
+literature is concerned with \emph{detecting} or \emph{classifying} conflict.
+Our framework instead supervises the reasoning that produces the
+classification and, because that reasoning is emitted in a checkable format,
+evaluates whether a model's document-level judgments, its conflict inference and
+its final response behaviour are mutually consistent, rather than scoring only
+the final answer.
+
+\subsection{Reasoning Supervision, Multi-Hop and Robustness in RAG}
+
+Several lines of work supervise or elicit intermediate reasoning.
+\textit{Chain-of-Thought} prompting established that generating intermediate
+steps improves complex reasoning \citep{wei2022cot}. \textit{Chain-of-Note}
+\citep{yu2024chainofnote} adapts this to retrieval by generating sequential
+reading notes for each retrieved document, improving robustness to noisy and
+irrelevant passages and enabling a model to answer ``unknown'' when neither
+retrieved nor intrinsic knowledge suffices. Adaptive adversarial training
+\citep{fang2024enhancingnoiserobustnessretrievalaugmented} and robustness
+training \citep{yoran2024makingretrievalaugmentedlanguagemodels} mitigate
+retrieval noise and \textit{GSM-IC} \citep{shi2023largelanguagemodelseasily}
+shows that irrelevant context substantially degrades reasoning.
+
+Our work differs in two respects. First, each stage has a closed label set, so
+Stage-1 and Stage-2 decisions are separately scorable against gold annotations
+rather than merely inspectable. Second and more importantly, \textit{we treat
+the reasoning trace as an object of evaluation rather than a means of improving
+the answer.} The three-stage decomposition earns its place only if the stages
+are genuinely separable, which we test directly by supplying gold information
+for one stage at a time and asking whether each intervention moves the metrics
+that stage should govern and no others (\S\ref{sec:oracle}).
+
+\subsection{Measuring Trust, Groundedness and Conflict Alignment}
+
+Trustworthiness metrics for RAG largely score an answer against the retrieved
+set as a whole; what conflict-aware evaluation additionally requires is that the
+\emph{expected} response depend on the kind of disagreement present, so that a
+balanced summary and a decisive correction are not scored by the same rule.
+
+Evaluations of RAG frequently assess end-to-end system quality
+\citep{gao2024retrievalaugmentedgenerationlargelanguage,xu2024aliiceevaluatingpositionalfinegrained},
+conflating retriever quality with generator capability
+\citep{fan2024surveyragmeetingllms}. \textit{Trust-Score} \citep{song2025trustalign}
+advances this by evaluating trustworthiness holistically through answer
+correctness, citation reliability and refusal behaviour and its companion
+\textit{Trust-Align} aligns models to improve that score; its held-out refusal
+material forms the refusal track of our resource. \textit{FaithEval}
+\citep{ming2025faitheval} probes whether models stay faithful to context under
+adversarial or counterfactual conditions.
+
+CATS extends this line by conditioning the expected response on the inferred
+conflict type, evaluating grounding at claim level with citation sensitivity, and
+reporting every component over its own applicability denominator, since the four
+constructs apply to different subsets of examples and conflating them confounds
+the comparison the framework is meant to support (\S\ref{sec:whatdoesnot}). We
+validate the judges against an independent human study \citep{zheng2023judging}
+and report which components that validation supports and which it does not
+(\S\ref{sec:human}).
+
+\input{body1}
+\input{body2}
+
+\bibliography{custom}
+
+\input{appendix}
+
+\end{document}

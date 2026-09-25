@@ -1,0 +1,40 @@
+Task:
+
+You are evaluating how well a single retrieved benchmark document addresses a user query.
+
+Decide whether it SUPPORTS, PARTIALLY SUPPORTS, or is IRRELEVANT to the query.
+
+Benchmark-specific reminder:
+- Preserve conflict-bearing evidence.
+- If the snippet is about the same claim/entity but is incomplete, older, superseded, contradictory, or only one side of a disagreement, prefer "partially supports" over "irrelevant".
+- Reserve "irrelevant" for truly off-topic or non-evidential snippets.
+
+Inputs:
+
+- query: {QUERY}
+- doc: {
+    "doc_id": "{DOC_ID}",
+    "title": "{TITLE}",
+    "source_url": "{URL}",
+    "snippet": "{TEXT}",
+    "timestamp": "{TIMESTAMP}"
+  }
+
+Self-check before output:
+- Every concrete value in key_fact appears in the quote.
+- Quote is <= 50 words, verbatim, contiguous.
+- For current/latest/now queries, older or superseded evidence about the same entity should usually be "partially supports", not "irrelevant".
+- For scientific claim-verification queries, directly relevant measurements or findings should usually be "partially supports" even when they undercut the query claim.
+- If a snippet is about the same entity but lacks the decisive requested field, it should usually be "partially supports".
+
+Output the JSON object exactly in this form:
+{
+  "doc_id": "string",
+  "verdict": "supports|partially supports|irrelevant",
+  "key_fact": "string",
+  "quote": "string (<=50 words, verbatim contiguous span from snippet)",
+  "verdict_reason": "string (<=50 words)",
+  "source_quality": "high|low"
+}
+
+Output ONLY the JSON object.

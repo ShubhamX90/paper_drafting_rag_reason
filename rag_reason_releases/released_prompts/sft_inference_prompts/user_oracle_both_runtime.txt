@@ -1,0 +1,11 @@
+Query:
+{query}
+
+Oracle conflict type:
+{conflict_type}
+
+Oracle per-document notes:
+{per_doc_notes_json}
+
+Retrieved documents:
+{retrieved_docs_json}

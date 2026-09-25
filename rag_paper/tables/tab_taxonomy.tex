@@ -1,0 +1,11 @@
+\begin{table*}[htbp]\centering{\footnotesize\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.13\textwidth} p{0.34\textwidth} p{0.42\textwidth}@{}}\toprule
+\textbf{Conflict type} & \textbf{Definition} & \textbf{Expected behaviour}\\\midrule
+No conflict & All sources provide consistent and aligned information. & Return a unified, concise answer that synthesises the content accurately.\\
+Complementary information & Sources provide different but non-contradictory pieces that complete each other. & Integrate all valid details into a richer, more comprehensive response.\\
+Conflicting opinions or research outcomes & Sources disagree due to different viewpoints, experimental results or interpretations. & Present each viewpoint clearly, describe the nature of the disagreement, and avoid taking a side unless the evidence strongly supports one.\\
+Outdated information & Some sources contain older data or conclusions that may no longer be reliable. & Prioritise newer, verified information while explicitly noting which sources are outdated.\\
+Misinformation & A source provides factually incorrect, misleading or fabricated claims. & Reject or correct the misinformation, give the verified facts, and briefly explain why the claim is wrong.\\
+\bottomrule\end{tabular}}
+\caption{\textbf{The five conflict types}, their definitions and the response behaviour each requires. Stage~2 assigns exactly one label per example; Behaviour Adherence (\S\ref{sec:cats}) scores the response against the expected behaviour for the assigned type.}
+\label{tab:taxonomy}\end{table*}

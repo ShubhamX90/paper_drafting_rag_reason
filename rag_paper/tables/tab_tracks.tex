@@ -1,0 +1,17 @@
+\begin{table}[htbp]\centering{\footnotesize\renewcommand{\arraystretch}{1.05}\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{@{}ll r rrrrr@{}}\toprule
+\textbf{Source} & \textbf{Track} & $n$ & \textbf{NC} & \textbf{CI} & \textbf{CO} & \textbf{OI} & \textbf{MI}\\\midrule
+QACC & web-retr. & 145 & 69 & 46 & 14 & 7 & 9\\
+SituatedQA & web-retr. & 141 & 43 & 50 & 6 & 32 & 10\\
+ConflictingQA & web-retr. & 137 & 8 & 53 & 73 & 1 & 2\\
+TRUST-ALIGN & refusal & 128 & 57 & 45 & 13 & 13 & 0\\
+FreshQA & web-retr. & 85 & 33 & 8 & 2 & 27 & 15\\
+WikiRevision & curated & 78 & 0 & 0 & 0 & 78 & 0\\
+HotpotQA & curated & 19 & 0 & 19 & 0 & 0 & 0\\
+HealthContradict & curated & 2 & 1 & 0 & 1 & 0 & 0\\
+Misinformation & curated & 1 & 0 & 0 & 0 & 0 & 1\\
+\midrule
+\textbf{Total} & & \textbf{736} & \textbf{211} & \textbf{221} & \textbf{109} & \textbf{158} & \textbf{37}\\
+\bottomrule\end{tabular}}
+\caption{\textbf{Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases.}
+\label{tab:tracks}\end{table}

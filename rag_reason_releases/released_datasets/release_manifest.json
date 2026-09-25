@@ -1,0 +1,38 @@
+{
+  "promoted_on_date": "2026-07-29",
+  "source_repository": "../sft_inference_pipeline_v2",
+  "training_dataset_v2": {
+    "counts": {
+      "train": 862,
+      "val": 81
+    },
+    "files": [
+      "data/releases/training_dataset_v2/train.jsonl",
+      "data/releases/training_dataset_v2/val.jsonl",
+      "data/releases/training_dataset_v2/train_stagewise.jsonl",
+      "data/releases/training_dataset_v2/val_stagewise.jsonl"
+    ]
+  },
+  "benchmark_dataset_v2": {
+    "counts": {
+      "benchmark_final_v2": 933,
+      "benchmark_final_v2_holdout_clean_736": 736
+    },
+    "files": [
+      "data/releases/benchmark_dataset_v2/benchmark_final_v2.jsonl",
+      "data/releases/benchmark_dataset_v2/benchmark_final_v2_holdout_clean_736.jsonl",
+      "data/releases/benchmark_dataset_v2/benchmark_final_v2_manifest.json"
+    ]
+  },
+  "excluded_from_release_area": [
+    "data/splits/run_j/",
+    "data/splits/run_k/",
+    "data/splits/run_l/",
+    "legacy split sidecars"
+  ],
+  "notes": [
+    "These release datasets are the reviewer-facing canonical train-val and benchmark artifacts.",
+    "A mismatched legacy sidecar from the source split pack was quarantined because its 609/49 row counts do not match the canonical 862/81 release split.",
+    "Internal pipeline artifacts remain in the repository outside data/releases so the annotation workflow stays reproducible."
+  ]
+}

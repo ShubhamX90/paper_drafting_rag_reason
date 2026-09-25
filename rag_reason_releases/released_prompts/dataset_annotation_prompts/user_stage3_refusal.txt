@@ -1,0 +1,39 @@
+Task:
+Generate the final refusal JSON object for this refusal-required RAG annotation sample.
+
+GROUND TRUTH:
+This query is from the refusals dataset. The final expected_response must refuse to answer.
+
+Inputs:
+
+- query: {query}
+- retrieved_docs: {retrieved_docs}
+- per_doc_notes: {per_doc_notes}
+- conflict_type: {conflict_type}
+- conflict_reason: {conflict_reason}
+- answerable_under_evidence: {answerable_under_evidence}
+- gold_answer: {gold_answer}
+
+Decision rules:
+
+1. Always set expected_response.abstain = true.
+2. Always set expected_response.answer = "CANNOT ANSWER, INSUFFICIENT EVIDENCE".
+3. Always set expected_response.evidence = [].
+4. Write abstain_reason as a concise evidence-grounded explanation naming doc_ids where possible.
+5. Do not answer the query directly.
+6. In the <think> block, explicitly evaluate every retrieved document using the provided per_doc_notes.
+7. The <think> block should explain that this is a refusal-required sample and that the evidence does not justify a final answer.
+
+Return exactly one JSON object:
+
+{
+  "expected_response": {
+    "answer": "CANNOT ANSWER, INSUFFICIENT EVIDENCE",
+    "evidence": [],
+    "abstain": true,
+    "abstain_reason": "string"
+  },
+  "think": "<think>...</think>"
+}
+
+Output only the JSON object. No markdown, no commentary.

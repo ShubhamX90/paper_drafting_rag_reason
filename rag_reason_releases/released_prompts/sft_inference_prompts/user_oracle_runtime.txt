@@ -1,0 +1,8 @@
+Query:
+{query}
+
+Oracle conflict type:
+{conflict_type}
+
+Retrieved documents:
+{retrieved_docs_json}

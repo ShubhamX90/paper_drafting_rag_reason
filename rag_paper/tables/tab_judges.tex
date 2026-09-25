@@ -1,0 +1,14 @@
+\begin{table}[htbp]\centering{\footnotesize\renewcommand{\arraystretch}{1.08}\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}l r rr@{}}\toprule
+\textbf{Judge (behaviour)} & \textbf{prio.} & \textbf{agr.} & $\kappa$\\\midrule
+anchor judge & 6 & 0.743 & 0.405\\
+third judge & 2 & 0.735 & 0.339\\
+second judge & 3 & 0.643 & 0.229\\
+\midrule \textbf{full committee} & & \textbf{0.745} & \textbf{0.407}\\
+\midrule\multicolumn{4}{@{}l}{\textit{Committee-internal agreement (300-response frame)}}\\
+Factual Grounding & & $\alpha$=0.871 & 0.871\\
+Single-Truth Recall & & $\alpha$=0.678 & 0.687\\
+Behaviour Adherence & & $\alpha$=0.457 & 0.470\\
+\bottomrule\end{tabular}}
+\caption{\textbf{Per-judge agreement with human reviewers, and committee-internal agreement.} Top: each judge's behaviour agreement with human reviewers over 650 aligned judgment-level rows (the 300 two-reviewer responses plus 50 single-reviewed), alongside its configured priority. The anchor judge is empirically the best human-aligned of the three, and the full committee edges its best single member. Bottom: agreement among the three judges on the 300-response frame; the final column is mean pairwise $\kappa$.}
+\label{tab:judges}\end{table}

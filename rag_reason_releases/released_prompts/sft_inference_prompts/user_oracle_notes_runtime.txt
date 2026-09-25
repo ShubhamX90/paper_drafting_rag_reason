@@ -1,0 +1,8 @@
+Query:
+{query}
+
+Oracle per-document notes:
+{per_doc_notes_json}
+
+Retrieved documents:
+{retrieved_docs_json}
