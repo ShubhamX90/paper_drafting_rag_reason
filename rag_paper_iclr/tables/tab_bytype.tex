@@ -1,5 +1,5 @@
-\begin{table}[htbp]\centering{\small\renewcommand{\arraystretch}{1.08}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}l cc cc cc cc@{}}\toprule
+\begin{table}[htbp]\centering{\tabstyle\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l cc cc cc cc@{}}\toprule
 & \multicolumn{4}{c}{\textbf{human--human}} & \multicolumn{4}{c}{\textbf{human--committee}}\\
 \cmidrule(lr){2-5}\cmidrule(lr){6-9}
 & \multicolumn{2}{c}{Behaviour} & \multicolumn{2}{c}{FG (claims)} & \multicolumn{2}{c}{Behaviour} & \multicolumn{2}{c}{FG (claims)}\\
@@ -11,6 +11,6 @@ Conflicting opinions & 0.862 & 0.725 & 0.887 & 0.749 & 0.820 & 0.641 & 0.888 & 0
 Outdated & 0.817 & 0.505 & 0.800 & 0.566 & 0.746 & \textbf{0.338} & 0.825 & 0.606\\
 Misinformation & 0.864 & 0.725 & 0.912 & 0.821 & 0.581 & \textbf{0.149} & 0.929 & 0.855\\
 \midrule \textbf{Overall} & 0.853 & 0.669 & 0.897 & 0.780 & 0.745 & 0.407 & 0.899 & 0.783\\
-\bottomrule\end{tabular}}
+\bottomrule\end{tabular*}}
 \caption{\textbf{Agreement by conflict type.} Bold marks $\kappa<0.40$. Reliability is not uniform across the taxonomy: human reviewers agree least on Complementary and Outdated behaviour, and the committee's behaviour judgments degrade sharply on Misinformation ($\kappa=0.149$) and Complementary ($\kappa=0.279$) while remaining strong on Conflicting opinions ($\kappa=0.641$). Claim-level grounding is reliable everywhere except Outdated. Conflicting opinions is excluded from Single-Truth Recall by construction and so does not appear in that metric's strata.}
 \label{tab:bytype}\end{table}

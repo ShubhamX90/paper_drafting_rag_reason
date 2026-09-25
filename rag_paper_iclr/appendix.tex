@@ -7,15 +7,15 @@
 
 \begin{table}[htbp]
 \centering
-\begin{minipage}[b]{0.48\linewidth}
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_tracks}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\linewidth}
+\end{minipage}%
+\hspace{0.03\linewidth}%
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
 \centering
-{\scriptsize\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr@{}}\toprule
+{\tabstyle\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.67\linewidth}r@{}}\toprule
 \textbf{Stage} & \textbf{Records}\\\midrule
 Raw candidate rows from four source pools & 20{,}330\\
 $-$ normalised overlaps with the training question set & $-598$\\
@@ -28,7 +28,7 @@ Human first-pass reviewed (canonical cleaned corpus) & 1{,}221\\
 Selected non-refusal set & 800\\
 Consolidated preselection/review population & 1{,}454\\
 Final answerable benchmark records & 608\\\bottomrule
-\end{tabular*}}
+\end{tabular}}
 \end{minipage}
 \dualcaption{table}{tab:tracks}{tab:funnel}%
 {\textbf{Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases}%
@@ -82,8 +82,8 @@ All statistics below are computed directly from the released JSONL rather than
 from construction logs (Table~\ref{tab:relverif}; Figures~\ref{fig:datacomp}
 and~\ref{fig:dataqual}).
 
-\begin{table}[htbp]\centering\small
-\begin{tabular}{@{}lrr@{}}\toprule
+\begin{table}[htbp]\centering\tabstyle
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}\toprule
 \textbf{Property} & \textbf{Train} & \textbf{Benchmark}\\\midrule
 Records & 943 & 736\\
 Duplicate identifiers & 0 & 0\\
@@ -97,7 +97,7 @@ Unique source domains & 2{,}633 & 1{,}431\\
 Mean snippet length (words) & 231 & 222\\
 Quote is an exact contiguous span & 82.6\% & 81.1\%\\
 Quote is snippet-anchored (exact/ellipsis/partial) & 95.6\% & 95.9\%\\
-\bottomrule\end{tabular}
+\bottomrule\end{tabular*}
 \caption{Verification of the released files, computed directly from the released
 JSONL rather than from construction logs.}
 \label{tab:relverif}
@@ -194,12 +194,12 @@ pool by review.
 
 \begin{table}[htbp]
 \centering
-\begin{minipage}[b]{0.48\linewidth}
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_trainiaa}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\linewidth}
+\end{minipage}%
+\hspace{0.03\linewidth}%
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_benchiaa}
 \end{minipage}
@@ -299,7 +299,7 @@ The recipe was developed by error-directed revision rather than search.
 Table~\ref{tab:recipe} names each intervention and its measured outcome,
 including the two steps that did not work.
 
-\begin{table}[htbp]\centering{\small
+\begin{table}[htbp]\centering{\tabstyle
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llp{0.76\textwidth}@{}}\toprule
 \textbf{Step} & \textbf{Rows} & \textbf{Intervention and outcome}\\\midrule
 D & 6{,}699 & Strict/runtime/minimal multi-task mixture. \emph{Established that a trace survives minimal prompting.}\\
@@ -695,12 +695,12 @@ the human--human statistics are computed (Table~\ref{tab:human}).
 
 \begin{table}[htbp]
 \centering
-\begin{minipage}[b]{0.48\linewidth}
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_human}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\linewidth}
+\end{minipage}%
+\hspace{0.03\linewidth}%
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_judges}
 \end{minipage}
@@ -825,12 +825,12 @@ counts across every evaluated claim in the run rather than averaging a
 per-claim rate, so claims with more citations are not down-weighted relative
 to claims with fewer.
 
-\begin{table}[htbp]
+\begin{landscape}
 \centering
-\begin{minipage}[b]{0.48\linewidth}
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
-{\scriptsize\setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}p{0.40\linewidth} p{0.33\linewidth} p{0.19\linewidth}@{}}\toprule
+{\tabstyle\setlength{\tabcolsep}{0.5pt}
+\begin{tabular}[t]{@{}p{0.39\linewidth} p{0.33\linewidth} p{0.24\linewidth}@{}}\toprule
 \textbf{Metric} & \textbf{Formula} & \textbf{Unit}\\\midrule
 Claim-spec.\ citation prec.\ $\uparrow$ &
 $\frac{\text{approved}}{\text{all cited}}$ &
@@ -854,12 +854,12 @@ Strict grounded, committee-clean $\uparrow$ &
 $\frac{\text{gr.}\wedge\text{cit.}\wedge\text{clean}}{\text{all claims}}$ &
 nothing OK\\
 \bottomrule\end{tabular}}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\linewidth}
+\end{minipage}%
+\hspace{0.03\linewidth}%
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
-{\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.86}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}\toprule
+{\tabstyle\setlength{\tabcolsep}{1pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lrrr@{}}\toprule
 \textbf{Metric} & \textbf{mean $\Delta$} & \textbf{min} & \textbf{max}\\\midrule
 Citation sufficiency (support recall) & $+0.363$ & $-0.008$ & $+0.869$\\
 Strict grounded, gold-clean & $+0.358$ & $-0.002$ & $+0.811$\\
@@ -885,7 +885,7 @@ count distinct cited documents or evaluated claims as noted in the Unit
 column}%
 {Citation-metric changes under trace supervision, fine-tuned minus
 baseline, across the twelve end-to-end cells.}
-\end{table}
+\end{landscape}
 
 Only the recall side moves. The strict committee-clean metric, which requires a
 claim to be committee-supported, cited and free of both extraneous and
@@ -965,21 +965,21 @@ model-dependence of the denominator itself.
 
 
 
-\begin{table}[htbp]
+\begin{landscape}
 \centering
-\begin{minipage}[b]{0.48\linewidth}
+\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_fgdenom}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\linewidth}
+\end{minipage}%
+\hspace{0.03\linewidth}%
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_internalization}
 \end{minipage}
 \dualcaption{table}{tab:fgdenom}{tab:internalization}%
 {\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells}%
 {\textbf{Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder.}
-\end{table}
+\end{landscape}
 
 \begin{figure}[htbp]
     \centering
@@ -1179,8 +1179,8 @@ underlying evidence problem, the retrieved set and the expected target are
 identical across the three; what changes is how much of the procedure the prompt
 restates (Table~\ref{tab:promptladder}):
 
-\begin{table}[htbp]\centering{\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}l@{}}\toprule
+\begin{table}[htbp]\centering{\tabstyle\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l@{}}\toprule
 \textbf{Condition, length and what the prompt still states}\\\midrule
 \textbf{strict} --- $1{,}965$ words ($49\times$)\\
 \hspace{1em}full taxonomy, verdict heuristics, threshold and\\
@@ -1191,7 +1191,7 @@ restates (Table~\ref{tab:promptladder}):
 \textbf{minimal} --- $40$ words ($1\times$)\\
 \hspace{1em}evidence-only answering and when to abstain.\\
 \hspace{1em}Nothing else\\
-\bottomrule\end{tabular}}
+\bottomrule\end{tabular*}}
 \caption{The three end-to-end instruction strengths, measured by system-prompt
 length.}
 \label{tab:promptladder}

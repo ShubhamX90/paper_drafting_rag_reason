@@ -1,5 +1,5 @@
-{\scriptsize\renewcommand{\arraystretch}{1.0}\setlength{\tabcolsep}{1.6pt}
-\begin{tabular}{@{}ll cc cc c@{}}\toprule
+{\tabstyle\setlength{\tabcolsep}{1pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.85in}>{\raggedright\arraybackslash}p{0.50in}>{\centering\arraybackslash}p{0.35in}>{\centering\arraybackslash}p{0.35in}>{\centering\arraybackslash}p{0.75in}>{\centering\arraybackslash}p{0.75in}>{\centering\arraybackslash}p{0.40in}@{}}\toprule
 & & \multicolumn{2}{c}{\textbf{reported FG}} & \multicolumn{2}{c}{\textbf{like-for-like FG}} & \\
 \cmidrule(lr){3-4}\cmidrule(lr){5-6}
 \textbf{Model} & \textbf{Prompt} & base & \textsc{sft} & base & \textsc{sft} & \textbf{sep.}\\\midrule
@@ -19,4 +19,4 @@ Mistral-7B & strict & 0.624 & 0.796 & [0.58,0.74] & [0.87,0.87] & \ding{51}\\
  & runtime & 0.739 & 0.762 & [0.71,0.90] & [0.83,0.83] & --\\
  & minimal & 0.079 & 0.792 & [0.00,0.10] & [0.86,0.86] & \ding{51}\\
 \addlinespace[2pt]
-\bottomrule\end{tabular}}
+\bottomrule\end{tabular*}}

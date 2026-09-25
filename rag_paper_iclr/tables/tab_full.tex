@@ -1,5 +1,5 @@
-\begin{table}[htbp]\centering{\footnotesize\setlength{\tabcolsep}{3.2pt}
-\begin{tabular}{@{}lll rrrrr rrr@{}}
+\begin{table}[htbp]\centering{\tabstyle\setlength{\tabcolsep}{1.8pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll rrrrr rrr@{}}
 \toprule \textbf{Model} & \textbf{Prompt} & \textbf{Run} & \textbf{Dec-Acc} & \textbf{Ref-F1} & \textbf{BA} & \textbf{FG} & \textbf{STR} & \textbf{AQ} & \textbf{CATS-P} & \textbf{CATS-B}\\\midrule
 Qwen2.5-7B & strict & base & 0.707 & 0.429 & 0.811 & 0.617 & 0.561 & 0.524 & 0.450 & 0.459\\
 Qwen2.5-7B & strict & SFT & 0.967 & 0.911 & 0.780 & 0.838 & 0.687 & 0.677 & 0.630 & 0.684\\
@@ -25,6 +25,6 @@ Mistral-7B & runtime & base & 0.826 & 0.200 & 0.676 & 0.739 & 0.590 & 0.566 & 0.
 Mistral-7B & runtime & SFT & 0.929 & 0.831 & 0.760 & 0.762 & 0.613 & 0.593 & 0.587 & 0.657\\
 Mistral-7B & minimal & base & 0.823 & 0.000 & 0.727 & 0.079 & 0.700 & 0.073 & 0.048 & 0.025\\
 Mistral-7B & minimal & SFT & 0.933 & 0.839 & 0.786 & 0.792 & 0.627 & 0.620 & 0.608 & 0.663\\
-\bottomrule\end{tabular}}
+\bottomrule\end{tabular*}}
 \caption{\textbf{End-to-end results, all twelve model$\times$prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref{tab:oracle}.}\label{tab:full}
 \end{table}

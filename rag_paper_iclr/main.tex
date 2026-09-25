@@ -15,6 +15,8 @@
 \setcounter{tocdepth}{3}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{pdflscape}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
@@ -52,6 +54,10 @@
   \VerbatimInput[fontsize=\scriptsize,breaklines=true,breakanywhere=true,breaksymbolleft={},breaksymbolright={}]{#2}
   \end{tcolorbox}}
 \makeatother
+% Single source of truth for table typography. Every table uses the same
+% readable font size and row spacing; per-table \tabcolsep stays local.
+\newcommand{\tabstyle}{\footnotesize\renewcommand{\arraystretch}{1.08}}
+
 % Combined single-line caption for a side-by-side pair: bolded "Figure N:"/
 % "Table N:" labels, joined by a semicolon, as one continuous line rather
 % than two stacked caption paragraphs.

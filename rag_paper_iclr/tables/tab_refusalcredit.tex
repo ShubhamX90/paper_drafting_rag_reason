@@ -1,5 +1,5 @@
-\begin{table}[htbp]\centering{\scriptsize\renewcommand{\arraystretch}{0.95}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}ll cc c@{}}\toprule
+\begin{table}[htbp]\centering{\tabstyle\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ll cc c@{}}\toprule
 & & \multicolumn{2}{c}{\textbf{CATS on answerable}} & \textbf{\% of headline}\\
 \cmidrule(lr){3-4}
 \textbf{Model} & \textbf{Prompt} & base & \textsc{sft} & \textbf{from refusals}\\\midrule
@@ -19,6 +19,6 @@ Mistral-7B & strict & 0.407 & 0.540 & 28.1\%\\
  & runtime & 0.455 & 0.500 & 29.6\%\\
  & minimal & 0.058 & 0.526 & 28.6\%\\
 \addlinespace[1pt]
-\bottomrule\end{tabular}}
+\bottomrule\end{tabular*}}
 \caption{\textbf{Decomposing the aggregate.} Refusal-required items score $s_i=g_i$ (decision only), so their contribution is exactly the correct-refusal count and can be removed algebraically: $\mathrm{CATS}_{\mathrm{ans}}=(736\cdot\mathrm{CATS}_{\mathrm{prev}}-|\text{correct refusals}|)/608$. Between a quarter and a third of every fine-tuned headline score is decision-only refusal credit; on answerable content alone the advantage is large under minimal prompting and small or absent under strict prompting.}
 \label{tab:refusalcredit}\end{table}
