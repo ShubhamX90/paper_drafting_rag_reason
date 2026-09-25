@@ -7,18 +7,16 @@ column pair; Appendix~\ref{app:full} gives all twelve model$\times$prompt cells.
 
 \begin{table}[htbp]
 \centering
-\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
-\centering
 \input{tables/tab_main}
-\end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
+\caption{\textbf{End-to-end results on the 736-example held-out benchmark.} Within each pair the benchmark, prompts, decoding policy and evaluator are identical; only the LoRA adapter differs. Bold marks a fine-tuned value that exceeds its baseline. Differences below the $\pm0.034$ noise floor (\S\ref{sec:setup}) are uninformative. We show the two endpoints of the instruction ladder; the intermediate runtime condition is in Appendix~\ref{app:full}.}
+\label{tab:main}
+\end{table}
+
+\begin{table}[htbp]
 \centering
 \input{tables/tab_comparators}
-\end{minipage}
-\dualcaption{table}{tab:main}{tab:comparators}%
-{\textbf{End-to-end results on the 736-example held-out benchmark.} Within each pair the benchmark, prompts, decoding policy and evaluator are identical; only the LoRA adapter differs. Bold marks a fine-tuned value that exceeds its baseline. Differences below the $\pm0.034$ noise floor (\S\ref{sec:setup}) are uninformative. We show the two endpoints of the instruction ladder; the intermediate runtime condition is in Appendix~\ref{app:full}}%
-{\textbf{External prompting comparators} on baseline models; \textsc{trace-sft} rows use the strict prompt, so every row receives a well-specified instruction. Both comparators reach usable answer content but neither acquires the answer/refuse decision.}
+\caption{\textbf{External prompting comparators} on baseline models; \textsc{trace-sft} rows use the strict prompt, so every row receives a well-specified instruction. Both comparators reach usable answer content but neither acquires the answer/refuse decision.}
+\label{tab:comparators}
 \end{table}
 
 \subsection{Refusal recall improves substantially}
@@ -85,28 +83,20 @@ gold conflict type, the gold per-document notes, or both, instead of having to
 infer them. Each condition replaces one stage of the trace with ground truth
 and leaves the rest of the pipeline unchanged, so the resulting change isolates
 what that stage contributes. They are diagnostic interventions, never
-deployment settings.
-
-Read as a single aggregate, their effect is small and the analysis stops there.
+deployment settings. Read as a single aggregate, their effect is small and the analysis stops there.
 Read \emph{per metric}, with metrics the intervention should not affect acting
 as a specificity control, the result is considerably stronger. Table~\ref{tab:oracle} and
 Figure~\ref{fig:oraclefig} give the per-metric effect of each oracle, on which
-the paragraphs below draw; Appendix~\ref{app:oracle} discusses them.
-
-\paragraph{The conflict label moves behaviour and only behaviour.} Supplying the
+the paragraphs below draw; Appendix~\ref{app:oracle} discusses them. \textbf{The conflict label moves behaviour and only behaviour.} Supplying the
 gold Stage-2 label improves Behaviour Adherence ($+0.013$, $8/9$ cells,
 $p=0.039$) and moves no other metric significantly; grounding, citation and
-decision metrics are flat to slightly negative.
-
-\paragraph{The document notes move grounding and only grounding.} Supplying gold
+decision metrics are flat to slightly negative. \textbf{The document notes move grounding and only grounding.} Supplying gold
 Stage-1 notes improves Factual Grounding ($+0.047$), answer quality ($+0.044$),
 strict citation quality ($+0.041$), citation precision ($+0.033$) and citation
 sufficiency ($+0.028$), each positive in \emph{every} cell. Behaviour shows a
 small spillover, expected since correct document verdicts also constrain the
 conflict inference and the answer/refuse decision is untouched, as it should be
-since GR is upstream of both interventions.
-
-\paragraph{Interpretation.} That each intervention moves the metrics its stage
+since GR is upstream of both interventions. \textbf{Interpretation.} That each intervention moves the metrics its stage
 governs and no others, and that the effects add ($|\Delta_{\text{both}}-
 (\Delta_{\text{conflict}}+\Delta_{\text{notes}})|\leq0.012$), is a
 construct-validity argument for the decomposition. For \emph{baseline} models
@@ -122,9 +112,7 @@ breakdown.
 We compare against two prompting-only strategies applied to baseline models:
 few-shot Chain-of-Thought \citep{wei2022cot} and Chain-of-Note-style retrieval
 notes \citep{yu2024chainofnote}. Neither is fine-tuned; both receive the same
-benchmark and evaluator (Table~\ref{tab:comparators}).
-
-Both reach usable answer content, Chain-of-Note reaching factual grounding of
+benchmark and evaluator (Table~\ref{tab:comparators}). Both reach usable answer content, Chain-of-Note reaching factual grounding of
 $0.52$--$0.67$, but neither acquires the answer/refuse decision. Chain-of-Note
 \emph{never abstains}: zero correct refusals out of 128 on all three models,
 landing exactly on the answer-everything floor. Few-shot Chain-of-Thought
@@ -134,9 +122,28 @@ without supplying conflict-aware \emph{judgment}, the distinction
 \S\ref{sec:intro} draws. Appendix~\ref{app:citation} gives the per-model
 abstention spread, why the Mistral-7B exception is a refusal prior rather than
 acquired judgment, and Chain-of-Note's citation hygiene, the poorest of any
-method examined.
+method examined. \textbf{Citation behaviour.} Trace supervision changes citation \emph{sufficiency}, not citation precision: precision is near-ceiling for every model regardless of tuning, while the recall side moves sharply. Appendix~\ref{app:citation} gives the seven-metric analysis, the definitions and the per-cell values.
 
-\paragraph{Citation behaviour.} Trace supervision changes citation \emph{sufficiency}, not citation precision: precision is near-ceiling for every model regardless of tuning, while the recall side moves sharply. Appendix~\ref{app:citation} gives the seven-metric analysis, the definitions and the per-cell values.
+\subsection{Answer-only supervision comparison}
+\label{sec:answeronly}
+
+The comparators above are prompt-only; this one is a matched SFT comparator.
+We fine-tune Llama-3.1-8B and Qwen2.5-7B on the identical data and QLoRA
+configuration as the trace-supervised runs, but with the trace removed from
+the supervision target: the model is trained to emit only the final answer or
+refusal, never the per-document verdicts or the conflict analysis
+(Appendix~\ref{app:answeronly}). Because data, base model and optimiser are
+held fixed, any remaining gap is attributable to the trace itself rather than
+to additional supervision volume. Under the minimal prompt, trace supervision
+exceeds this answer-only baseline on every metric for both models: Refusal F1
+by $+13.78$pp (Llama-3.1-8B) and $+13.82$pp (Qwen2.5-7B), Factual Grounding by
+$+13.92$pp and $+15.41$pp, and Refusal Precision by $+18.60$pp and $+19.59$pp,
+the largest single gap. Answer Quality (Appendix~\ref{app:aggregate}), the
+geometric-mean combination of Factual Grounding and Single-Truth Recall used
+elsewhere in the paper, also favours the trace by $+11.60$pp and $+16.80$pp.
+Appendix~\ref{app:answeronly} gives the complete ladder across
+both answer-only prompt variants and all three trace-supervised prompt
+variants, and the recipe in full.
 
 \section{Validating the Evaluator}
 \label{sec:human}
@@ -162,16 +169,12 @@ Trace supervision transforms the answer/refuse decision
 and makes conflict-aware behaviour survive removal of the instruction describing
 it; it does \emph{not} improve answer writing, because that deficit was never
 there to fix; and the three stages behave as separable constructs, so the trace
-is a measurement instrument rather than a formatting convention.
-
-Three questions remain open. The residual error after both oracles is small but unattributed, and separating
+is a measurement instrument rather than a formatting convention. Three questions remain open. The residual error after both oracles is small but unattributed, and separating
 Stage-3 synthesis failure from annotation noise and judge strictness needs a
 targeted audit. Behaviour Adherence is the weakest instrument we report, so
 conflict-behaviour claims should stay qualitative until it improves. And
 misinformation remains the smallest class in the benchmark; expanding it without
-perturbation-based synthesis is an open data-collection problem.
-
-The practical consequence is a separation of concerns. A retrieval system that
+perturbation-based synthesis is an open data-collection problem. The practical consequence is a separation of concerns. A retrieval system that
 answers well but cannot decide \emph{when} to answer is not a weaker version of
 one that can; the two differ in a capability that no prompt in our ladder
 supplied, and that supervising the reasoning did. Building such a system means
@@ -182,16 +185,27 @@ from the answer it produces.
 \section*{Limitations}
 \label{sec:limitations}
 
-\paragraph{Per-document verdicts are never human-validated.} The Stage-1
-verdicts (\textit{supports}, \textit{partially supports}, \textit{irrelevant})
-that gate Factual Grounding eligibility are produced entirely by the annotation
-committee, including frontier-model annotators, and are checked by human
-reviewers at no stage. This is a different status from the conflict-type label,
-which is reviewed twice, and it means the eligibility set on which every
-grounding and citation number depends rests on model agreement rather than
-human adjudication. The refusal-track validity check
-(Appendix~\ref{app:refusalquality}) is indirect evidence that the verdicts
-track something real, not a substitute for direct validation.
+\paragraph{Per-document verdicts rest on a small, non-blind human check.} The
+Stage-1 verdicts (\textit{supports}, \textit{partially supports},
+\textit{irrelevant}) that gate Factual Grounding eligibility are produced by
+the annotation committee, including frontier-model annotators. A targeted
+study reviewed a class-balanced, deduplicated sample of 100
+query--document pairs (three reviewers, 300 ratings) and found $92\%$ exact
+agreement ($\kappa=0.88$) between the committee verdict and the human-majority
+verdict, with human--human agreement at Fleiss' $\kappa=0.83$
+(Appendix~\ref{app:stage1review}). This is agreement evidence, not an
+accuracy or full-coverage validation: reviewers saw the committee verdict
+before recording their own, so anchoring may inflate these figures; the
+sample is balanced by verdict rather than drawn at the datasets' natural
+label prevalence; and no independent gold-standard label exists against which
+to score objective correctness. This is a different status from the
+conflict-type label, which is reviewed twice at full scale
+(Appendix~\ref{app:human-review}), and it means the eligibility set on which
+every grounding and citation number depends is checked against human judgment
+on this one 100-pair sample rather than validated across the full corpus. The
+refusal-track validity check (Appendix~\ref{app:refusalquality}) is a further,
+independent piece of indirect evidence that the verdicts track something
+real.
 
 \paragraph{Evidence-bounded evaluation.} CATS scores whether an answer is
 justified by the retrieved set, not whether it is true. A globally correct answer
@@ -260,7 +274,10 @@ prompt-engineering baselines. One comparator metric shifted substantially
 between our earlier evaluation and this one in a way most consistent with a
 corrected answer-extraction step, so we base the comparator conclusion on
 abstention behaviour and citation hygiene, which are stable across both, rather
-than on grounding alone.
+than on grounding alone. The answer-only SFT comparator
+(\S\ref{sec:answeronly}, Appendix~\ref{app:answeronly}) covers two of the four
+model families (Llama-3.1-8B, Qwen2.5-7B) and its own two-prompt ladder,
+narrower than the four-model, three-prompt matrix reported elsewhere.
 
 % ============================================================
 \section*{Ethical considerations}

@@ -68,7 +68,7 @@
   \noindent\textbf{\csname #1name\endcsname~\ref{#2}:} #4; \textbf{\csname #1name\endcsname~\ref{#3}:} #5\par
   \endgroup}
 
-\title{\raggedright From Evidence to Reasoning: Trace-Augmented Reasoning under Conflicting Evidence}
+\title{\raggedright From Evidence to Reasoning: Trace-Augment-\\ed Reasoning under Conflicting Evidence}
 \author{}
 
 \begin{document}
@@ -156,13 +156,13 @@ supervising conflict adjudication. Prompting can produce conflict-aware answers;
 conflict-aware judgment, and separating the two empirically is this paper's
 central test.
 
-\paragraph{A benchmark that can carry the claim.} Testing this requires evaluation data the training distribution did not shape, so
+\textbf{A benchmark that can carry the claim.} Testing this requires evaluation data the training distribution did not shape, so
 we built an independent 736-example benchmark with \emph{zero} identifier overlap
 with training, verified on the released files rather than asserted. Because
 open-web retrieval cannot surface some conflict regimes, a curated track supplies
 them and its composition is reported per class (\S\ref{sec:data}).
 
-\paragraph{Contributions.} \textbf{(1) A conflict-aware RAG resource}
+\textbf{Contributions.} \textbf{(1) A conflict-aware RAG resource}
 (\S\ref{sec:data}): 943 training/validation examples and a disjoint 736-example
 benchmark, with $10{,}343$ adjudicated evidence units carrying a verdict, key
 fact, snippet-anchored quote, rationale, source-quality label and the full
@@ -177,7 +177,7 @@ ablations} (\S\ref{sec:oracle}): supplying gold information one stage at a time
 localises which stage limits the system and gives construct-validity evidence for
 the three-stage decomposition.
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \begin{minipage}[b]{2.585in}
 \centering
@@ -212,9 +212,7 @@ between a model's parametric knowledge and retrieved evidence, the
 context--memory setting targeted by much recent work
 \citep{huo2025microact,zhang2025faithfulrag,ye2026seeingthrough}, is out of
 scope: our systems are evaluated only on whether they reason correctly over the
-supplied set.
-
-Retrieval-augmented generation conditions a model on documents drawn from a large
+supplied set. Retrieval-augmented generation conditions a model on documents drawn from a large
 corpus at generation time
 \citep{guu2020realm,lewis2020rag,izacard2023atlas,borgeaud2022,gao2024retrievalaugmentedgenerationlargelanguage,ram-etal-2023-context}.
 Retrieved documents routinely carry conflicting information, which complicates
@@ -243,9 +241,7 @@ retrieved nor intrinsic knowledge suffices. Adaptive adversarial training
 \citep{fang2024enhancingnoiserobustnessretrievalaugmented} and robustness
 training \citep{yoran2024makingretrievalaugmentedlanguagemodels} mitigate
 retrieval noise and \textit{GSM-IC} \citep{shi2023largelanguagemodelseasily}
-shows that irrelevant context substantially degrades reasoning.
-
-Our work differs in two respects. First, each stage has a closed label set, so
+shows that irrelevant context substantially degrades reasoning. Our work differs in two respects. First, each stage has a closed label set, so
 Stage-1 and Stage-2 decisions are separately scorable against gold annotations
 rather than merely inspectable. Second and more importantly, \textit{we treat
 the reasoning trace as an object of evaluation rather than a means of improving
@@ -259,9 +255,7 @@ that stage should govern and no others (\S\ref{sec:oracle}).
 Trustworthiness metrics for RAG largely score an answer against the retrieved
 set as a whole; what conflict-aware evaluation additionally requires is that the
 \emph{expected} response depend on the kind of disagreement present, so that a
-balanced summary and a decisive correction are not scored by the same rule.
-
-Evaluations of RAG frequently assess end-to-end system quality
+balanced summary and a decisive correction are not scored by the same rule. Evaluations of RAG frequently assess end-to-end system quality
 \citep{gao2024retrievalaugmentedgenerationlargelanguage,xu2024aliiceevaluatingpositionalfinegrained},
 conflating retriever quality with generator capability
 \citep{fan2024surveyragmeetingllms}. \textit{Trust-Score} \citep{song2025trustalign}
@@ -270,9 +264,7 @@ correctness, citation reliability and refusal behaviour and its companion
 \textit{Trust-Align} aligns models to improve that score; its held-out refusal
 material forms the refusal track of our resource. \textit{FaithEval}
 \citep{ming2025faitheval} probes whether models stay faithful to context under
-adversarial or counterfactual conditions.
-
-CATS extends this line by conditioning the expected response on the inferred
+adversarial or counterfactual conditions. CATS extends this line by conditioning the expected response on the inferred
 conflict type, evaluating grounding at claim level with citation sensitivity, and
 reporting every component over its own applicability denominator, since the four
 constructs apply to different subsets of examples and conflating them confounds

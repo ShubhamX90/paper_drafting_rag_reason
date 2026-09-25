@@ -7,15 +7,15 @@
 
 \begin{table}[htbp]
 \centering
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
-\centering
 \input{tables/tab_tracks}
-\end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\caption{\textbf{Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases.}
+\label{tab:tracks}
+\end{table}
+
+\begin{table}[htbp]
 \centering
 {\tabstyle\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{0.67\linewidth}r@{}}\toprule
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}p{0.67\linewidth}r@{}}\toprule
 \textbf{Stage} & \textbf{Records}\\\midrule
 Raw candidate rows from four source pools & 20{,}330\\
 $-$ normalised overlaps with the training question set & $-598$\\
@@ -28,12 +28,10 @@ Human first-pass reviewed (canonical cleaned corpus) & 1{,}221\\
 Selected non-refusal set & 800\\
 Consolidated preselection/review population & 1{,}454\\
 Final answerable benchmark records & 608\\\bottomrule
-\end{tabular}}
-\end{minipage}
-\dualcaption{table}{tab:tracks}{tab:funnel}%
-{\textbf{Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases}%
-{Non-refusal construction funnel, counts as observed in the retained
+\end{tabular*}}
+\caption{Non-refusal construction funnel, counts as observed in the retained
 artifacts.}
+\label{tab:funnel}
 \end{table}
 
 Table~\ref{tab:tracks} gives the full breakdown referenced in
@@ -178,9 +176,81 @@ separately rather than as a property of the automated pipeline.
 \section{Human Review of the Resource}
 \label{app:human-review}
 
-Two workflows cover the two populations and must not be conflated. Both are
-released with their raw per-reviewer files, assignment manifests, consolidated
-pair records and machine-readable agreement metrics.
+Three workflows cover three different review targets and must not be
+conflated. All are released with their raw per-reviewer files, assignment
+manifests, consolidated pair records and machine-readable agreement metrics.
+
+\subsection{Stage-1 document-verdict review}
+\label{app:stage1review}
+
+The reviews below check the \emph{conflict-type} label and the
+\emph{preselection} decision. Neither directly checks the Stage-1
+per-document verdict (\textit{supports}, \textit{partially supports},
+\textit{irrelevant}) that gates Factual Grounding eligibility
+(\S\ref{sec:method}). A separate, smaller study targets that verdict
+directly.
+
+\paragraph{Design.} We drew a sample of 100 query--document pairs with
+existing Stage-1 LLM-committee verdicts, seeded (\texttt{20260919}), balanced
+by committee verdict (supports: 34; partially supports: 33; irrelevant: 33)
+and deduplicated so each normalised query appears once. The pairs are drawn
+from the holdout benchmark (46), the training set (50) and the validation
+set (4). Three reviewers each assessed all 100 pairs (300 ratings): each saw
+the query, the document, and the committee's Stage-1 annotation, and recorded
+agreement or a replacement verdict with a reason. Because reviewers saw the
+committee verdict before recording their own, the review is not blind, and
+anchoring may inflate the agreement figures below; there is also no
+independent gold-standard label, so these are agreement statistics, not
+accuracy statistics.
+
+\paragraph{Human--human agreement.} Table~\ref{tab:stage1hh} gives pairwise
+and three-rater agreement. Three-way unanimity holds on 83/100 pairs, with a
+2--1 majority on the remaining 17 and no three-way splits.
+
+\begin{table}[htbp]\centering
+\input{tables/tab_stage1_humanhuman}
+\caption{\textbf{Stage-1 review: human--human agreement} across the three reviewers, 100 pairs (300 ratings). ``---'' marks a cell the statistic does not apply to.}
+\label{tab:stage1hh}
+\end{table}
+
+\paragraph{Committee--human agreement.} Table~\ref{tab:stage1llm} compares the
+committee's Stage-1 verdict against each reviewer and against the human
+majority. The pooled row treats each of the 300 ratings as a paired
+observation against the same committee label repeated per reviewer; it is
+descriptive, since the ratings cluster within 100 pairs.
+
+\begin{table}[htbp]\centering
+\input{tables/tab_stage1_llmhuman}
+\caption{\textbf{Stage-1 review: committee--human agreement.} \textsuperscript{*}Pooled statistic; the 300 ratings share 100 underlying pairs.}
+\label{tab:stage1llm}
+\end{table}
+
+\paragraph{Where the committee and reviewers disagree.} Table~\ref{tab:stage1confusion} gives the pooled confusion matrix against all 300
+individual ratings, and the correction directions among the 27 ratings (18
+distinct pairs) where a reviewer replaced the committee's verdict. Every
+recorded correction is between adjacent categories: no reviewer moved a pair
+directly between \textit{supports} and \textit{irrelevant}, matching the
+pattern in the human--human disagreements (\textit{supports} vs
+\textit{partially supports} on 11 pairs, \textit{partially supports} vs
+\textit{irrelevant} on 6, no \textit{supports}--\textit{irrelevant}
+disagreement).
+
+\begin{table}[htbp]\centering
+\input{tables/tab_stage1_confusion}
+\caption{\textbf{Stage-1 review: pooled confusion matrix} (top, 300 ratings against the repeated committee label) \textbf{and correction directions} (bottom, among the 27 ratings that changed the committee's verdict).}
+\label{tab:stage1confusion}
+\end{table}
+
+\paragraph{Interpretation and limitations.} Reviewers agree with one another
+and with the Stage-1 committee label on this sample, and most
+committee--human differences sit at neighbouring category boundaries. The
+sample is deliberately balanced by committee verdict, so it does not estimate
+agreement at the datasets' natural label prevalence, and it mixes holdout,
+training and validation records, so it must not be read as a holdout-only
+evaluation. Read together with the non-blind design, this study supports
+using the committee's Stage-1 verdict as a useful first-pass signal, checked
+against human judgment on this one sample; it does not establish the
+verdict's objective accuracy across the corpus (\S\ref{sec:limitations}).
 
 \subsection{Training conflict-type review}
 
@@ -324,6 +394,81 @@ single-factor ablations. The source-hygiene intervention explored at step~G is
 reported models. And the reported matrices use recipe~K for the Qwen family and
 recipe~L for Llama and Mistral, because no completed Qwen matrix exists for
 recipe~L.
+
+\section{Answer-Only Supervision Ablation}
+\label{app:answeronly}
+
+\subsection{Recipe}
+
+This comparator isolates what the evidence trace itself contributes, holding
+data and optimisation fixed. It reuses the identical 862/81/736
+train/validation/benchmark split and the identical QLoRA configuration (rank
+32, $\alpha=64$, dropout $0.05$, learning rate $2\times10^{-4}$, maximum
+sequence length $12{,}288$, NEFTune $\alpha=5.0$) as the trace-supervised runs
+(Appendix~\ref{app:sft}), changing only the supervision target. The
+assistant message contains \emph{only} the final grounded answer or the
+canonical refusal string, immediately followed by \texttt{[[END-OF-ANSWER]]};
+it contains no \texttt{<think>} block, document-verdict array or
+conflict-type label. Two prompt families are trained: \textbf{final-only},
+which explicitly instructs the model to omit the trace and produce only the
+final answer, and \textbf{minimal}, the same forty-word evidence policy used
+throughout the paper. Each of the 862 source examples yields 8 final-only and
+4 minimal copies (a 2:1 mixture), giving $10{,}344$ training rows. Generation
+is deterministic (temperature $0$), with the same 4-bit base-model loading and
+LoRA adapter as the trace-supervised runs. Evaluation runs the two prompt
+families through refusal-decision metrics (precision/recall/F1 for the
+answer and the refuse class, and overall classification accuracy) and, on the
+same generations, the paper's own Behavioural Adherence, Factual Grounding and
+Single-Truth Recall components; Answer Quality is the same AQ quantity defined
+in Appendix~\ref{app:aggregate} (the geometric mean of Factual Grounding and
+Single-Truth Recall, or Factual Grounding alone where Single-Truth Recall does
+not apply) and reported for the trace-supervised runs in
+Table~\ref{tab:oracle} and Table~\ref{tab:full}, computed here for the
+answer-only checkpoints as well.
+
+This ablation covers Llama-3.1-8B and Qwen2.5-7B only, not the full
+four-model matrix used elsewhere in the paper.
+
+\subsection{Results}
+
+Tables~\ref{tab:aollama} and~\ref{tab:aoqwen} give the complete ladder: both
+answer-only prompt variants against all three trace-supervised prompt
+variants, per model. Table~\ref{tab:aodelta} isolates the minimal-prompt
+comparison, the condition \S\ref{sec:internalization} identifies as the most
+diagnostic, since it carries the least prompt scaffolding for either
+supervision type to lean on.
+
+\begin{table}[htbp]\centering
+\input{tables/tab_answeronly_llama}
+\caption{\textbf{Llama-3.1-8B: answer-only vs.\ trace supervision}, all five prompt$\times$supervision cells. Values are percentages, as reported by the evaluation harness.}
+\label{tab:aollama}
+\end{table}
+
+\begin{table}[htbp]\centering
+\input{tables/tab_answeronly_qwen}
+\caption{\textbf{Qwen2.5-7B: answer-only vs.\ trace supervision}, all five prompt$\times$supervision cells. Values are percentages, as reported by the evaluation harness.}
+\label{tab:aoqwen}
+\end{table}
+
+\begin{table}[htbp]\centering
+\input{tables/tab_answeronly_delta}
+\caption{\textbf{Answer-only vs.\ trace supervision under the minimal prompt}, both models, with the percentage-point (pp) difference. AO is answer-only supervision.}
+\label{tab:aodelta}
+\end{table}
+
+Under the minimal prompt, trace supervision exceeds answer-only supervision
+on every metric for both models: Refusal F1 by $+13.78$pp (Llama-3.1-8B) and
+$+13.82$pp (Qwen2.5-7B), Factual Grounding by $+13.92$pp and $+15.41$pp, and
+Answer Quality by $+11.60$pp and $+16.80$pp. Refusal Precision shows the
+largest single gap ($+18.60$pp and $+19.59$pp): answer-only supervision, on
+identical data and compute, does not learn the same calibrated
+answer/refuse decision that the trace does. Behavioural Adherence and
+Single-Truth Recall also favour the trace in every cell, though by a smaller
+and less even margin ($+7.36$pp/$+3.64$pp and $+1.72$pp/$+7.31$pp
+respectively). This is a matched comparison: because the two supervision
+types share training data, base model and optimiser, the gap is attributable
+to the presence of the evidence trace in the supervision target, not to
+additional data or compute.
 
 \section{Inference Protocol}
 \label{app:inference}
@@ -825,12 +970,10 @@ counts across every evaluated claim in the run rather than averaging a
 per-claim rate, so claims with more citations are not down-weighted relative
 to claims with fewer.
 
-\begin{landscape}
+\begin{table}[htbp]
 \centering
-\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
-\centering
-{\tabstyle\setlength{\tabcolsep}{0.5pt}
-\begin{tabular}[t]{@{}p{0.39\linewidth} p{0.33\linewidth} p{0.24\linewidth}@{}}\toprule
+{\tabstyle\setlength{\tabcolsep}{3pt}
+\begin{tabular}[t]{@{}p{0.40\linewidth} p{0.33\linewidth} p{0.19\linewidth}@{}}\toprule
 \textbf{Metric} & \textbf{Formula} & \textbf{Unit}\\\midrule
 Claim-spec.\ citation prec.\ $\uparrow$ &
 $\frac{\text{approved}}{\text{all cited}}$ &
@@ -854,24 +997,7 @@ Strict grounded, committee-clean $\uparrow$ &
 $\frac{\text{gr.}\wedge\text{cit.}\wedge\text{clean}}{\text{all claims}}$ &
 nothing OK\\
 \bottomrule\end{tabular}}
-\end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
-\centering
-{\tabstyle\setlength{\tabcolsep}{1pt}
-\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lrrr@{}}\toprule
-\textbf{Metric} & \textbf{mean $\Delta$} & \textbf{min} & \textbf{max}\\\midrule
-Citation sufficiency (support recall) & $+0.363$ & $-0.008$ & $+0.869$\\
-Strict grounded, gold-clean & $+0.358$ & $-0.002$ & $+0.811$\\
-Strict grounded, committee-clean & $+0.339$ & $+0.119$ & $+0.651$\\
-Gold-positive precision & $+0.003$ & $-0.004$ & $+0.014$\\
-Soft-extra citation rate & $+0.006$ & $-0.058$ & $+0.074$\\
-Hard-negative citation rate & $-0.003$ & $-0.014$ & $+0.004$\\
-Claim-specific citation precision & $-0.003$ & $-0.077$ & $+0.055$\\
-\bottomrule\end{tabular*}}
-\end{minipage}
-\dualcaption{table}{tab:citdefs}{tab:citresults}%
-{\textbf{Citation-metric definitions.} ``Approved'' means the cited
+\caption{\textbf{Citation-metric definitions.} ``Approved'' means the cited
 document is in the committee's claim-specific support set; ``gold-positive''
 means its gold per-document verdict is \textit{supports} or \textit{partially
 supports}, independent of which specific claim is being checked; ``clean''
@@ -882,10 +1008,27 @@ soft extras, the committee-clean rate forbids both, making it the single most
 demanding number in this section. $\uparrow$/$\downarrow$ after the metric
 name marks whether higher or lower is the better direction. All fractions
 count distinct cited documents or evaluated claims as noted in the Unit
-column}%
-{Citation-metric changes under trace supervision, fine-tuned minus
+column.}
+\label{tab:citdefs}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+{\tabstyle\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lrrr@{}}\toprule
+\textbf{Metric} & \textbf{mean $\Delta$} & \textbf{min} & \textbf{max}\\\midrule
+Citation sufficiency (support recall) & $+0.363$ & $-0.008$ & $+0.869$\\
+Strict grounded, gold-clean & $+0.358$ & $-0.002$ & $+0.811$\\
+Strict grounded, committee-clean & $+0.339$ & $+0.119$ & $+0.651$\\
+Gold-positive precision & $+0.003$ & $-0.004$ & $+0.014$\\
+Soft-extra citation rate & $+0.006$ & $-0.058$ & $+0.074$\\
+Hard-negative citation rate & $-0.003$ & $-0.014$ & $+0.004$\\
+Claim-specific citation precision & $-0.003$ & $-0.077$ & $+0.055$\\
+\bottomrule\end{tabular*}}
+\caption{Citation-metric changes under trace supervision, fine-tuned minus
 baseline, across the twelve end-to-end cells.}
-\end{landscape}
+\label{tab:citresults}
+\end{table}
 
 Only the recall side moves. The strict committee-clean metric, which requires a
 claim to be committee-supported, cited and free of both extraneous and
@@ -965,21 +1108,19 @@ model-dependence of the denominator itself.
 
 
 
-\begin{landscape}
-\centering
-\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
+\begin{table}[htbp]
 \centering
 \input{tables/tab_fgdenom}
-\end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\caption{\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells.}
+\label{tab:fgdenom}
+\end{table}
+
+\begin{table}[htbp]
 \centering
 \input{tables/tab_internalization}
-\end{minipage}
-\dualcaption{table}{tab:fgdenom}{tab:internalization}%
-{\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells}%
-{\textbf{Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder.}
-\end{landscape}
+\caption{\textbf{Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder.}
+\label{tab:internalization}
+\end{table}
 
 \begin{figure}[htbp]
     \centering

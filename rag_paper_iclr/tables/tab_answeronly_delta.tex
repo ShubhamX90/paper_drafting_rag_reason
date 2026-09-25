@@ -1,0 +1,17 @@
+{\tabstyle\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}l r r r r r r@{}}\toprule
+& \multicolumn{3}{c}{Llama-3.1-8B} & \multicolumn{3}{c}{Qwen2.5-7B} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+\textbf{Metric (\%), minimal prompt} & \textbf{AO} & \textbf{Trace} & \textbf{$\Delta$(pp)} & \textbf{AO} & \textbf{Trace} & \textbf{$\Delta$(pp)}\\\midrule
+Answering Precision & 98.41 & 99.83 & +1.42 & 96.35 & 97.84 & +1.49\\
+Answering Recall & 91.45 & 97.20 & +5.76 & 91.28 & 97.04 & +5.76\\
+Answering F1 & 94.80 & 98.50 & +3.70 & 93.75 & 97.44 & +3.69\\
+Refusal Precision & 69.59 & 88.19 & +18.60 & 66.88 & 86.47 & +19.59\\
+Refusal Recall & 92.97 & 99.22 & +6.25 & 83.59 & 89.84 & +6.25\\
+Refusal F1 & 79.60 & 93.38 & +13.78 & 74.31 & 88.12 & +13.82\\
+Overall Classification Accuracy & 91.71 & 97.55 & +5.84 & 89.95 & 95.79 & +5.84\\
+Behavioural Adherence & 72.11 & 79.47 & +7.36 & 73.18 & 76.81 & +3.64\\
+Answer Quality & 57.80 & 69.40 & +11.60 & 51.20 & 68.00 & +16.80\\
+Single-Truth Recall & 69.64 & 71.36 & +1.72 & 61.27 & 68.58 & +7.31\\
+Factual Grounding & 71.83 & 85.74 & +13.92 & 68.34 & 83.75 & +15.41\\
+\bottomrule\end{tabular*}}

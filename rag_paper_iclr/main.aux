@@ -15,17 +15,18 @@
 \citation{cattan2025dragged}
 \citation{liu2026craft}
 \citation{huo2025microact,zhang2025faithfulrag,ye2026seeingthrough}
-\newlabel{fig:rag}{{1}{2}{Contributions}{figure.1}{}}
-\newlabel{fig:system}{{2}{2}{Contributions}{figure.2}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{A benchmark that can carry the claim.}{2}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.2}\protected@file@percent }
 \citation{guu2020realm,lewis2020rag,izacard2023atlas,borgeaud2022,gao2024retrievalaugmentedgenerationlargelanguage,ram-etal-2023-context}
 \citation{xu2024knowledgeconflictsllmssurvey}
 \citation{su2024conflictbankbenchmarkevaluatinginfluence}
 \citation{hou2024wikicontradict}
 \citation{jiayang2024econ}
 \citation{cattan2025dragged}
+\def\@LN@column{1}
+\newlabel{fig:rag}{{1}{2}{Introduction}{figure.1}{}}
+\newlabel{fig:system}{{2}{2}{Introduction}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Knowledge and Evidence Conflicts}{2}{subsection.2.1}\protected@file@percent }
 \citation{wei2022cot}
 \citation{yu2024chainofnote}
 \citation{fang2024enhancingnoiserobustnessretrievalaugmented}
@@ -37,23 +38,12 @@
 \citation{ming2025faitheval}
 \citation{zheng2023judging}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
-\newlabel{sec:related}{{2}{3}{Related Work}{section.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Knowledge and Evidence Conflicts}{3}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Reasoning Supervision, Multi-Hop and Robustness in RAG}{3}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Measuring Trust, Groundedness and Conflict Alignment}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Task Formulation and the Evidence Trace}{3}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{3}{Task Formulation and the Evidence Trace}{section.3}{}}
 \citation{cattan2025dragged}
 \citation{song2025trustalign}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Task Formulation and the Evidence Trace}{4}{section.3}\protected@file@percent }
-\newlabel{sec:method}{{3}{4}{Task Formulation and the Evidence Trace}{section.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Stage 1: document adjudication.}{4}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Stage 2: conflict analysis.}{4}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Stage 3: grounded synthesis.}{4}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Dataset Generation and Validation}{4}{section.4}\protected@file@percent }
-\newlabel{sec:data}{{4}{4}{Dataset Generation and Validation}{section.4}{}}
-\newlabel{tab:data}{{1}{4}{Dataset Generation and Validation}{table.1}{}}
-\newlabel{tab:cats}{{2}{4}{Dataset Generation and Validation}{table.2}{}}
 \citation{wan2024evidencelanguagemodelsconvincing}
 \citation{zhang2021situatedqaincorporatingextralinguisticcontexts}
 \citation{vu2024freshllms}
@@ -63,39 +53,44 @@
 \citation{hou2024wikicontradict}
 \citation{yang2018hotpotqa}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Training and validation}{5}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}An independent benchmark}{5}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Track A: web-retrieved (508).}{5}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Track B: refusal (128).}{5}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Track C: curated conflict (100).}{5}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 1: document adjudication.}{4}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 2: conflict analysis.}{4}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 3: grounded synthesis.}{4}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Dataset Generation and Validation}{4}{section.4}\protected@file@percent }
+\newlabel{sec:data}{{4}{4}{Dataset Generation and Validation}{section.4}{}}
+\newlabel{tab:data}{{1}{4}{Dataset Generation and Validation}{table.1}{}}
+\newlabel{tab:cats}{{2}{4}{Dataset Generation and Validation}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Training and validation}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}An independent benchmark}{4}{subsection.4.2}\protected@file@percent }
+\citation{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge}
+\def\@LN@column{1}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Annotation depth}{5}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Human review}{5}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Trace-Supervised Fine-Tuning}{5}{section.5}\protected@file@percent }
 \newlabel{sec:sft}{{5}{5}{Trace-Supervised Fine-Tuning}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Objective and prompt variants}{5}{subsection.5.1}\protected@file@percent }
-\citation{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Fine-tuning}{5}{subsection.5.2}\protected@file@percent }
 \citation{yang2024qwen25}
 \citation{dubey2024llama3}
 \citation{jiang2023mistral7b}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Fine-tuning}{6}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}CATS: Conflict-Aware Trust Score}{6}{section.6}\protected@file@percent }
-\newlabel{sec:cats}{{6}{6}{CATS: Conflict-Aware Trust Score}{section.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Judges:}{6}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Aggregate scores:}{6}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Experimental Setup}{6}{section.7}\protected@file@percent }
-\newlabel{sec:setup}{{7}{6}{Experimental Setup}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Primary evaluation}{6}{subsection.7.1}\protected@file@percent }
 \citation{yu2024chainofnote}
 \citation{wei2022cot}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Ablation studies}{7}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Oracle ablations.}{7}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Comparison with prompting methods.}{7}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}CATS: Conflict-Aware Trust Score}{6}{section.6}\protected@file@percent }
+\newlabel{sec:cats}{{6}{6}{CATS: Conflict-Aware Trust Score}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Judges:}{6}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Aggregate scores:}{6}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Experimental Setup}{6}{section.7}\protected@file@percent }
+\newlabel{sec:setup}{{7}{6}{Experimental Setup}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Primary evaluation}{6}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Ablation studies}{6}{subsection.7.2}\protected@file@percent }
+\def\@LN@column{1}
 \@writefile{toc}{\contentsline {section}{\numberline {8}Results}{7}{section.8}\protected@file@percent }
 \newlabel{sec:results}{{8}{7}{Results}{section.8}{}}
-\newlabel{tab:main}{{3}{7}{Results}{table.3}{}}
-\newlabel{tab:comparators}{{4}{7}{Results}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {End-to-end results on the 736-example held-out benchmark.} Within each pair the benchmark, prompts, decoding policy and evaluator are identical; only the LoRA adapter differs. Bold marks a fine-tuned value that exceeds its baseline. Differences below the $\pm 0.034$ noise floor (\S  \ref {sec:setup}) are uninformative. We show the two endpoints of the instruction ladder; the intermediate runtime condition is in Appendix~\ref {app:full}.}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:main}{{3}{7}{\textbf {End-to-end results on the 736-example held-out benchmark.} Within each pair the benchmark, prompts, decoding policy and evaluator are identical; only the LoRA adapter differs. Bold marks a fine-tuned value that exceeds its baseline. Differences below the $\pm 0.034$ noise floor (\S \ref {sec:setup}) are uninformative. We show the two endpoints of the instruction ladder; the intermediate runtime condition is in Appendix~\ref {app:full}}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {External prompting comparators} on baseline models; \textsc  {trace-sft} rows use the strict prompt, so every row receives a well-specified instruction. Both comparators reach usable answer content but neither acquires the answer/refuse decision.}}{7}{table.4}\protected@file@percent }
+\newlabel{tab:comparators}{{4}{7}{\textbf {External prompting comparators} on baseline models; \textsc {trace-sft} rows use the strict prompt, so every row receives a well-specified instruction. Both comparators reach usable answer content but neither acquires the answer/refuse decision}{table.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Refusal recall improves substantially}{7}{subsection.8.1}\protected@file@percent }
 \newlabel{sec:refusal}{{8.1}{7}{Refusal recall improves substantially}{subsection.8.1}{}}
 \citation{wei2022cot}
@@ -107,42 +102,40 @@
 \newlabel{sec:whatdoesnot}{{8.3}{8}{What trace supervision does \emph {not} buy}{subsection.8.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Mechanism-matched oracle ablations}{8}{subsection.8.4}\protected@file@percent }
 \newlabel{sec:oracle}{{8.4}{8}{Mechanism-matched oracle ablations}{subsection.8.4}{}}
-\@writefile{toc}{\contentsline {paragraph}{The conflict label moves behaviour and only behaviour.}{8}{section*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The document notes move grounding and only grounding.}{8}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Interpretation.}{8}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}External prompting comparators}{8}{subsection.8.5}\protected@file@percent }
+\newlabel{sec:comparators}{{8.5}{8}{External prompting comparators}{subsection.8.5}{}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}External prompting comparators}{9}{subsection.8.5}\protected@file@percent }
-\newlabel{sec:comparators}{{8.5}{9}{External prompting comparators}{subsection.8.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{Citation behaviour.}{9}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Answer-only supervision comparison}{9}{subsection.8.6}\protected@file@percent }
+\newlabel{sec:answeronly}{{8.6}{9}{Answer-only supervision comparison}{subsection.8.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9}Validating the Evaluator}{9}{section.9}\protected@file@percent }
 \newlabel{sec:human}{{9}{9}{Validating the Evaluator}{section.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion}{9}{section.10}\protected@file@percent }
 \newlabel{sec:conclusion}{{10}{9}{Conclusion}{section.10}{}}
-\newlabel{sec:limitations}{{10}{9}{Limitations}{section*.17}{}}
-\@writefile{toc}{\contentsline {paragraph}{Per-document verdicts are never human-validated.}{9}{section*.18}\protected@file@percent }
+\newlabel{sec:limitations}{{10}{9}{Limitations}{section*.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Per-document verdicts rest on a small, non-blind human check.}{9}{section*.7}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Evidence-bounded evaluation.}{10}{section*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence reliability.}{10}{section*.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Shared model families between annotation and evaluation.}{10}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Aggregate properties.}{10}{section*.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Recipe asymmetry and scale.}{10}{section*.23}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Annotation quality.}{10}{section*.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Human review coverage.}{10}{section*.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Comparator scope.}{10}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Evidence-bounded evaluation.}{10}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence reliability.}{10}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Shared model families between annotation and evaluation.}{10}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Aggregate properties.}{10}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Recipe asymmetry and scale.}{10}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Annotation quality.}{10}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Human review coverage.}{10}{section*.14}\protected@file@percent }
 \bibdata{custom}
 \bibcite{borgeaud2022}{{1}{2022}{{Borgeaud et~al.}}{{Borgeaud, Mensch, Hoffmann, Cai, Rutherford, Millican, van~den Driessche, Lespiau, Damoc, Clark, de~Las~Casas, Guy, Menick, Ring, Hennigan, Huang, Maggiore, Jones, Cassirer, Brock, Paganini, Irving, Vinyals, Osindero, Simonyan, Rae, Elsen, and Sifre}}}
 \bibcite{cattan2025dragged}{{2}{2025}{{Cattan et~al.}}{{Cattan, Jacovi, Ram, Herzig, Aharoni, Goldshtein, Ofek, Szpektor, and Caciularu}}}
 \bibcite{dettmers2023qloraefficientfinetuningquantized}{{3}{2023}{{Dettmers et~al.}}{{Dettmers, Pagnoni, Holtzman, and Zettlemoyer}}}
 \bibcite{fan2024surveyragmeetingllms}{{4}{2024}{{Fan et~al.}}{{Fan, Ding, Ning, Wang, Li, Yin, Chua, and Li}}}
 \bibcite{fang2024enhancingnoiserobustnessretrievalaugmented}{{5}{2024}{{Fang et~al.}}{{Fang, Bai, Ni, Yang, Chen, and Xu}}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{Comparator scope.}{11}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data provenance and licensing.}{11}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Human annotators.}{11}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Intended use and risks.}{11}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Disclosure of AI assistance.}{11}{section*.20}\protected@file@percent }
 \bibcite{gao2024retrievalaugmentedgenerationlargelanguage}{{6}{2024}{{Gao et~al.}}{{Gao, Xiong, Gao, Jia, Pan, Bi, Dai, Sun, Wang, and Wang}}}
 \bibcite{guu2020realm}{{7}{2020}{{Guu et~al.}}{{Guu, Lee, Tung, Pasupat, and Chang}}}
 \bibcite{hofstatter2021tasb}{{8}{2021}{{Hofst{\"a}tter et~al.}}{{Hofst{\"a}tter, Lin, Yang, Lin, and Hanbury}}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Data provenance and licensing.}{11}{section*.28}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Human annotators.}{11}{section*.29}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Intended use and risks.}{11}{section*.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Disclosure of AI assistance.}{11}{section*.31}\protected@file@percent }
 \bibcite{hou2024wikicontradict}{{9}{2024}{{Hou et~al.}}{{Hou, Pascale, Carnerero-Cano, Tchrakian, Marinescu, Daly, Padhi, and Sattigeri}}}
 \bibcite{hu2021loralowrankadaptationlarge}{{10}{2021}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
 \bibcite{huo2025microact}{{11}{2025}{{Huo et~al.}}{{Huo, Li, Qin, Qu, Li, Li, Ma, and Cheng}}}
@@ -153,10 +146,10 @@
 \bibcite{lewis2020rag}{{16}{2020}{{Lewis et~al.}}{{Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal, K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and Kiela}}}
 \bibcite{liu2025opendomainquestionanswering}{{17}{2025}{{Liu et~al.}}{{Liu, Ning, Halder, Qi, Xiao, Htut, Zhang, John, Min, Benajiba, and Roth}}}
 \bibcite{liu2026craft}{{18}{2026}{{Liu et~al.}}{{Liu, Zhang, Guo, Cao, Yuan, Sun, Liu, Hong, and Ma}}}
+\def\@LN@column{1}
 \bibcite{dubey2024llama3}{{19}{2024}{{Llama Team, AI at Meta}}{{}}}
 \bibcite{ming2025faitheval}{{20}{2025}{{Ming et~al.}}{{Ming, Purushwalkam, Pandit, Ke, Nguyen, Xiong, and Joty}}}
 \bibcite{muhamed2025refusalbench}{{21}{2025}{{Muhamed et~al.}}{{Muhamed, Ribeiro, Dreyer, Smith, and Diab}}}
-\def\@LN@column{1}
 \bibcite{ram-etal-2023-context}{{22}{2023}{{Ram et~al.}}{{Ram, Levine, Dalmedigos, Muhlgay, Shashua, Leyton-Brown, and Shoham}}}
 \bibcite{shi2023largelanguagemodelseasily}{{23}{2023}{{Shi et~al.}}{{Shi, Chen, Misra, Scales, Dohan, Chi, Sch{\"a}rli, and Zhou}}}
 \bibcite{song2025trustalign}{{24}{2025}{{Song et~al.}}{{Song, Sim, Bhardwaj, Chieu, Majumder, and Poria}}}
@@ -169,236 +162,269 @@
 \bibcite{wu2026conflictaware}{{31}{2026}{{Wu et~al.}}{{Wu, Wang, Sun, Lu, Zhang, and Chen}}}
 \bibcite{xu2024knowledgeconflictsllmssurvey}{{32}{2024{a}}{{Xu et~al.}}{{Xu, Qi, Guo, Wang, Wang, Zhang, and Xu}}}
 \bibcite{xu2024aliiceevaluatingpositionalfinegrained}{{33}{2024{b}}{{Xu et~al.}}{{Xu, Gao, Yu, Bi, Shen, and Cheng}}}
+\def\@LN@column{1}
 \bibcite{yang2024qwen25}{{34}{2024}{{Yang et~al.}}{{Yang, Yang, Zhang, Hui, Zheng, Yu, et~al.}}}
 \bibcite{yang2018hotpotqa}{{35}{2018}{{Yang et~al.}}{{Yang, Qi, Zhang, Bengio, Cohen, Salakhutdinov, and Manning}}}
 \bibcite{ye2026seeingthrough}{{36}{2026}{{Ye et~al.}}{{Ye, Chen, Zhong, Xiao, Zhang, Wu, and Shen}}}
 \bibcite{yoran2024makingretrievalaugmentedlanguagemodels}{{37}{2024}{{Yoran et~al.}}{{Yoran, Wolfson, Ram, and Berant}}}
-\def\@LN@column{1}
 \bibcite{yu2024chainofnote}{{38}{2024}{{Yu et~al.}}{{Yu, Zhang, Pan, Cao, Ma, Li, Wang, and Yu}}}
 \bibcite{zhang2021situatedqaincorporatingextralinguisticcontexts}{{39}{2021}{{Zhang \& Choi}}{{Zhang and Choi}}}
 \bibcite{zhang2025faithfulrag}{{40}{2025}{{Zhang et~al.}}{{Zhang, Xiang, Xiao, Wang, Li, Wang, and Su}}}
 \bibcite{zheng2023judging}{{41}{2023}{{Zheng et~al.}}{{Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, Zhang, Gonzalez, and Stoica}}}
 \bibstyle{iclr2027_conference}
+\citation{hofstatter2021tasb}
 \def\@LN@column{1}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Resource Construction}{14}{appendix.A}\protected@file@percent }
 \newlabel{app:data}{{A}{14}{Resource Construction}{appendix.A}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Benchmark composition by source and track}{14}{subsection.A.1}\protected@file@percent }
-\newlabel{tab:tracks}{{5}{14}{Benchmark composition by source and track}{table.5}{}}
-\newlabel{tab:funnel}{{6}{14}{Benchmark composition by source and track}{table.6}{}}
-\citation{hofstatter2021tasb}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Retrieval funnel}{14}{subsection.A.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases.}}{15}{table.5}\protected@file@percent }
+\newlabel{tab:tracks}{{5}{15}{\textbf {Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Non-refusal construction funnel, counts as observed in the retained artifacts.}}{15}{table.6}\protected@file@percent }
+\newlabel{tab:funnel}{{6}{15}{Non-refusal construction funnel, counts as observed in the retained artifacts}{table.6}{}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Retrieval funnel}{15}{subsection.A.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Verification of the released files}{15}{subsection.A.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Verification of the released files, computed directly from the released JSONL rather than from construction logs.}}{15}{table.7}\protected@file@percent }
-\newlabel{tab:relverif}{{7}{15}{Verification of the released files, computed directly from the released JSONL rather than from construction logs}{table.7}{}}
-\@writefile{toc}{\contentsline {paragraph}{An independent validity check on the refusal track.}{15}{section*.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Annotation Pipeline}{15}{appendix.B}\protected@file@percent }
-\newlabel{app:annotation}{{B}{15}{Annotation Pipeline}{appendix.B}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Verification of the released files, computed directly from the released JSONL rather than from construction logs.}}{16}{table.7}\protected@file@percent }
+\newlabel{tab:relverif}{{7}{16}{Verification of the released files, computed directly from the released JSONL rather than from construction logs}{table.7}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{An independent validity check on the refusal track.}{16}{section*.22}\protected@file@percent }
 \newlabel{fig:datacomp}{{3}{16}{An independent validity check on the refusal track}{figure.3}{}}
 \newlabel{fig:dataqual}{{4}{16}{An independent validity check on the refusal track}{figure.4}{}}
-\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Annotation Pipeline}{16}{appendix.B}\protected@file@percent }
+\newlabel{app:annotation}{{B}{16}{Annotation Pipeline}{appendix.B}{}}
 \def\@LN@column{1}
 \@writefile{toc}{\contentsline {section}{\numberline {C}Human Review of the Resource}{17}{appendix.C}\protected@file@percent }
 \newlabel{app:human-review}{{C}{17}{Human Review of the Resource}{appendix.C}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Training conflict-type review}{17}{subsection.C.1}\protected@file@percent }
-\newlabel{tab:trainiaa}{{8}{17}{Training conflict-type review}{table.8}{}}
-\newlabel{tab:benchiaa}{{9}{17}{Training conflict-type review}{table.9}{}}
-\@writefile{toc}{\contentsline {paragraph}{What the review layer actually changed.}{17}{section*.34}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Reviewer labels and released labels are different quantities.}{17}{section*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Benchmark preselection review}{17}{subsection.C.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Stage-1 document-verdict review}{17}{subsection.C.1}\protected@file@percent }
+\newlabel{app:stage1review}{{C.1}{17}{Stage-1 document-verdict review}{subsection.C.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Design.}{17}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Human--human agreement.}{17}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Committee--human agreement.}{17}{section*.25}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces \textbf  {Stage-1 review: human--human agreement} across the three reviewers, 100 pairs (300 ratings). ``---'' marks a cell the statistic does not apply to.}}{18}{table.8}\protected@file@percent }
+\newlabel{tab:stage1hh}{{8}{18}{\textbf {Stage-1 review: human--human agreement} across the three reviewers, 100 pairs (300 ratings). ``---'' marks a cell the statistic does not apply to}{table.8}{}}
+\def\@LN@column{1}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces \textbf  {Stage-1 review: committee--human agreement.} \textsuperscript  {*}Pooled statistic; the 300 ratings share 100 underlying pairs.}}{18}{table.9}\protected@file@percent }
+\newlabel{tab:stage1llm}{{9}{18}{\textbf {Stage-1 review: committee--human agreement.} \textsuperscript {*}Pooled statistic; the 300 ratings share 100 underlying pairs}{table.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Where the committee and reviewers disagree.}{18}{section*.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces \textbf  {Stage-1 review: pooled confusion matrix} (top, 300 ratings against the repeated committee label) \textbf  {and correction directions} (bottom, among the 27 ratings that changed the committee's verdict).}}{18}{table.10}\protected@file@percent }
+\newlabel{tab:stage1confusion}{{10}{18}{\textbf {Stage-1 review: pooled confusion matrix} (top, 300 ratings against the repeated committee label) \textbf {and correction directions} (bottom, among the 27 ratings that changed the committee's verdict)}{table.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Interpretation and limitations.}{18}{section*.27}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Training conflict-type review}{19}{subsection.C.2}\protected@file@percent }
+\newlabel{tab:trainiaa}{{11}{19}{Training conflict-type review}{table.11}{}}
+\newlabel{tab:benchiaa}{{12}{19}{Training conflict-type review}{table.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{What the review layer actually changed.}{19}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reviewer labels and released labels are different quantities.}{19}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Benchmark preselection review}{19}{subsection.C.3}\protected@file@percent }
 \citation{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge}
 \citation{jain2023neftune}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{The second pass is sequential.}{18}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Reconstruction caveat.}{18}{section*.37}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Refusal-quality validation}{18}{subsection.C.3}\protected@file@percent }
-\newlabel{app:refusalquality}{{C.3}{18}{Refusal-quality validation}{subsection.C.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Fine-Tuning: Recipe Chronology}{18}{appendix.D}\protected@file@percent }
-\newlabel{app:sft}{{D}{18}{Fine-Tuning: Recipe Chronology}{appendix.D}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Optimisation and checkpoint selection}{18}{subsection.D.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces \textbf  {Fine-tuning recipe chronology.} Row counts are repeated supervised views, not independent questions. ``n/r'' marks a step whose exact mixture size was not retained.}}{19}{table.10}\protected@file@percent }
-\newlabel{tab:recipe}{{10}{19}{\textbf {Fine-tuning recipe chronology.} Row counts are repeated supervised views, not independent questions. ``n/r'' marks a step whose exact mixture size was not retained}{table.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{The second pass is sequential.}{20}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction caveat.}{20}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Refusal-quality validation}{20}{subsection.C.4}\protected@file@percent }
+\newlabel{app:refusalquality}{{C.4}{20}{Refusal-quality validation}{subsection.C.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Fine-Tuning: Recipe Chronology}{20}{appendix.D}\protected@file@percent }
+\newlabel{app:sft}{{D}{20}{Fine-Tuning: Recipe Chronology}{appendix.D}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D.1}Optimisation and checkpoint selection}{20}{subsection.D.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces \textbf  {Fine-tuning recipe chronology.} Row counts are repeated supervised views, not independent questions. ``n/r'' marks a step whose exact mixture size was not retained.}}{21}{table.13}\protected@file@percent }
+\newlabel{tab:recipe}{{13}{21}{\textbf {Fine-tuning recipe chronology.} Row counts are repeated supervised views, not independent questions. ``n/r'' marks a step whose exact mixture size was not retained}{table.13}{}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {E}Inference Protocol}{19}{appendix.E}\protected@file@percent }
-\newlabel{app:inference}{{E}{19}{Inference Protocol}{appendix.E}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {F}CATS Specification}{19}{appendix.F}\protected@file@percent }
-\newlabel{app:cats}{{F}{19}{CATS Specification}{appendix.F}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.1}Component definitions}{19}{subsection.F.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Grounded Refusal (GR).}{19}{section*.38}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence (BA).}{19}{section*.39}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Factual Grounding (FG).}{19}{section*.40}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces \textbf  {The five conflict types}, their definitions and the response behaviour each requires. Stage~2 assigns exactly one label per example; Behaviour Adherence (\S  \ref {sec:cats}) scores the response against the expected behaviour for the assigned type.}}{20}{table.11}\protected@file@percent }
-\newlabel{tab:taxonomy}{{11}{20}{\textbf {The five conflict types}, their definitions and the response behaviour each requires. Stage~2 assigns exactly one label per example; Behaviour Adherence (\S \ref {sec:cats}) scores the response against the expected behaviour for the assigned type}{table.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Answer-Only Supervision Ablation}{21}{appendix.E}\protected@file@percent }
+\newlabel{app:answeronly}{{E}{21}{Answer-Only Supervision Ablation}{appendix.E}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Recipe}{21}{subsection.E.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Results}{21}{subsection.E.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces \textbf  {Llama-3.1-8B: answer-only vs.\ trace supervision}, all five prompt$\times $supervision cells. Values are percentages, as reported by the evaluation harness.}}{22}{table.14}\protected@file@percent }
+\newlabel{tab:aollama}{{14}{22}{\textbf {Llama-3.1-8B: answer-only vs.\ trace supervision}, all five prompt$\times $supervision cells. Values are percentages, as reported by the evaluation harness}{table.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces \textbf  {Qwen2.5-7B: answer-only vs.\ trace supervision}, all five prompt$\times $supervision cells. Values are percentages, as reported by the evaluation harness.}}{22}{table.15}\protected@file@percent }
+\newlabel{tab:aoqwen}{{15}{22}{\textbf {Qwen2.5-7B: answer-only vs.\ trace supervision}, all five prompt$\times $supervision cells. Values are percentages, as reported by the evaluation harness}{table.15}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces \textbf  {Answer-only vs.\ trace supervision under the minimal prompt}, both models, with the percentage-point (pp) difference. AO is answer-only supervision.}}{22}{table.16}\protected@file@percent }
+\newlabel{tab:aodelta}{{16}{22}{\textbf {Answer-only vs.\ trace supervision under the minimal prompt}, both models, with the percentage-point (pp) difference. AO is answer-only supervision}{table.16}{}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Single-Truth Recall (STR).}{20}{section*.41}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.2}Applicability and completeness}{20}{subsection.F.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.3}Grounded Refusal}{20}{subsection.F.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {F}Inference Protocol}{23}{appendix.F}\protected@file@percent }
+\newlabel{app:inference}{{F}{23}{Inference Protocol}{appendix.F}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {G}CATS Specification}{23}{appendix.G}\protected@file@percent }
+\newlabel{app:cats}{{G}{23}{CATS Specification}{appendix.G}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.1}Component definitions}{23}{subsection.G.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Grounded Refusal (GR).}{23}{section*.32}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces \textbf  {The five conflict types}, their definitions and the response behaviour each requires. Stage~2 assigns exactly one label per example; Behaviour Adherence (\S  \ref {sec:cats}) scores the response against the expected behaviour for the assigned type.}}{23}{table.17}\protected@file@percent }
+\newlabel{tab:taxonomy}{{17}{23}{\textbf {The five conflict types}, their definitions and the response behaviour each requires. Stage~2 assigns exactly one label per example; Behaviour Adherence (\S \ref {sec:cats}) scores the response against the expected behaviour for the assigned type}{table.17}{}}
+\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence (BA).}{23}{section*.33}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.4}Committee voting rule for BA and STR}{21}{subsection.F.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.5}Behaviour Adherence}{21}{subsection.F.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.6}Factual Grounding}{21}{subsection.F.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Factual Grounding (FG).}{24}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Single-Truth Recall (STR).}{24}{section*.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.2}Applicability and completeness}{24}{subsection.G.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.3}Grounded Refusal}{24}{subsection.G.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.4}Committee voting rule for BA and STR}{24}{subsection.G.4}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.7}Single-Truth Recall}{22}{subsection.F.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {F.8}Aggregation and its structural properties}{22}{subsection.F.8}\protected@file@percent }
-\newlabel{app:aggregate}{{F.8}{22}{Aggregation and its structural properties}{subsection.F.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The choice of aggregate determines the conclusion. A flat mean over the four components hides the refusal-calibration effect almost entirely for Qwen2.5-32B, while CATS-Prevalence and CATS-Balanced both surface it. This is why we report components rather than a single number.}}{22}{figure.5}\protected@file@percent }
-\newlabel{fig:aggchoice}{{5}{22}{The choice of aggregate determines the conclusion. A flat mean over the four components hides the refusal-calibration effect almost entirely for Qwen2.5-32B, while CATS-Prevalence and CATS-Balanced both surface it. This is why we report components rather than a single number}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Refusal credit inside the aggregate. Left: CATS-Prevalence split into the part earned on answerable examples and the part earned on correct refusals, which are scored on their decision alone. Right: plotting the answerable-only score against the headline places every trace-tuned point below the diagonal, showing the headline is inflated by decision credit.}}{23}{figure.6}\protected@file@percent }
-\newlabel{fig:refcredit}{{6}{23}{Refusal credit inside the aggregate. Left: CATS-Prevalence split into the part earned on answerable examples and the part earned on correct refusals, which are scored on their decision alone. Right: plotting the answerable-only score against the headline places every trace-tuned point below the diagonal, showing the headline is inflated by decision credit}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.5}Behaviour Adherence}{25}{subsection.G.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.6}Factual Grounding}{25}{subsection.G.6}\protected@file@percent }
 \def\@LN@column{1}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Refusal-required examples score decision correctness only.}{24}{section*.42}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The type-balanced aggregate over-weights that decision.}{24}{section*.43}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{There is a non-trivial floor.}{24}{section*.44}\protected@file@percent }
-\newlabel{fig:weights}{{7}{24}{There is a non-trivial floor}{figure.7}{}}
-\newlabel{fig:sigrel}{{8}{24}{There is a non-trivial floor}{figure.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {G}Human Evaluation Study}{24}{appendix.G}\protected@file@percent }
-\newlabel{app:human}{{G}{24}{Human Evaluation Study}{appendix.G}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {G.1}Per-component reliability}{24}{subsection.G.1}\protected@file@percent }
-\newlabel{tab:human}{{12}{25}{Per-component reliability}{table.12}{}}
-\newlabel{tab:judges}{{13}{25}{Per-component reliability}{table.13}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Agreement is not uniform across the taxonomy.}{25}{section*.45}\protected@file@percent }
-\def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces \textbf  {Agreement by conflict type.} Bold marks $\kappa <0.40$. Reliability is not uniform across the taxonomy: human reviewers agree least on Complementary and Outdated behaviour, and the committee's behaviour judgments degrade sharply on Misinformation ($\kappa =0.149$) and Complementary ($\kappa =0.279$) while remaining strong on Conflicting opinions ($\kappa =0.641$). Claim-level grounding is reliable everywhere except Outdated. Conflicting opinions is excluded from Single-Truth Recall by construction and so does not appear in that metric's strata.}}{26}{table.14}\protected@file@percent }
-\newlabel{tab:bytype}{{14}{26}{\textbf {Agreement by conflict type.} Bold marks $\kappa <0.40$. Reliability is not uniform across the taxonomy: human reviewers agree least on Complementary and Outdated behaviour, and the committee's behaviour judgments degrade sharply on Misinformation ($\kappa =0.149$) and Complementary ($\kappa =0.279$) while remaining strong on Conflicting opinions ($\kappa =0.641$). Claim-level grounding is reliable everywhere except Outdated. Conflicting opinions is excluded from Single-Truth Recall by construction and so does not appear in that metric's strata}{table.14}{}}
-\@writefile{toc}{\contentsline {paragraph}{Per-judge and committee-internal agreement.}{26}{section*.46}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Consensus frame.}{26}{section*.47}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Alignment integrity.}{26}{section*.48}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {H}Citation Analysis}{26}{appendix.H}\protected@file@percent }
-\newlabel{app:citation}{{H}{26}{Citation Analysis}{appendix.H}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Unit of analysis.}{27}{section*.49}\protected@file@percent }
-\newlabel{tab:citdefs}{{15}{27}{Unit of analysis}{table.15}{}}
-\newlabel{tab:citresults}{{16}{27}{Unit of analysis}{table.16}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {I}Bounding Factual Grounding}{27}{appendix.I}\protected@file@percent }
-\newlabel{app:deconfound}{{I}{27}{Bounding Factual Grounding}{appendix.I}{}}
-\newlabel{fig:cit1}{{9}{28}{Unit of analysis}{figure.9}{}}
-\newlabel{fig:cit2}{{10}{28}{Unit of analysis}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces External prompting comparators. Both prompting-only strategies reach competitive answer content but neither acquires refusal calibration: Chain-of-Note records $0/128$ correct refusals on every model.}}{28}{figure.11}\protected@file@percent }
-\newlabel{fig:comparators}{{11}{28}{External prompting comparators. Both prompting-only strategies reach competitive answer content but neither acquires refusal calibration: Chain-of-Note records $0/128$ correct refusals on every model}{figure.11}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {J}Additional Figures and Tables}{28}{appendix.J}\protected@file@percent }
-\newlabel{app:figs}{{J}{28}{Additional Figures and Tables}{appendix.J}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {J.1}Behaviour Adherence by prompt condition}{28}{subsection.J.1}\protected@file@percent }
-\newlabel{tab:fgdenom}{{17}{29}{Bounding Factual Grounding}{table.17}{}}
-\newlabel{tab:internalization}{{18}{29}{Bounding Factual Grounding}{table.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces The Factual-Grounding denominator confound. Left: FG on the like-for-like population, with bars giving the bound and vertical marks the reported value; crosses mark cells where the intervals overlap and no gap is established. Right: the denominator $\textit  {fg\_n}=608+\textit  {missed refusals}$ is itself model-dependent, so baseline models are scored on up to ${\sim }130$ extra items whose evidence is insufficient by construction.}}{29}{figure.12}\protected@file@percent }
-\newlabel{fig:fgdenom}{{12}{29}{The Factual-Grounding denominator confound. Left: FG on the like-for-like population, with bars giving the bound and vertical marks the reported value; crosses mark cells where the intervals overlap and no gap is established. Right: the denominator $\textit {fg\_n}=608+\textit {missed refusals}$ is itself model-dependent, so baseline models are scored on up to ${\sim }130$ extra items whose evidence is insufficient by construction}{figure.12}{}}
-\newlabel{fig:internal}{{13}{30}{Additional Figures and Tables}{figure.13}{}}
-\newlabel{fig:bastrict}{{14}{30}{Additional Figures and Tables}{figure.14}{}}
-\def\@LN@column{1}
-\newlabel{fig:baminimal}{{15}{30}{Behaviour Adherence by prompt condition}{figure.15}{}}
-\newlabel{fig:oracleheat}{{16}{30}{Behaviour Adherence by prompt condition}{figure.16}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {K}Oracle Ablations: Full Results}{31}{appendix.K}\protected@file@percent }
-\newlabel{app:oracle}{{K}{31}{Oracle Ablations: Full Results}{appendix.K}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces \textbf  {Mechanism-matched oracle ablations (fine-tuned models).} Each intervention supplies gold information for one reasoning stage; a metric is \emph  {targeted} if it depends on that stage. The gold conflict label moves Behaviour Adherence and nothing else; the gold per-document notes move every grounding and citation metric in $9/9$ cells and leave the answer/refusal decision untouched. $p$ is an exact two-sided sign test over model$\times $prompt cells. Qwen2.5-32B is excluded from the conflict-oracle columns because of the scoring artifact documented in Appendix~\ref {app:artifacts}; the $+/n$ column reports the exact number of cells contributing to each test ($n=9$ for the conflict oracle, $n=12$ otherwise).}}{31}{table.19}\protected@file@percent }
-\newlabel{tab:oracle}{{19}{31}{\textbf {Mechanism-matched oracle ablations (fine-tuned models).} Each intervention supplies gold information for one reasoning stage; a metric is \emph {targeted} if it depends on that stage. The gold conflict label moves Behaviour Adherence and nothing else; the gold per-document notes move every grounding and citation metric in $9/9$ cells and leave the answer/refusal decision untouched. $p$ is an exact two-sided sign test over model$\times $prompt cells. Qwen2.5-32B is excluded from the conflict-oracle columns because of the scoring artifact documented in Appendix~\ref {app:artifacts}; the $+/n$ column reports the exact number of cells contributing to each test ($n=9$ for the conflict oracle, $n=12$ otherwise)}{table.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {K.1}Additivity, exceptions and baseline behaviour}{31}{subsection.K.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {L}Excluded Rows and Diagnostics}{31}{appendix.L}\protected@file@percent }
-\newlabel{app:artifacts}{{L}{31}{Excluded Rows and Diagnostics}{appendix.L}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Each oracle moves the metric it targets and essentially nothing else. Green bars are targeted metrics, grey bars are specificity controls; diamonds mark means, points individual model$\times $prompt cells.}}{32}{figure.17}\protected@file@percent }
-\newlabel{fig:oraclefig}{{17}{32}{Each oracle moves the metric it targets and essentially nothing else. Green bars are targeted metrics, grey bars are specificity controls; diamonds mark means, points individual model$\times $prompt cells}{figure.17}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {M}Released Artifacts}{32}{appendix.M}\protected@file@percent }
-\newlabel{app:annprompts}{{M}{32}{Released Artifacts}{appendix.M}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {N}End-to-End Inference Prompts}{32}{appendix.N}\protected@file@percent }
-\newlabel{app:e2eprompts}{{N}{32}{End-to-End Inference Prompts}{appendix.N}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {N.1}Why the prompt is varied}{32}{subsection.N.1}\protected@file@percent }
-\def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces The three end-to-end instruction strengths, measured by system-prompt length.}}{33}{table.20}\protected@file@percent }
-\newlabel{tab:promptladder}{{20}{33}{The three end-to-end instruction strengths, measured by system-prompt length}{table.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {N.2}Strict}{33}{subsection.N.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Strict system prompt (\texttt  {system\_e2e.txt})}{33}{section*.50}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.7}Single-Truth Recall}{26}{subsection.G.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {G.8}Aggregation and its structural properties}{26}{subsection.G.8}\protected@file@percent }
+\newlabel{app:aggregate}{{G.8}{26}{Aggregation and its structural properties}{subsection.G.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The choice of aggregate determines the conclusion. A flat mean over the four components hides the refusal-calibration effect almost entirely for Qwen2.5-32B, while CATS-Prevalence and CATS-Balanced both surface it. This is why we report components rather than a single number.}}{26}{figure.5}\protected@file@percent }
+\newlabel{fig:aggchoice}{{5}{26}{The choice of aggregate determines the conclusion. A flat mean over the four components hides the refusal-calibration effect almost entirely for Qwen2.5-32B, while CATS-Prevalence and CATS-Balanced both surface it. This is why we report components rather than a single number}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Refusal credit inside the aggregate. Left: CATS-Prevalence split into the part earned on answerable examples and the part earned on correct refusals, which are scored on their decision alone. Right: plotting the answerable-only score against the headline places every trace-tuned point below the diagonal, showing the headline is inflated by decision credit.}}{27}{figure.6}\protected@file@percent }
+\newlabel{fig:refcredit}{{6}{27}{Refusal credit inside the aggregate. Left: CATS-Prevalence split into the part earned on answerable examples and the part earned on correct refusals, which are scored on their decision alone. Right: plotting the answerable-only score against the headline places every trace-tuned point below the diagonal, showing the headline is inflated by decision credit}{figure.6}{}}
 \def\@LN@column{1}
 \def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{Refusal-required examples score decision correctness only.}{28}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The type-balanced aggregate over-weights that decision.}{28}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{There is a non-trivial floor.}{28}{section*.38}\protected@file@percent }
+\newlabel{fig:weights}{{7}{28}{There is a non-trivial floor}{figure.7}{}}
+\newlabel{fig:sigrel}{{8}{28}{There is a non-trivial floor}{figure.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {H}Human Evaluation Study}{28}{appendix.H}\protected@file@percent }
+\newlabel{app:human}{{H}{28}{Human Evaluation Study}{appendix.H}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {H.1}Per-component reliability}{28}{subsection.H.1}\protected@file@percent }
+\newlabel{tab:human}{{18}{29}{Per-component reliability}{table.18}{}}
+\newlabel{tab:judges}{{19}{29}{Per-component reliability}{table.19}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{Agreement is not uniform across the taxonomy.}{29}{section*.39}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces \textbf  {Agreement by conflict type.} Bold marks $\kappa <0.40$. Reliability is not uniform across the taxonomy: human reviewers agree least on Complementary and Outdated behaviour, and the committee's behaviour judgments degrade sharply on Misinformation ($\kappa =0.149$) and Complementary ($\kappa =0.279$) while remaining strong on Conflicting opinions ($\kappa =0.641$). Claim-level grounding is reliable everywhere except Outdated. Conflicting opinions is excluded from Single-Truth Recall by construction and so does not appear in that metric's strata.}}{30}{table.20}\protected@file@percent }
+\newlabel{tab:bytype}{{20}{30}{\textbf {Agreement by conflict type.} Bold marks $\kappa <0.40$. Reliability is not uniform across the taxonomy: human reviewers agree least on Complementary and Outdated behaviour, and the committee's behaviour judgments degrade sharply on Misinformation ($\kappa =0.149$) and Complementary ($\kappa =0.279$) while remaining strong on Conflicting opinions ($\kappa =0.641$). Claim-level grounding is reliable everywhere except Outdated. Conflicting opinions is excluded from Single-Truth Recall by construction and so does not appear in that metric's strata}{table.20}{}}
+\@writefile{toc}{\contentsline {paragraph}{Per-judge and committee-internal agreement.}{30}{section*.40}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Consensus frame.}{30}{section*.41}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Alignment integrity.}{30}{section*.42}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {I}Citation Analysis}{30}{appendix.I}\protected@file@percent }
+\newlabel{app:citation}{{I}{30}{Citation Analysis}{appendix.I}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{Unit of analysis.}{31}{section*.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces \textbf  {Citation-metric definitions.} ``Approved'' means the cited document is in the committee's claim-specific support set; ``gold-positive'' means its gold per-document verdict is \textit  {supports} or \textit  {partially supports}, independent of which specific claim is being checked; ``clean'' means no soft-extra and no hard-negative citation. The two strict-grounded rates share a base condition (committee-grounded, cited) and differ only in what they tolerate: the gold-clean rate forbids hard negatives but allows soft extras, the committee-clean rate forbids both, making it the single most demanding number in this section. $\uparrow $/$\downarrow $ after the metric name marks whether higher or lower is the better direction. All fractions count distinct cited documents or evaluated claims as noted in the Unit column.}}{31}{table.21}\protected@file@percent }
+\newlabel{tab:citdefs}{{21}{31}{\textbf {Citation-metric definitions.} ``Approved'' means the cited document is in the committee's claim-specific support set; ``gold-positive'' means its gold per-document verdict is \textit {supports} or \textit {partially supports}, independent of which specific claim is being checked; ``clean'' means no soft-extra and no hard-negative citation. The two strict-grounded rates share a base condition (committee-grounded, cited) and differ only in what they tolerate: the gold-clean rate forbids hard negatives but allows soft extras, the committee-clean rate forbids both, making it the single most demanding number in this section. $\uparrow $/$\downarrow $ after the metric name marks whether higher or lower is the better direction. All fractions count distinct cited documents or evaluated claims as noted in the Unit column}{table.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces Citation-metric changes under trace supervision, fine-tuned minus baseline, across the twelve end-to-end cells.}}{31}{table.22}\protected@file@percent }
+\newlabel{tab:citresults}{{22}{31}{Citation-metric changes under trace supervision, fine-tuned minus baseline, across the twelve end-to-end cells}{table.22}{}}
+\newlabel{fig:cit1}{{9}{32}{Unit of analysis}{figure.9}{}}
+\newlabel{fig:cit2}{{10}{32}{Unit of analysis}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces External prompting comparators. Both prompting-only strategies reach competitive answer content but neither acquires refusal calibration: Chain-of-Note records $0/128$ correct refusals on every model.}}{32}{figure.11}\protected@file@percent }
+\newlabel{fig:comparators}{{11}{32}{External prompting comparators. Both prompting-only strategies reach competitive answer content but neither acquires refusal calibration: Chain-of-Note records $0/128$ correct refusals on every model}{figure.11}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {J}Bounding Factual Grounding}{32}{appendix.J}\protected@file@percent }
+\newlabel{app:deconfound}{{J}{32}{Bounding Factual Grounding}{appendix.J}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces \textbf  {The Factual-Grounding denominator is model-dependent.} $\textit  {fg\_n}=608+\textit  {missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim }130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm  {FG}=0$. The \emph  {like-for-like} columns bound FG on the population where the model answered \emph  {and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells.}}{33}{table.23}\protected@file@percent }
+\newlabel{tab:fgdenom}{{23}{33}{\textbf {The Factual-Grounding denominator is model-dependent.} $\textit {fg\_n}=608+\textit {missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim }130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm {FG}=0$. The \emph {like-for-like} columns bound FG on the population where the model answered \emph {and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells}{table.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {24}{\ignorespaces \textbf  {Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder.}}{33}{table.24}\protected@file@percent }
+\newlabel{tab:internalization}{{24}{33}{\textbf {Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder}{table.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces The Factual-Grounding denominator confound. Left: FG on the like-for-like population, with bars giving the bound and vertical marks the reported value; crosses mark cells where the intervals overlap and no gap is established. Right: the denominator $\textit  {fg\_n}=608+\textit  {missed refusals}$ is itself model-dependent, so baseline models are scored on up to ${\sim }130$ extra items whose evidence is insufficient by construction.}}{33}{figure.12}\protected@file@percent }
+\newlabel{fig:fgdenom}{{12}{33}{The Factual-Grounding denominator confound. Left: FG on the like-for-like population, with bars giving the bound and vertical marks the reported value; crosses mark cells where the intervals overlap and no gap is established. Right: the denominator $\textit {fg\_n}=608+\textit {missed refusals}$ is itself model-dependent, so baseline models are scored on up to ${\sim }130$ extra items whose evidence is insufficient by construction}{figure.12}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {K}Additional Figures and Tables}{34}{appendix.K}\protected@file@percent }
+\newlabel{app:figs}{{K}{34}{Additional Figures and Tables}{appendix.K}{}}
+\newlabel{fig:internal}{{13}{34}{Additional Figures and Tables}{figure.13}{}}
+\newlabel{fig:bastrict}{{14}{34}{Additional Figures and Tables}{figure.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {K.1}Behaviour Adherence by prompt condition}{34}{subsection.K.1}\protected@file@percent }
+\newlabel{fig:baminimal}{{15}{35}{Behaviour Adherence by prompt condition}{figure.15}{}}
+\newlabel{fig:oracleheat}{{16}{35}{Behaviour Adherence by prompt condition}{figure.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces \textbf  {Mechanism-matched oracle ablations (fine-tuned models).} Each intervention supplies gold information for one reasoning stage; a metric is \emph  {targeted} if it depends on that stage. The gold conflict label moves Behaviour Adherence and nothing else; the gold per-document notes move every grounding and citation metric in $9/9$ cells and leave the answer/refusal decision untouched. $p$ is an exact two-sided sign test over model$\times $prompt cells. Qwen2.5-32B is excluded from the conflict-oracle columns because of the scoring artifact documented in Appendix~\ref {app:artifacts}; the $+/n$ column reports the exact number of cells contributing to each test ($n=9$ for the conflict oracle, $n=12$ otherwise).}}{35}{table.25}\protected@file@percent }
+\newlabel{tab:oracle}{{25}{35}{\textbf {Mechanism-matched oracle ablations (fine-tuned models).} Each intervention supplies gold information for one reasoning stage; a metric is \emph {targeted} if it depends on that stage. The gold conflict label moves Behaviour Adherence and nothing else; the gold per-document notes move every grounding and citation metric in $9/9$ cells and leave the answer/refusal decision untouched. $p$ is an exact two-sided sign test over model$\times $prompt cells. Qwen2.5-32B is excluded from the conflict-oracle columns because of the scoring artifact documented in Appendix~\ref {app:artifacts}; the $+/n$ column reports the exact number of cells contributing to each test ($n=9$ for the conflict oracle, $n=12$ otherwise)}{table.25}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {L}Oracle Ablations: Full Results}{35}{appendix.L}\protected@file@percent }
+\newlabel{app:oracle}{{L}{35}{Oracle Ablations: Full Results}{appendix.L}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {L.1}Additivity, exceptions and baseline behaviour}{35}{subsection.L.1}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Each oracle moves the metric it targets and essentially nothing else. Green bars are targeted metrics, grey bars are specificity controls; diamonds mark means, points individual model$\times $prompt cells.}}{36}{figure.17}\protected@file@percent }
+\newlabel{fig:oraclefig}{{17}{36}{Each oracle moves the metric it targets and essentially nothing else. Green bars are targeted metrics, grey bars are specificity controls; diamonds mark means, points individual model$\times $prompt cells}{figure.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {M}Excluded Rows and Diagnostics}{36}{appendix.M}\protected@file@percent }
+\newlabel{app:artifacts}{{M}{36}{Excluded Rows and Diagnostics}{appendix.M}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {N}Released Artifacts}{36}{appendix.N}\protected@file@percent }
+\newlabel{app:annprompts}{{N}{36}{Released Artifacts}{appendix.N}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {O}End-to-End Inference Prompts}{37}{appendix.O}\protected@file@percent }
+\newlabel{app:e2eprompts}{{O}{37}{End-to-End Inference Prompts}{appendix.O}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {O.1}Why the prompt is varied}{37}{subsection.O.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {26}{\ignorespaces The three end-to-end instruction strengths, measured by system-prompt length.}}{37}{table.26}\protected@file@percent }
+\newlabel{tab:promptladder}{{26}{37}{The three end-to-end instruction strengths, measured by system-prompt length}{table.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {O.2}Strict}{37}{subsection.O.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Strict system prompt (\texttt  {system\_e2e.txt})}{37}{section*.44}\protected@file@percent }
 \def\@LN@column{1}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Strict user template (\texttt  {user\_e2e.txt})}{37}{section*.51}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {N.3}Runtime}{37}{subsection.N.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Runtime system prompt (\texttt  {system\_e2e\_runtime.txt})}{37}{section*.52}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Runtime user template (\texttt  {user\_e2e\_runtime.txt})}{38}{section*.53}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {N.4}Minimal}{38}{subsection.N.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Minimal system prompt (\texttt  {system\_e2e\_minimal.txt})}{38}{section*.54}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Minimal user template (\texttt  {user\_e2e\_minimal.txt})}{38}{section*.55}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {O}CATS Judge Prompts}{38}{appendix.O}\protected@file@percent }
-\newlabel{app:catsprompts}{{O}{38}{CATS Judge Prompts}{appendix.O}{}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Behaviour is explicitly walled off from the other components.}{39}{section*.56}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Factual Grounding is deliberately permissive, so it is an upper bound on strict grounding.}{39}{section*.57}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{One wording inaccuracy we do not wish to paper over.}{39}{section*.58}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {O.1}Shared system message}{39}{subsection.O.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Committee system message (\texttt  {committee\_json\_system\_prompt.txt})}{39}{section*.59}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {O.2}Behaviour Adherence}{39}{subsection.O.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence prompt (\texttt  {behavior\_adherence\_prompt.template.txt})}{39}{section*.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Strict user template (\texttt  {user\_e2e.txt})}{41}{section*.45}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {paragraph}{Five-type behaviour rubric (\texttt  {behavior\_rubric.md})}{40}{section*.61}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {O.3}Factual Grounding}{40}{subsection.O.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Factual Grounding prompt (\texttt  {factual\_grounding\_prompt.template.txt})}{40}{section*.62}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {O.3}Runtime}{42}{subsection.O.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Runtime system prompt (\texttt  {system\_e2e\_runtime.txt})}{42}{section*.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Runtime user template (\texttt  {user\_e2e\_runtime.txt})}{42}{section*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {O.4}Minimal}{42}{subsection.O.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Minimal system prompt (\texttt  {system\_e2e\_minimal.txt})}{42}{section*.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Minimal user template (\texttt  {user\_e2e\_minimal.txt})}{42}{section*.49}\protected@file@percent }
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {O.4}Single-Truth Recall}{41}{subsection.O.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Single-Truth Recall prompt (\texttt  {single\_truth\_recall\_prompt.template.txt})}{41}{section*.63}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {P}CATS Judge Prompts}{43}{appendix.P}\protected@file@percent }
+\newlabel{app:catsprompts}{{P}{43}{CATS Judge Prompts}{appendix.P}{}}
+\@writefile{toc}{\contentsline {paragraph}{Behaviour is explicitly walled off from the other components.}{43}{section*.50}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Factual Grounding is deliberately permissive, so it is an upper bound on strict grounding.}{43}{section*.51}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{One wording inaccuracy we do not wish to paper over.}{43}{section*.52}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {P.1}Shared system message}{43}{subsection.P.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Committee system message (\texttt  {committee\_json\_system\_prompt.txt})}{43}{section*.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {P.2}Behaviour Adherence}{43}{subsection.P.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Behaviour Adherence prompt (\texttt  {behavior\_adherence\_prompt.template.txt})}{43}{section*.54}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{Five-type behaviour rubric (\texttt  {behavior\_rubric.md})}{44}{section*.55}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {P.3}Factual Grounding}{45}{subsection.P.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Factual Grounding prompt (\texttt  {factual\_grounding\_prompt.template.txt})}{45}{section*.56}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
-    {1}{68.73543pt}\LT@entry 
-    {4}{104.26112pt}\LT@entry 
-    {4}{24.00002pt}\LT@entry 
-    {1}{26.8259pt}\LT@entry 
-    {4}{19.50002pt}\LT@entry 
-    {4}{26.25002pt}\LT@entry 
-    {4}{27.75002pt}}
+    {1}{67.73543pt}\LT@entry 
+    {4}{102.26112pt}\LT@entry 
+    {4}{22.00002pt}\LT@entry 
+    {1}{24.8259pt}\LT@entry 
+    {4}{17.50002pt}\LT@entry 
+    {4}{24.25002pt}\LT@entry 
+    {4}{26.75002pt}}
 \def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {P}Complete Agreement Statistics}{42}{appendix.P}\protected@file@percent }
-\newlabel{app:allagreement}{{P}{42}{Complete Agreement Statistics}{appendix.P}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {21}{\textbf  {Complete resource-review agreement statistics.} Every recorded field in both review workflows. $n$ is the number of review pairs; \emph  {agree}/\emph  {disagree} are exact counts. A dash in the $\kappa $ column marks a field that is single-valued across the stratum, where chance-corrected agreement is undefined and exact agreement is the only meaningful statistic.}}{42}{table.21}\protected@file@percent }
-\newlabel{tab:iaafull}{{21}{42}{\textbf {Complete resource-review agreement statistics.} Every recorded field in both review workflows. $n$ is the number of review pairs; \emph {agree}/\emph {disagree} are exact counts. A dash in the $\kappa $ column marks a field that is single-valued across the stratum, where chance-corrected agreement is undefined and exact agreement is the only meaningful statistic}{table.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {P.4}Single-Truth Recall}{46}{subsection.P.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Single-Truth Recall prompt (\texttt  {single\_truth\_recall\_prompt.template.txt})}{46}{section*.57}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {Q}Complete Agreement Statistics}{46}{appendix.Q}\protected@file@percent }
+\newlabel{app:allagreement}{{Q}{46}{Complete Agreement Statistics}{appendix.Q}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {27}{\textbf  {Complete resource-review agreement statistics.} Every recorded field in both review workflows. $n$ is the number of review pairs; \emph  {agree}/\emph  {disagree} are exact counts. A dash in the $\kappa $ column marks a field that is single-valued across the stratum, where chance-corrected agreement is undefined and exact agreement is the only meaningful statistic.}}{46}{table.27}\protected@file@percent }
+\newlabel{tab:iaafull}{{27}{46}{\textbf {Complete resource-review agreement statistics.} Every recorded field in both review workflows. $n$ is the number of review pairs; \emph {agree}/\emph {disagree} are exact counts. A dash in the $\kappa $ column marks a field that is single-valued across the stratum, where chance-corrected agreement is undefined and exact agreement is the only meaningful statistic}{table.27}{}}
 \gdef \LT@ii {\LT@entry 
-    {4}{92.61899pt}\LT@entry 
-    {4}{34.2218pt}\LT@entry 
-    {4}{85.68486pt}\LT@entry 
-    {4}{19.20003pt}\LT@entry 
-    {4}{20.95003pt}\LT@entry 
-    {4}{20.95003pt}\LT@entry 
-    {1}{21.35454pt}\LT@entry 
-    {1}{22.26274pt}\LT@entry 
-    {1}{17.44902pt}\LT@entry 
-    {1}{17.44902pt}\LT@entry 
-    {1}{17.44902pt}\LT@entry 
-    {1}{17.44902pt}\LT@entry 
-    {4}{18.35002pt}}
+    {4}{58.31621pt}\LT@entry 
+    {1}{44.36243pt}\LT@entry 
+    {4}{62.42993pt}\LT@entry 
+    {4}{19.00002pt}\LT@entry 
+    {4}{21.25002pt}\LT@entry 
+    {4}{21.25002pt}\LT@entry 
+    {4}{21.25002pt}\LT@entry 
+    {4}{21.25002pt}\LT@entry 
+    {4}{14.50002pt}\LT@entry 
+    {4}{14.50002pt}\LT@entry 
+    {4}{14.50002pt}\LT@entry 
+    {4}{14.50002pt}\LT@entry 
+    {4}{20.75002pt}}
 \def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {22}{\textbf  {Complete CATS human-evaluation binary agreement.} All strata for all four comparison frames. $P_{pos}$/$P_{neg}$ are positive- and negative-specific agreement; $n_{11}$--$n_{00}$ are the confusion cells; $\alpha $ is nominal Krippendorff's alpha where computed. Conflicting opinions (type 3) is excluded from Single-Truth Recall by construction and so has no STR stratum. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level and therefore pool all accepted reviews.}}{43}{table.22}\protected@file@percent }
-\newlabel{tab:catsbinfull}{{22}{43}{\textbf {Complete CATS human-evaluation binary agreement.} All strata for all four comparison frames. $P_{pos}$/$P_{neg}$ are positive- and negative-specific agreement; $n_{11}$--$n_{00}$ are the confusion cells; $\alpha $ is nominal Krippendorff's alpha where computed. Conflicting opinions (type 3) is excluded from Single-Truth Recall by construction and so has no STR stratum. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level and therefore pool all accepted reviews}{table.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {28}{\textbf  {Complete CATS human-evaluation binary agreement.} All strata for all four comparison frames. $P_{pos}$/$P_{neg}$ are positive- and negative-specific agreement; $n_{11}$--$n_{00}$ are the confusion cells; $\alpha $ is nominal Krippendorff's alpha where computed. Conflicting opinions (type 3) is excluded from Single-Truth Recall by construction and so has no STR stratum. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level and therefore pool all accepted reviews.}}{47}{table.28}\protected@file@percent }
+\newlabel{tab:catsbinfull}{{28}{47}{\textbf {Complete CATS human-evaluation binary agreement.} All strata for all four comparison frames. $P_{pos}$/$P_{neg}$ are positive- and negative-specific agreement; $n_{11}$--$n_{00}$ are the confusion cells; $\alpha $ is nominal Krippendorff's alpha where computed. Conflicting opinions (type 3) is excluded from Single-Truth Recall by construction and so has no STR stratum. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level and therefore pool all accepted reviews}{table.28}{}}
+\def\@LN@column{1}
+\def\@LN@column{1}
 \gdef \LT@iii {\LT@entry 
-    {4}{92.39984pt}\LT@entry 
-    {4}{89.2932pt}\LT@entry 
-    {4}{20.3pt}\LT@entry 
-    {4}{27.05pt}\LT@entry 
-    {1}{27.79684pt}\LT@entry 
-    {1}{32.80078pt}\LT@entry 
-    {1}{37.61574pt}\LT@entry 
-    {1}{46.30066pt}\LT@entry 
-    {1}{36.54482pt}\LT@entry 
-    {1}{32.64978pt}}
+    {4}{74.26999pt}\LT@entry 
+    {4}{76.26999pt}\LT@entry 
+    {4}{17.50002pt}\LT@entry 
+    {4}{24.25002pt}\LT@entry 
+    {1}{24.99686pt}\LT@entry 
+    {1}{30.0008pt}\LT@entry 
+    {1}{34.81575pt}\LT@entry 
+    {1}{43.50067pt}\LT@entry 
+    {1}{33.74483pt}\LT@entry 
+    {1}{31.24979pt}}
 \def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {23}{\textbf  {Complete continuous grounding-ratio agreement.} Per-sample Factual-Grounding ratios compared as continuous values. \emph  {exact} uses the configured tolerance rather than floating-point identity. Correlation measures association, not calibration, so it must be read with MAE/RMSE and the two means. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level.}}{44}{table.23}\protected@file@percent }
-\newlabel{tab:catscontfull}{{23}{44}{\textbf {Complete continuous grounding-ratio agreement.} Per-sample Factual-Grounding ratios compared as continuous values. \emph {exact} uses the configured tolerance rather than floating-point identity. Correlation measures association, not calibration, so it must be read with MAE/RMSE and the two means. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level}{table.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {29}{\textbf  {Complete continuous grounding-ratio agreement.} Per-sample Factual-Grounding ratios compared as continuous values. \emph  {exact} uses the configured tolerance rather than floating-point identity. Correlation measures association, not calibration, so it must be read with MAE/RMSE and the two means. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level.}}{50}{table.29}\protected@file@percent }
+\newlabel{tab:catscontfull}{{29}{50}{\textbf {Complete continuous grounding-ratio agreement.} Per-sample Factual-Grounding ratios compared as continuous values. \emph {exact} uses the configured tolerance rather than floating-point identity. Correlation measures association, not calibration, so it must be read with MAE/RMSE and the two means. Human--human rows are response-level over the 300-response frame; human--committee rows are judgment-level}{table.29}{}}
 \gdef \LT@iv {\LT@entry 
-    {4}{74.82535pt}\LT@entry 
-    {4}{44.51375pt}\LT@entry 
-    {4}{118.17827pt}\LT@entry 
-    {4}{20.70003pt}\LT@entry 
-    {4}{27.45003pt}\LT@entry 
-    {4}{63.70193pt}\LT@entry 
-    {4}{27.45003pt}\LT@entry 
-    {4}{23.85002pt}}
+    {4}{73.42534pt}\LT@entry 
+    {4}{41.71373pt}\LT@entry 
+    {4}{115.37825pt}\LT@entry 
+    {4}{17.90001pt}\LT@entry 
+    {4}{24.65001pt}\LT@entry 
+    {4}{60.90192pt}\LT@entry 
+    {4}{24.65001pt}\LT@entry 
+    {4}{22.45001pt}}
 \def\@LN@column{1}
-\@writefile{lot}{\contentsline {table}{\numberline {24}{\textbf  {Complete committee-internal agreement.} Agreement among the three judge models on the 300-response agreement frame. This is agreement among model judges under a fixed prompt and serving protocol; it is not human inter-annotator agreement and must not be reported as such.}}{45}{table.24}\protected@file@percent }
-\newlabel{tab:cifull}{{24}{45}{\textbf {Complete committee-internal agreement.} Agreement among the three judge models on the 300-response agreement frame. This is agreement among model judges under a fixed prompt and serving protocol; it is not human inter-annotator agreement and must not be reported as such}{table.24}{}}
-\def\@LN@column{1}
-\@writefile{toc}{\contentsline {section}{\numberline {Q}Complete Results Matrix}{46}{appendix.Q}\protected@file@percent }
-\newlabel{app:full}{{Q}{46}{Complete Results Matrix}{appendix.Q}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces \textbf  {End-to-end results, all twelve model$\times $prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref {tab:oracle}.}}{46}{table.25}\protected@file@percent }
-\newlabel{tab:full}{{25}{46}{\textbf {End-to-end results, all twelve model$\times $prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref {tab:oracle}}{table.25}{}}
-\gdef \@abspage@last{46}
+\@writefile{lot}{\contentsline {table}{\numberline {30}{\textbf  {Complete committee-internal agreement.} Agreement among the three judge models on the 300-response agreement frame. This is agreement among model judges under a fixed prompt and serving protocol; it is not human inter-annotator agreement and must not be reported as such.}}{51}{table.30}\protected@file@percent }
+\newlabel{tab:cifull}{{30}{51}{\textbf {Complete committee-internal agreement.} Agreement among the three judge models on the 300-response agreement frame. This is agreement among model judges under a fixed prompt and serving protocol; it is not human inter-annotator agreement and must not be reported as such}{table.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {R}Complete Results Matrix}{51}{appendix.R}\protected@file@percent }
+\newlabel{app:full}{{R}{51}{Complete Results Matrix}{appendix.R}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {31}{\ignorespaces \textbf  {End-to-end results, all twelve model$\times $prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref {tab:oracle}.}}{52}{table.31}\protected@file@percent }
+\newlabel{tab:full}{{31}{52}{\textbf {End-to-end results, all twelve model$\times $prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref {tab:oracle}}{table.31}{}}
+\gdef \@abspage@last{52}

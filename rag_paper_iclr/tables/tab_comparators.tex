@@ -1,18 +1,15 @@
-{\tabstyle\setlength{\tabcolsep}{1.5pt}
-\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}l rrrr@{}}\toprule
-\textbf{Method} & \textbf{Ref.\,F1} & \textbf{BA} & \textbf{FG} & \textbf{STR}\\\midrule
-\multicolumn{5}{@{}l}{\textit{Llama-3.1-8B}}\\
-CoN (prompt-only) & 0.000 & 0.632 & 0.609 & 0.658\\
-CoT (few-shot) & 0.302 & 0.716 & 0.635 & 0.678\\
-\textsc{trace-sft} (ours) & \textbf{0.926} & \textbf{0.805} & \textbf{0.852} & \textbf{0.727}\\
+{\tabstyle\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}l l rrrr@{}}\toprule
+\textbf{Model} & \textbf{Method} & \textbf{Ref.\,F1} & \shortstack{\textbf{Behaviour}\\\textbf{Adherence}} & \shortstack{\textbf{Factual}\\\textbf{Grounding}} & \shortstack{\textbf{Single-Truth}\\\textbf{Recall}}\\\midrule
+\multirow{3}{*}{Llama-3.1-8B} & CoN (prompt-only) & 0.000 & 0.632 & 0.609 & 0.658\\
+ & CoT (few-shot) & 0.302 & 0.716 & 0.635 & 0.678\\
+ & \textsc{trace-sft} (ours) & \textbf{0.926} & \textbf{0.805} & \textbf{0.852} & \textbf{0.727}\\
 \addlinespace[2pt]
-\multicolumn{5}{@{}l}{\textit{Mistral-7B}}\\
-CoN (prompt-only) & 0.000 & 0.685 & 0.522 & 0.676\\
-CoT (few-shot) & 0.525 & 0.657 & 0.417 & 0.528\\
-\textsc{trace-sft} (ours) & \textbf{0.826} & \textbf{0.793} & \textbf{0.796} & \textbf{0.644}\\
+\multirow{3}{*}{Mistral-7B} & CoN (prompt-only) & 0.000 & 0.685 & 0.522 & 0.676\\
+ & CoT (few-shot) & 0.525 & 0.657 & 0.417 & 0.528\\
+ & \textsc{trace-sft} (ours) & \textbf{0.826} & \textbf{0.793} & \textbf{0.796} & \textbf{0.644}\\
 \addlinespace[2pt]
-\multicolumn{5}{@{}l}{\textit{Qwen2.5-7B}}\\
-CoN (prompt-only) & 0.000 & 0.727 & 0.666 & 0.719\\
-CoT (few-shot) & 0.402 & \textbf{0.781} & 0.734 & \textbf{0.724}\\
-\textsc{trace-sft} (ours) & \textbf{0.911} & 0.780 & \textbf{0.838} & 0.687\\
+\multirow{3}{*}{Qwen2.5-7B} & CoN (prompt-only) & 0.000 & 0.727 & 0.666 & 0.719\\
+ & CoT (few-shot) & 0.402 & \textbf{0.781} & 0.734 & \textbf{0.724}\\
+ & \textsc{trace-sft} (ours) & \textbf{0.911} & 0.780 & \textbf{0.838} & 0.687\\
 \bottomrule\end{tabular*}}

@@ -68,22 +68,16 @@ benchmark; the intersection is empty.
 \subsection{An independent benchmark}
 
 The 736-example benchmark is built in three tracks and reporting them
-separately is deliberate.
-
-\paragraph{Track A: web-retrieved (508).} Queries are drawn from ConflictingQA
+separately is deliberate. \textbf{(1) Track A: web-retrieved (508).} Queries are drawn from ConflictingQA
 \citep{wan2024evidencelanguagemodelsconvincing}, SituatedQA
 \citep{zhang2021situatedqaincorporatingextralinguisticcontexts}, FreshQA
 \citep{vu2024freshllms} and QACC \citep{liu2025opendomainquestionanswering}, with
 every query overlapping the training pool excluded. Documents are retrieved live
 and a query-focused window is selected by a TAS-B dense bi-encoder
 \citep{hofstatter2021tasb}. Appendix~\ref{app:data} gives the full funnel and the
-five-document sampling rule.
-
-\paragraph{Track B: refusal (128).} Refusal-required examples come from the
+five-document sampling rule. \textbf{(2) Track B: refusal (128).} Refusal-required examples come from the
 held-out refusal pool of Trust-Align \citep{song2025trustalign} and are
-\emph{not} web-retrieved.
-
-\paragraph{Track C: curated conflict (100).} Open-web retrieval does not reliably
+\emph{not} web-retrieved. \textbf{(3) Track C: curated conflict (100).} Open-web retrieval does not reliably
 surface every conflict regime, one cannot query a search index for the version
 of a fact that was true two years ago. We therefore add 78 examples built from
 dated Wikipedia revision pairs, in the spirit of \citet{hou2024wikicontradict},
@@ -119,8 +113,15 @@ agreement is $98.21\%$ ($\kappa=0.92$). Training-side review assigned each base
 example to two reviewers, giving conflict-type agreement of $83.46\%$
 ($\kappa=0.77$). The benchmark second pass is \emph{sequential}, so its figures
 measure verification consistency rather than blind double annotation.
-Appendix~\ref{app:human-review} gives the full protocol and per-field agreement
-tables.
+A further, separate study checks the Stage-1 per-document verdict itself
+(supports/partially supports/irrelevant) rather than the downstream
+conflict-type label: on a class-balanced 100-pair sample, three reviewers
+agree with one another at Fleiss' $\kappa=0.83$ and with the committee's
+Stage-1 verdict at $92\%$ exact agreement ($\kappa=0.88$ against the human
+majority). Appendix~\ref{app:human-review} gives the full protocol and
+per-field agreement tables, and Appendix~\ref{app:stage1review} gives this
+Stage-1 study in full, including why it is agreement evidence rather than an
+accuracy validation.
 
 % ============================================================
 \section{Trace-Supervised Fine-Tuning}
@@ -202,9 +203,7 @@ prompts, decoding policy, retry policy, post-processing and evaluator are
 identical; the only difference is the presence of the LoRA adapter, so any
 difference is attributable to trace supervision. Each pair is evaluated under
 the strict and minimal prompts, with the intermediate runtime prompt reported in
-Appendix~\ref{app:full}.
-
-Generation is deterministic (temperature $0$) with profile-specific continuation
+Appendix~\ref{app:full}. Generation is deterministic (temperature $0$) with profile-specific continuation
 budgets and sentinel-based stopping; retries only enlarge the token budget for
 the identical prompt, never resampling or repairing content
 (Appendix~\ref{app:inference}). Per-example scores lie in $[0,1]$, so a
@@ -215,13 +214,12 @@ Clopper--Pearson intervals on the 128-example refusal subgroup.
 
 \subsection{Ablation studies}
 
-\paragraph{Oracle ablations.} To test whether the three stages are separable, we
+\textbf{Oracle ablations.} To test whether the three stages are separable, we
 re-run the fine-tuned models with gold information injected one stage at a time:
 \textbf{+conflict label} supplies the gold Stage-2 type, \textbf{+per-doc notes}
 the gold Stage-1 verdicts and key facts, and \textbf{+both} supplies each. If the
 stages are distinct, an intervention should move the metrics its stage governs
-and leave the rest unchanged (\S\ref{sec:oracle}).
-\paragraph{Comparison with prompting methods.} Two prompting-only strategies on
+and leave the rest unchanged (\S\ref{sec:oracle}). \textbf{Comparison with prompting methods.} Two prompting-only strategies on
 baseline models separate what supervision provides from what an elicitation
 prompt can. \emph{Chain-of-Note} \citep{yu2024chainofnote} writes per-document
 reading notes before answering, the closest analogue to our Stage~1;
