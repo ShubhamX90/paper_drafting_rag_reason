@@ -5,17 +5,17 @@
 
 \subsection{Benchmark composition by source and track}
 
-\begin{landscape}
+\begin{table}[htbp]
 \centering
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.56\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_tracks}
 \end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\hspace{0.02\linewidth}%
+\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
 \centering
 {\tabstyle\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{0.67\linewidth}r@{}}\toprule
+\begin{tabular}[t]{@{}>{\raggedright\arraybackslash}p{0.63\linewidth}r@{}}\toprule
 \textbf{Stage} & \textbf{Records}\\\midrule
 Raw candidate rows from four source pools & 20{,}330\\
 $-$ normalised overlaps with the training question set & $-598$\\
@@ -34,7 +34,7 @@ Final answerable benchmark records & 608\\\bottomrule
 {\textbf{Benchmark composition by source and construction track.} NC = No conflict, CI = Complementary information, CO = Conflicting opinions/research outcomes, OI = Conflict due to outdated information, MI = Conflict due to misinformation. Track~A is web-retrieved, Track~B is the held-out refusal pool, Track~C is curated conflict. The curated track is class-targeted: all 78 WikiRevision items are temporal-supersession cases, supplying 49\% of that class, and all 19 HotpotQA items are complementary-evidence cases}%
 {Non-refusal construction funnel, counts as observed in the retained
 artifacts.}
-\end{landscape}
+\end{table}
 
 Table~\ref{tab:tracks} gives the full breakdown referenced in
 \S\ref{sec:data}. The three tracks are structurally distinguishable, which is
@@ -825,12 +825,12 @@ counts across every evaluated claim in the run rather than averaging a
 per-claim rate, so claims with more citations are not down-weighted relative
 to claims with fewer.
 
-\begin{landscape}
+\begin{table}[htbp]
 \centering
 \begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
 {\tabstyle\setlength{\tabcolsep}{0.5pt}
-\begin{tabular}[t]{@{}p{0.39\linewidth} p{0.33\linewidth} p{0.24\linewidth}@{}}\toprule
+\begin{tabular}[t]{@{}>{\raggedright\arraybackslash}p{0.39\linewidth} >{\raggedright\arraybackslash}p{0.33\linewidth} >{\raggedright\arraybackslash}p{0.24\linewidth}@{}}\toprule
 \textbf{Metric} & \textbf{Formula} & \textbf{Unit}\\\midrule
 Claim-spec.\ citation prec.\ $\uparrow$ &
 $\frac{\text{approved}}{\text{all cited}}$ &
@@ -858,8 +858,9 @@ nothing OK\\
 \hspace{0.03\linewidth}%
 \begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
 \centering
-{\tabstyle\setlength{\tabcolsep}{1pt}
-\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lrrr@{}}\toprule
+% Row pitch raised so this table ends level with the definitions table beside it.
+{\tabstyle\renewcommand{\arraystretch}{1.25}\setlength{\tabcolsep}{1pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{1.12in}rrr@{}}\toprule
 \textbf{Metric} & \textbf{mean $\Delta$} & \textbf{min} & \textbf{max}\\\midrule
 Citation sufficiency (support recall) & $+0.363$ & $-0.008$ & $+0.869$\\
 Strict grounded, gold-clean & $+0.358$ & $-0.002$ & $+0.811$\\
@@ -885,7 +886,7 @@ count distinct cited documents or evaluated claims as noted in the Unit
 column}%
 {Citation-metric changes under trace supervision, fine-tuned minus
 baseline, across the twelve end-to-end cells.}
-\end{landscape}
+\end{table}
 
 Only the recall side moves. The strict committee-clean metric, which requires a
 claim to be committee-supported, cited and free of both extraneous and
@@ -965,21 +966,23 @@ model-dependence of the denominator itself.
 
 
 
-\begin{landscape}
+\begin{table}[htbp]
 \centering
-\begin{minipage}[t]{0.47\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.84\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_fgdenom}
-\end{minipage}%
-\hspace{0.03\linewidth}%
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\end{minipage}
+
+\vspace{8pt}
+
+\begin{minipage}[t]{0.56\linewidth}\vspace{0pt}
 \centering
 \input{tables/tab_internalization}
 \end{minipage}
 \dualcaption{table}{tab:fgdenom}{tab:internalization}%
 {\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells}%
 {\textbf{Internalization.} Factual Grounding under the minimal prompt, and the spread of CATS-Balanced across the strict/runtime/minimal ladder. Baseline grounding collapses without scaffolding and baseline behaviour swings an order of magnitude more across the ladder.}
-\end{landscape}
+\end{table}
 
 \begin{figure}[htbp]
     \centering

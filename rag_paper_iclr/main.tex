@@ -57,6 +57,9 @@
 % Single source of truth for table typography. Every table uses the same
 % readable font size and row spacing; per-table \tabcolsep stays local.
 \newcommand{\tabstyle}{\footnotesize\renewcommand{\arraystretch}{1.08}}
+% For the few appendix tables too wide to fit the text block at \tabstyle
+% (13+ numeric columns); same row spacing, one step down in size.
+\newcommand{\tabstylewide}{\scriptsize\renewcommand{\arraystretch}{1.08}}
 
 % Combined single-line caption for a side-by-side pair: bolded "Figure N:"/
 % "Table N:" labels, joined by a semicolon, as one continuous line rather

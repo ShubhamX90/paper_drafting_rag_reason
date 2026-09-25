@@ -1,5 +1,7 @@
-{\tabstyle\setlength{\tabcolsep}{0.35pt}
-\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.85in}>{\raggedright\arraybackslash}p{0.55in} r rrrrr@{}}\toprule
+% Row pitch raised so this table ends level with its side-by-side partner
+% (the construction-funnel table, which has more rows); see appendix.tex.
+{\tabstyle\renewcommand{\arraystretch}{1.94}\setlength{\tabcolsep}{1.5pt}
+\begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.95in}>{\raggedright\arraybackslash}p{0.5in} r rrrrr@{}}\toprule
 \textbf{Source} & \textbf{Track} & $n$ & \textbf{NC} & \textbf{CI} & \textbf{CO} & \textbf{OI} & \textbf{MI}\\\midrule
 QACC & web-retr. & 145 & 69 & 46 & 14 & 7 & 9\\
 SituatedQA & web-retr. & 141 & 43 & 50 & 6 & 32 & 10\\
