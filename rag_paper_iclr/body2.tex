@@ -122,12 +122,12 @@ method examined. \textbf{Citation behaviour.} Trace supervision changes citation
 
 The comparators above are prompt-only. This one is a matched SFT comparator.
 We fine-tune Llama-3.1-8B and Qwen2.5-7B on the same 862 base examples and
-QLoRA configuration as the trace-supervised runs, but with the trace removed
-from the supervision target; the trace-supervised recipes add a further
-27--48 derived examples (Appendix~\ref{app:sft}). Appendix~\ref{app:answeronly} gives the exact target format. Because base data, model and optimiser are
-otherwise held fixed, most of any remaining gap is attributable to the trace
-itself, not fully isolated from this small supervision-volume difference.
-Under the minimal prompt, trace supervision
+QLoRA configuration as the trace-supervised runs (which add 27--48 further
+examples, Appendix~\ref{app:sft}), with the trace removed from the
+supervision target (Appendix~\ref{app:answeronly}). Because base data, model
+and optimiser are otherwise held fixed, most of any remaining gap is
+attributable to the trace itself, not fully isolated from this volume
+difference. Under the minimal prompt, trace supervision
 exceeds this answer-only baseline on every metric for both models, with the
 largest gap on Refusal Precision (Table~\ref{tab:aodelta}, Appendix~\ref{app:answeronly}).
 Answer Quality (Appendix~\ref{app:aggregate}), the
