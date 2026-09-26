@@ -244,7 +244,14 @@ directly between \textit{supports} and \textit{irrelevant}, matching the
 pattern in the human--human disagreements (\textit{supports} vs
 \textit{partially supports} on 11 pairs, \textit{partially supports} vs
 \textit{irrelevant} on 6, no \textit{supports}--\textit{irrelevant}
-disagreement).
+disagreement). Agreement is not uniform across the committee's own verdict:
+conditional on the committee saying \textit{irrelevant}, reviewers agree on
+$94.9\%$ of ratings ($94/99$); conditional on \textit{supports}, $89.2\%$
+($91/102$); conditional on \textit{partially supports}, $88.9\%$ ($88/99$).
+The committee is therefore most reliable exactly where Factual Grounding
+eligibility is coarsest, on whether a document is usable at all, and least
+reliable on the finer \textit{supports}-versus-\textit{partially supports}
+distinction that does not affect eligibility.
 
 \begin{table}[htbp]\centering
 \input{tables/tab_stage1_confusion}
@@ -406,6 +413,23 @@ reported models. And the reported matrices use recipe~K for the Qwen family and
 recipe~L for Llama and Mistral, because no completed Qwen matrix exists for
 recipe~L.
 
+\paragraph{Benchmark awareness during recipe development.} Step J's training
+augmentation was constructed by sampling additional answerable examples from
+the same source pool that the released 736-example holdout was later drawn
+from: of 741 benchmark-pool rows judged answerable, 193 were selected into
+that step's augmented training/validation split (168 train, 25 validation)
+and the remaining 548 became part of the residual pool the released holdout
+is drawn from. The final released training set and the released 736-example
+holdout share zero identifiers and zero normalised-query matches, which we
+verified directly on the released files. This identifier-level disjointness
+is a narrower guarantee than full benchmark blindness, however: archived
+evaluation records from this period show the 736-example holdout being
+scored during recipe iteration, so recipe choices at this stage were made
+with some visibility into holdout performance and into the benchmark pool's
+general characteristics, not with the holdout withheld in the stronger sense
+of never having been consulted at all. We report this precisely rather than
+claim a blindness the development process did not have.
+
 \section{Answer-Only Supervision Ablation}
 \label{app:answeronly}
 
@@ -438,7 +462,14 @@ Table~\ref{tab:oracle} and Table~\ref{tab:full}, and computed here for the
 answer-only checkpoints as well.
 
 This ablation covers Llama-3.1-8B and Qwen2.5-7B only, not the full
-four-model matrix used elsewhere in the paper.
+four-model matrix used elsewhere in the paper. It also isolates the whole
+trace, all three stages together, from no trace at all; we did not train a
+model with only a subset of the three stages supervised (for example
+Stage-1 verdicts alone, or Stages 1 and 2 without Stage 3), so the marginal
+contribution of each individual stage to this specific gap remains an open
+question for future work. This is distinct from the oracle ablations of
+\S\ref{sec:oracle}, which inject gold information at inference time rather
+than varying what is supervised during training.
 
 \subsection{Results}
 
@@ -504,6 +535,49 @@ facts on irrelevant documents, drop out-of-range citations and append a missing
 sentinel where a usable trace exists. It \emph{cannot} invent a missing trace,
 construct absent document judgments, write a conflict analysis or supply a
 missing answer. A record without a parseable trace passes through unchanged.
+
+\subsection{Output length as a cost proxy}
+\label{app:inflatency}
+
+Emitting the structured trace has a real generation cost: the serialised
+\texttt{<think>} block adds Stage-1 per-document verdicts, a Stage-2 conflict
+label and a Stage-3 synthesis record before the final answer, none of which a
+direct-answer or prompting-only baseline produces. We measure this cost the
+way it is actually recoverable from the released generations: character
+length of the raw saved output (not a tokeniser count) over the full
+736-example benchmark, reported as mean / median / 95th-percentile
+(nearest-rank).
+
+\begin{table}[htbp]\centering
+\input{tables/tab_outputlength}
+\caption{\textbf{Output length by supervision condition}, characters over the 736-example benchmark under the minimal prompt. Qwen2.5-32B's answer-only raw generations were not retained.}
+\label{tab:outputlength}
+\end{table}
+
+\begin{table}[htbp]\centering
+\input{tables/tab_outputlength_baselines}
+\caption{\textbf{Output length for the two prompting-only comparators}, characters over the 736-example benchmark. Llama-3.1-8B and Qwen2.5-32B are omitted: only reformatted, not raw, generations were retained for their prompting-only runs.}
+\label{tab:outputlengthbaselines}
+\end{table}
+
+Table~\ref{tab:outputlength} gives trace-tuned, answer-only-supervised and
+direct-answer baseline lengths for all four models; Table~\ref{tab:outputlengthbaselines}
+gives the two prompting-only comparators for the two models whose raw
+generations were retained. Trace-tuned outputs run roughly $6$--$10\times$
+longer than the corresponding answer-only outputs for Qwen2.5-7B and
+Llama-3.1-8B, and roughly $6$--$7\times$ longer than the direct-answer
+baseline for every model. Mistral-7B's answer-only model is the one
+exception, itself emitting long, verbose answers ($1{,}545$ characters on
+average) despite receiving no trace supervision.
+
+We do not report a matched wall-clock or tokens-per-second comparison.
+Generation timing was logged only as an aggregate per-job duration on a
+shared cluster, not as isolated per-example decoding latency, and the
+available job records mix GPU types across conditions in a way that is not
+directly comparable. A rigorous latency comparison would need generation
+re-run under identical, controlled hardware and batching, which we leave to
+future work; the character-length figures above are the load-bearing evidence
+for the trace's generation-cost overhead in this paper.
 
 \section{CATS Specification}
 \label{app:cats}
