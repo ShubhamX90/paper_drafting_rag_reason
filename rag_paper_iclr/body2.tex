@@ -92,7 +92,8 @@ Stage-1 notes improves every grounding and citation metric, each positive in
 small spillover, expected since correct document verdicts also constrain the
 conflict inference. The answer/refuse decision is untouched, since GR is
 upstream of both interventions. \textbf{Interpretation.} That the effects add ($|\Delta_{\text{both}}-
-(\Delta_{\text{conflict}}+\Delta_{\text{notes}})|\leq0.012$) is itself a
+(\Delta_{\text{conflict}}+\Delta_{\text{notes}})|\leq0.010$ on every metric,
+Appendix~\ref{app:oracle}) is itself a
 construct-validity argument for the decomposition. For \emph{baseline} models
 every oracle instead \emph{hurts}, catastrophically so for grounding under the
 conflict label ($-0.238$), a second internalization result.
@@ -120,11 +121,13 @@ method examined. \textbf{Citation behaviour.} Trace supervision changes citation
 \label{sec:answeronly}
 
 The comparators above are prompt-only. This one is a matched SFT comparator.
-We fine-tune Llama-3.1-8B and Qwen2.5-7B on the identical data and QLoRA
-configuration as the trace-supervised runs, but with the trace removed from
-the supervision target. Appendix~\ref{app:answeronly} gives the exact target format. Because data, base model and optimiser are
-held fixed, any remaining gap is attributable to the trace itself rather than
-to additional supervision volume. Under the minimal prompt, trace supervision
+We fine-tune Llama-3.1-8B and Qwen2.5-7B on the same 862 base examples and
+QLoRA configuration as the trace-supervised runs, but with the trace removed
+from the supervision target; the trace-supervised recipes add a further
+27--48 derived examples (Appendix~\ref{app:sft}). Appendix~\ref{app:answeronly} gives the exact target format. Because base data, model and optimiser are
+otherwise held fixed, most of any remaining gap is attributable to the trace
+itself, not fully isolated from this small supervision-volume difference.
+Under the minimal prompt, trace supervision
 exceeds this answer-only baseline on every metric for both models, with the
 largest gap on Refusal Precision (Table~\ref{tab:aodelta}, Appendix~\ref{app:answeronly}).
 Answer Quality (Appendix~\ref{app:aggregate}), the
@@ -250,9 +253,12 @@ experiments, or implementing the fine-tuning and evaluation code) was
 performed by generative AI; these are the authors' own.
 
 \paragraph{Recommended disclosure.} We also used generative AI tools to edit
-this manuscript for readability and length. This included tightening prose,
-checking citation formatting and cross-reference integrity, and compressing
-the main text to the submission page limit.
+this manuscript. This included tightening prose, enforcing consistent
+table formatting and typography, verifying citation accuracy and
+cross-reference integrity, compressing the main text to the submission page
+limit, and drafting appendix analyses and disclosures added in response to
+internal review, with every number checked against the underlying
+released results before inclusion.
 
 \paragraph{Accountability.} All experimental design, analysis, and claims are
 the authors' own. We reviewed every edited passage against the source

@@ -106,7 +106,7 @@ every model and prompt setting we test. Trace-tuned models are also far more
 consistent across different prompt phrasings, while baseline behavior swings
 widely. Answer quality itself does not improve: single-truth recall
 is unchanged, and the grounding advantage we see under well-specified prompts
-disappears once we correct two measurement artefacts we identify. Overall,
+disappears once we correct a measurement artefact we identify. Overall,
 structured evidence traces make conflict-aware refusal reliable and
 prompt-robust without improving the model's ability to find correct answers.
 \end{abstract}
@@ -190,12 +190,13 @@ three. We compute grounded refusal deterministically.}
 \end{figure}
 
 \textbf{A benchmark that can carry the claim.} Testing this requires evaluation
-data that the training distribution did not shape. We built an independent
-736-example benchmark with \emph{zero} identifier overlap with training, and
-we verified this on the released files rather than merely asserting it.
-Because open-web retrieval cannot surface some conflict regimes, a curated
-track supplies them, and we report its composition per class
-(\S\ref{sec:data}).
+data that is genuinely held out. We built an independent 736-example
+benchmark with \emph{zero} identifier or normalised-query overlap with
+training, verified on the released files rather than merely asserted
+(a recipe-development caveat on this disjointness is in
+Appendix~\ref{app:sft}). Because open-web retrieval cannot surface some
+conflict regimes, a curated track supplies them, and we report its
+composition per class (\S\ref{sec:data}).
 
 Trace supervision's clearest gain is the refusal decision: F1 rises from as
 low as $0.429$ without it to at least $0.826$ with it, and this gain holds

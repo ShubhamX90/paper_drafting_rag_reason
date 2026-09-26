@@ -39,7 +39,8 @@ artifacts.}
 Table~\ref{tab:tracks} gives the full breakdown referenced in
 \S\ref{sec:data}. The three tracks are structurally distinguishable, which is
 why we report them separately rather than as one pool. Track~A records carry
-live retrieval URLs across $1{,}431$ distinct domains and five documents each.
+live retrieval URLs across $1{,}423$ distinct domains, and 503 of the 508
+records have exactly five documents each (5 records have six to eight).
 Track~B records use placeholder URLs inherited from the upstream refusal
 resource and are uniformly five documents. Track~C records are internally
 homogeneous by source: all 78 Wikipedia-revision items have exactly four
@@ -436,11 +437,16 @@ claim a blindness the development process did not have.
 \subsection{Recipe}
 
 This comparator isolates what the evidence trace itself contributes, holding
-data and optimisation fixed. It reuses the identical 862/81/736
+most of the data and the optimisation fixed. It reuses the same 862/81/736
 train/validation/benchmark split and the identical QLoRA configuration (rank
 32, $\alpha=64$, dropout $0.05$, learning rate $2\times10^{-4}$, maximum
-sequence length $12{,}288$, NEFTune $\alpha=5.0$) as the trace-supervised runs
-(Appendix~\ref{app:sft}), changing only the supervision target. The
+sequence length $12{,}288$, NEFTune $\alpha=5.0$) as the trace-supervised
+runs, changing the supervision target. It is not, however, trained on
+exactly the same source examples as those runs: the trace-supervised recipes
+augment the base 862 with 27 further derived examples for recipe~K (Qwen)
+and 48 for recipe~L (Llama, Mistral), so the trace-supervised side of this
+comparison has slightly more source data, not just a different supervision
+target (Appendix~\ref{app:sft}). The
 assistant message contains \emph{only} the final grounded answer or the
 canonical refusal string, immediately followed by \texttt{[[END-OF-ANSWER]]}.
 It contains no \texttt{<think>} block, document-verdict array or
@@ -453,7 +459,7 @@ is deterministic (temperature $0$), with the same 4-bit base-model loading and
 LoRA adapter as the trace-supervised runs. Evaluation runs the two prompt
 families through refusal-decision metrics: precision, recall and F1 for the
 answer and the refuse class, and overall classification accuracy. On the
-same generations, it also computes the paper's own Behavioural Adherence, Factual Grounding and
+same generations, it also computes the paper's own Behaviour Adherence, Factual Grounding and
 Single-Truth Recall components. Answer Quality is the same AQ quantity defined
 in Appendix~\ref{app:aggregate} (the geometric mean of Factual Grounding and
 Single-Truth Recall, or Factual Grounding alone where Single-Truth Recall does
@@ -504,7 +510,7 @@ $+13.82$pp (Qwen2.5-7B), Factual Grounding by $+13.92$pp and $+15.41$pp, and
 Answer Quality by $+11.60$pp and $+16.80$pp. Refusal Precision shows the
 largest single gap ($+18.60$pp and $+19.59$pp): answer-only supervision, on
 identical data and compute, does not learn the same calibrated
-answer/refuse decision that the trace does. Behavioural Adherence and
+answer/refuse decision that the trace does. Behaviour Adherence and
 Single-Truth Recall also favour the trace in every cell, though by a smaller
 and less even margin ($+7.36$pp/$+3.64$pp and $+1.72$pp/$+7.31$pp
 respectively). This is a matched comparison: because the two supervision
@@ -563,12 +569,13 @@ length of the raw saved output (not a tokeniser count) over the full
 Table~\ref{tab:outputlength} gives trace-tuned, answer-only-supervised and
 direct-answer baseline lengths for all four models; Table~\ref{tab:outputlengthbaselines}
 gives the two prompting-only comparators for the two models whose raw
-generations were retained. Trace-tuned outputs run roughly $6$--$10\times$
-longer than the corresponding answer-only outputs for Qwen2.5-7B and
-Llama-3.1-8B, and roughly $6$--$7\times$ longer than the direct-answer
-baseline for every model. Mistral-7B's answer-only model is the one
-exception, itself emitting long, verbose answers ($1{,}545$ characters on
-average) despite receiving no trace supervision.
+generations were retained. Trace-tuned outputs run roughly $10\times$ longer
+than the corresponding answer-only outputs for Qwen2.5-7B and Llama-3.1-8B,
+and $4.6$--$8.6\times$ longer than the direct-answer baseline, depending on
+the model (smallest for Qwen2.5-32B, largest for Llama-3.1-8B). Mistral-7B's
+answer-only model is the one exception to the first comparison, itself
+emitting long, verbose answers ($1{,}545$ characters on average) despite
+receiving no trace supervision.
 
 We do not report a matched wall-clock or tokens-per-second comparison.
 Generation timing was logged only as an aggregate per-job duration on a
@@ -1011,8 +1018,9 @@ Behaviour reaches $0.789$ ($\kappa=0.483$, $n=256$), strict recall $0.948$
 ($\kappa=0.876$, $n=194$) and claim-level grounding $0.949$ ($\kappa=0.888$,
 $n=428$). Consensus filtering improves interpretability but retains easier cases
 disproportionately, so we report it alongside rather than instead of the
-row-level frame. The misinformation behaviour stratum does not improve under
-consensus ($0.588$, $\kappa=0.165$), which confirms that its weakness is not
+row-level frame. The misinformation behaviour stratum barely improves under
+consensus ($0.588$, $\kappa=0.165$, against $0.581$/$\kappa=0.149$ row-level),
+far less than every other stratum, which confirms that its weakness is not
 merely reviewer noise.
 
 \paragraph{Alignment integrity.} Claim-level comparisons require pairing human and
@@ -1195,7 +1203,7 @@ model-dependence of the denominator itself.
 \begin{table}[htbp]
 \centering
 \input{tables/tab_fgdenom}
-\caption{\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in none of the strict cells.}
+\caption{\textbf{The Factual-Grounding denominator is model-dependent.} $\textit{fg\_n}=608+\textit{missed refusals}$, so a baseline model that rarely refuses is additionally scored on ${\sim}130$ refusal-required items whose evidence is insufficient by construction, while its false abstentions enter the denominator at $\mathrm{FG}=0$. The \emph{like-for-like} columns bound FG on the population where the model answered \emph{and} the gold label is answerable. A check mark marks cells where the fine-tuned interval lies strictly above the baseline interval: this holds in every minimal-prompt cell and in two of the eight strict/runtime cells (Qwen2.5-7B runtime and Mistral-7B strict).}
 \label{tab:fgdenom}
 \end{table}
 
@@ -1295,7 +1303,7 @@ pattern, with baseline spreads of $0.047$--$0.196$. The result also reproduces o
 measurements never part of CATS. Analysing cited-document behaviour separately
 (Appendix~\ref{app:citation}), baseline citation sufficiency swings by $0.730$
 across the prompt ladder while fine-tuned sufficiency swings by $0.011$, a factor
-of roughly seventy. This holds on an instrument built after and independently of the
+of roughly sixty-five. This holds on an instrument built after and independently of the
 framework whose claim it corroborates.
 
 
@@ -1311,12 +1319,15 @@ framework whose claim it corroborates.
 
 \subsection{Additivity, exceptions and baseline behaviour}
 
-Over the cells common to all three oracle conditions, the residual
+Using the mean $\Delta$ values in Table~\ref{tab:oracle}, the residual
 $|\Delta_{\text{both}}-(\Delta_{\text{conflict}}+\Delta_{\text{notes}})|$ is at
-most $0.012$ on every grounding metric. Behaviour is the single exception, with a
-residual of $-0.014$: supplying both oracles yields \emph{less} behavioural gain
-than the conflict label alone, consistent with the long injected notes block
-competing for attention with the label the model is asked to reproduce.
+most $0.010$ on every grounding metric and on Behaviour Adherence alike; the
+conflict-oracle column excludes Qwen2.5-32B ($n=9$) while the notes and both
+columns include it ($n=12$), so this is not a fully matched-cell comparison.
+For Behaviour Adherence specifically, supplying both oracles yields
+\emph{less} gain than the conflict label alone ($+0.011$ against $+0.013$),
+consistent with the long injected notes block competing for attention with
+the label the model is asked to reproduce.
 
 Two caveats keep the claim honest. The effects are small in absolute terms, so it
 is their \emph{consistency} across cells rather than their magnitude that carries

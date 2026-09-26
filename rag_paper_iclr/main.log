@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.25)  26 SEP 2026 15:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.25)  26 SEP 2026 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -991,12 +991,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 /usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 ]
-<Ragreason.png, id=360, 1569.865pt x 938.50626pt>
+<Ragreason.png, id=361, 1569.865pt x 938.50626pt>
 File: Ragreason.png Graphic file (type png)
 <use Ragreason.png>
 Package pdftex.def Info: Ragreason.png  used on input line 174.
 (pdftex.def)             Requested size: 212.47357pt x 127.19409pt.
-<Overall_System_Diagram_drawio.png, id=362, 1485.55pt x 1060.96375pt>
+<Overall_System_Diagram_drawio.png, id=363, 1485.55pt x 1060.96375pt>
 File: Overall_System_Diagram_drawio.png Graphic file (type png)
 <use Overall_System_Diagram_drawio.png>
 Package pdftex.def Info: Overall_System_Diagram_drawio.png  used on input line 
@@ -1013,7 +1013,7 @@ LaTeX Font Warning: Font shape `T1/ptm/m/scit' undefined
 (Font)              using `T1/ptm/m/it' instead on input line 56.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5667) has occurred while \output is active []
 
  [8]
 [9]) (./main.bbl [10]
@@ -1160,34 +1160,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 391--401
 hmarks .
  []
 
-) (./appendix.tex (./tables/tab_tracks.tex) [14] [15]
+) (./appendix.tex (./tables/tab_tracks.tex) [14]
+Underfull \vbox (badness 3965) has occurred while \output is active []
+
+ [15]
 <figures/fig14_dataset_composition.png, id=759, 277.33612pt x 414.348pt>
 File: figures/fig14_dataset_composition.png Graphic file (type png)
 <use figures/fig14_dataset_composition.png>
 Package pdftex.def Info: figures/fig14_dataset_composition.png  used on input l
-ine 125.
+ine 126.
 (pdftex.def)             Requested size: 183.08894pt x 273.5422pt.
 <figures/fig15_dataset_quality.png, id=760, 320.397pt x 438.438pt>
 File: figures/fig15_dataset_quality.png Graphic file (type png)
 <use figures/fig15_dataset_quality.png>
 Package pdftex.def Info: figures/fig15_dataset_quality.png  used on input line 
-130.
+131.
 (pdftex.def)             Requested size: 199.90541pt x 273.5422pt.
- [16 <./figures/fig14_dataset_composition.png> <./figures/fig15_dataset_quality
-.png>]
-(./tables/tab_stage1_humanhuman.tex) (./tables/tab_stage1_llmhuman.tex)
-[17] (./tables/tab_stage1_confusion.tex) [18] (./tables/tab_trainiaa.tex)
-(./tables/tab_benchiaa.tex) [19] [20]
-Underfull \vbox (badness 4467) has occurred while \output is active []
 
- [21]
+[16] [17 <./figures/fig14_dataset_composition.png> <./figures/fig15_dataset_qua
+lity.png>] (./tables/tab_stage1_humanhuman.tex)
+(./tables/tab_stage1_llmhuman.tex) (./tables/tab_stage1_confusion.tex) [18]
+(./tables/tab_trainiaa.tex) (./tables/tab_benchiaa.tex) [19] [20] [21]
 (./tables/tab_answeronly_llama.tex) (./tables/tab_answeronly_qwen.tex)
 (./tables/tab_answeronly_delta.tex) [22] (./tables/tab_outputlength.tex)
-(./tables/tab_outputlength_baselines.tex)
-Underfull \vbox (badness 1552) has occurred while \output is active []
+Underfull \vbox (badness 1215) has occurred while \output is active []
 
  [23]
-(./tables/tab_taxonomy.tex
+(./tables/tab_outputlength_baselines.tex) (./tables/tab_taxonomy.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--5
 []|\T1/ptm/m/n/9 (+20) Complementary
  []
@@ -1198,126 +1197,131 @@ Underfull \hbox (badness 2310) in paragraph at lines 8--8
  []
 
 ) [24] [25] [26]
-<figures/fig2_aggregate_choice.png, id=881, 664.52264pt x 273.1806pt>
+<figures/fig2_aggregate_choice.png, id=885, 664.52264pt x 273.1806pt>
 File: figures/fig2_aggregate_choice.png Graphic file (type png)
 <use figures/fig2_aggregate_choice.png>
 Package pdftex.def Info: figures/fig2_aggregate_choice.png  used on input line 
-793.
+800.
 (pdftex.def)             Requested size: 377.60951pt x 155.23518pt.
-<figures/fig3_refusal_credit.png, id=882, 664.52264pt x 298.11375pt>
+<figures/fig3_refusal_credit.png, id=886, 664.52264pt x 298.11375pt>
 File: figures/fig3_refusal_credit.png Graphic file (type png)
 <use figures/fig3_refusal_credit.png>
-Package pdftex.def Info: figures/fig3_refusal_credit.png  used on input line 80
-3.
+Package pdftex.def Info: figures/fig3_refusal_credit.png  used on input line 81
+0.
 (pdftex.def)             Requested size: 377.60951pt x 169.40349pt.
- [27 <./figures/fig2_aggregate_choice.png>] [28 <./figures/fig3_refusal_credit.
+ [27] [28 <./figures/fig2_aggregate_choice.png> <./figures/fig3_refusal_credit.
 png>]
-<figures/fig7_weight_structure.png, id=899, 322.806pt x 331.2375pt>
+<figures/fig7_weight_structure.png, id=902, 322.806pt x 331.2375pt>
 File: figures/fig7_weight_structure.png Graphic file (type png)
 <use figures/fig7_weight_structure.png>
 Package pdftex.def Info: figures/fig7_weight_structure.png  used on input line 
-902.
+909.
 (pdftex.def)             Requested size: 200.16228pt x 205.39099pt.
-<figures/fig12_significance_reliability.png, id=900, 320.99925pt x 360.44662pt>
+<figures/fig12_significance_reliability.png, id=903, 320.99925pt x 360.44662pt>
 
 File: figures/fig12_significance_reliability.png Graphic file (type png)
 <use figures/fig12_significance_reliability.png>
 Package pdftex.def Info: figures/fig12_significance_reliability.png  used on in
-put line 907.
+put line 914.
 (pdftex.def)             Requested size: 182.91269pt x 205.39099pt.
  (./tables/tab_human.tex) (./tables/tab_judges.tex)
 [29 <./figures/fig7_weight_structure.png> <./figures/fig12_significance_reliabi
-lity.png>] (./tables/tab_bytype.tex
-Underfull \vbox (badness 8132) has occurred while \output is active []
+lity.png>]
+Underfull \vbox (badness 4254) has occurred while \output is active []
 
- [30])
-[31]
-<figures/fig8_citation_sufficiency.png, id=943, 273.72263pt x 464.33475pt>
+ [30]
+(./tables/tab_bytype.tex) [31] [32]
+<figures/fig8_citation_sufficiency.png, id=954, 273.72263pt x 464.33475pt>
 File: figures/fig8_citation_sufficiency.png Graphic file (type png)
 <use figures/fig8_citation_sufficiency.png>
 Package pdftex.def Info: figures/fig8_citation_sufficiency.png  used on input l
-ine 1149.
+ine 1157.
 (pdftex.def)             Requested size: 132.96413pt x 225.55482pt.
-<figures/fig9_precision_paradox.png, id=944, 279.444pt x 252.04163pt>
+<figures/fig9_precision_paradox.png, id=955, 279.444pt x 252.04163pt>
 File: figures/fig9_precision_paradox.png Graphic file (type png)
 <use figures/fig9_precision_paradox.png>
 Package pdftex.def Info: figures/fig9_precision_paradox.png  used on input line
- 1154.
+ 1162.
 (pdftex.def)             Requested size: 250.08589pt x 225.55482pt.
-<figures/fig6_comparators.png, id=947, 664.52264pt x 261.25604pt>
+<figures/fig6_comparators.png, id=958, 664.52264pt x 261.25604pt>
 File: figures/fig6_comparators.png Graphic file (type png)
 <use figures/fig6_comparators.png>
-Package pdftex.def Info: figures/fig6_comparators.png  used on input line 1165.
+Package pdftex.def Info: figures/fig6_comparators.png  used on input line 1173.
 
 (pdftex.def)             Requested size: 377.60951pt x 148.45905pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32]
-(./tables/tab_fgdenom.tex) (./tables/tab_internalization.tex)
-<figures/fig11_fg_denominator.png, id=960, 746.91045pt x 304.9794pt>
+ [33 <./figures/fig8_citation_sufficiency.png> <./figures/fig9_precision_parado
+x.png> <./figures/fig6_comparators.png>] (./tables/tab_fgdenom.tex)
+(./tables/tab_internalization.tex)
+<figures/fig11_fg_denominator.png, id=970, 746.91045pt x 304.9794pt>
 File: figures/fig11_fg_denominator.png Graphic file (type png)
 <use figures/fig11_fg_denominator.png>
 Package pdftex.def Info: figures/fig11_fg_denominator.png  used on input line 1
-211.
+219.
 (pdftex.def)             Requested size: 377.60951pt x 154.18323pt.
-<figures/fig1_internalization.png, id=961, 273.72263pt x 455.90324pt>
+<figures/fig1_internalization.png, id=971, 273.72263pt x 455.90324pt>
 File: figures/fig1_internalization.png Graphic file (type png)
 <use figures/fig1_internalization.png>
 Package pdftex.def Info: figures/fig1_internalization.png  used on input line 1
-228.
+236.
 (pdftex.def)             Requested size: 126.9205pt x 211.38997pt.
-<figures/fig16_ba_strict.png, id=962, 238.7319pt x 197.0562pt>
+<figures/fig16_ba_strict.png, id=972, 238.7319pt x 197.0562pt>
 File: figures/fig16_ba_strict.png Graphic file (type png)
 <use figures/fig16_ba_strict.png>
-Package pdftex.def Info: figures/fig16_ba_strict.png  used on input line 1233.
+Package pdftex.def Info: figures/fig16_ba_strict.png  used on input line 1241.
 (pdftex.def)             Requested size: 256.10722pt x 211.38997pt.
- [33 <./figures/fig8_citation_sufficiency.png> <./figures/fig9_precision_parado
-x.png> <./figures/fig6_comparators.png>] [34 <./figures/fig11_fg_denominator.pn
-g>]
-<figures/fig17_ba_minimal.png, id=984, 238.7319pt x 197.0562pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34]
+Underfull \vbox (badness 3884) has occurred while \output is active []
+
+ [35 <./figures/fig11_fg_denominator.png> <./figures/fig1_internalization.png> 
+<./figures/fig16_ba_strict.png>]
+<figures/fig17_ba_minimal.png, id=995, 238.7319pt x 197.0562pt>
 File: figures/fig17_ba_minimal.png Graphic file (type png)
 <use figures/fig17_ba_minimal.png>
-Package pdftex.def Info: figures/fig17_ba_minimal.png  used on input line 1273.
+Package pdftex.def Info: figures/fig17_ba_minimal.png  used on input line 1281.
 
 (pdftex.def)             Requested size: 199.89594pt x 164.99275pt.
-<figures/fig13_oracle_heatmap.png, id=985, 316.7835pt x 285.4665pt>
+<figures/fig13_oracle_heatmap.png, id=996, 316.7835pt x 285.4665pt>
 File: figures/fig13_oracle_heatmap.png Graphic file (type png)
 <use figures/fig13_oracle_heatmap.png>
 Package pdftex.def Info: figures/fig13_oracle_heatmap.png  used on input line 1
-278.
+286.
 (pdftex.def)             Requested size: 183.10133pt x 164.99275pt.
-
-(./tables/tab_oracle.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [35 <./figures/fig1_internalization.png> <./figures/fig16_ba_strict.png>]
-<figures/fig5_oracle_mechanism.png, id=1000, 719.5683pt x 282.8166pt>
+ (./tables/tab_oracle.tex)
+<figures/fig5_oracle_mechanism.png, id=1004, 719.5683pt x 282.8166pt>
 File: figures/fig5_oracle_mechanism.png Graphic file (type png)
 <use figures/fig5_oracle_mechanism.png>
 Package pdftex.def Info: figures/fig5_oracle_mechanism.png  used on input line 
-1336.
+1347.
 (pdftex.def)             Requested size: 377.60951pt x 148.41188pt.
- [36 <./figures/fig17_ba_minimal.png> <./figures/fig13_oracle_heatmap.png>] [37
- <./figures/fig5_oracle_mechanism.png>]
-Underfull \hbox (badness 10000) in alignment at lines 1408--1419
+ [36 <./figures/fig17_ba_minimal.png> <./figures/fig13_oracle_heatmap.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37 <./figures/fig5_oracle_mechanism.png>]
+Underfull \hbox (badness 10000) in alignment at lines 1419--1430
 [] 
  []
 
+[38]
 LaTeX Font Info:    Trying to load font information for TS1+pcr on input line 1
-448.
-(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+459.
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [38]
-[39] [40] [41]
+
+[39] [40] [41] [42]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1449.
+            Default family used instead on input line 1460.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1328,55 +1332,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1449.
+            Default family used instead on input line 1460.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1449.
+            Default family used instead on input line 1460.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1449.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [42{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
-ts1.enc}]
-[43] [44]
+            Default family used instead on input line 1460.
+ [43{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
+ts1.enc}] [44]
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
+            Default family used instead on input line 1528.
 LaTeX Info: Symbol \textasciigrave not provided by
             font family pcr in TS1 encoding.
-            Default family used instead on input line 1517.
- [45] [46] (./tables/tab_iaafull.tex
-ignored: Infinite glue shrinkage found in box being 
-split [47])
-(./tables/tab_catsbinfull.tex
-ignored: Infinite glue shrinkage found in box being split [
-48]
-ignored: Infinite glue shrinkage found in box being split [49])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [50]
-(./tables/tab_catscontfull.tex) (./tables/tab_cifull.tex [51])
-(./tables/tab_full.tex) [52]) [53] [54] (./main.aux)
+            Default family used instead on input line 1528.
+ [45] [46] (./tables/tab_iaafull.tex [47])
+(./tables/tab_catsbinfull.tex [48]
+ignored: Infinite glue shrinkage found in box being sp
+lit [49]
+ignored: Infinite glue shrinkage found in box being split [50]) (./tables/tab_ca
+tscontfull.tex
+ignored: Infinite glue shrinkage found in box being split
+[51]) (./tables/tab_cifull.tex) [52] (./tables/tab_full.tex) [53]) [54]
+(./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1385,11 +1382,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 63F277CCFB80462934025D9BFBF6FBA1;14041.
  ) 
 Here is how much of TeX's memory you used:
- 30712 strings out of 469006
- 600561 string characters out of 5454813
- 1261730 words of memory out of 5000000
- 58003 multiletter control sequences out of 15000+600000
- 725046 words of font info for 443 fonts, out of 8000000 for 9000
+ 30708 strings out of 469006
+ 600518 string characters out of 5454813
+ 1268355 words of memory out of 5000000
+ 58002 multiletter control sequences out of 15000+600000
+ 724821 words of font info for 441 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  106i,15n,108p,1001b,1001s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -1419,10 +1416,10 @@ c/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026basic/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026basic/texmf-di
 st/fonts/type1/urw/times/utmri8a.pfb></usr/local/texlive/2026basic/texmf-dist/f
 onts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (54 pages, 2648806 bytes).
+Output written on main.pdf (54 pages, 2649871 bytes).
 PDF statistics:
- 1315 PDF objects out of 1440 (max. 8388607)
- 1156 compressed objects within 12 object streams
+ 1319 PDF objects out of 1440 (max. 8388607)
+ 1160 compressed objects within 12 object streams
  283 named destinations out of 1000 (max. 500000)
  76994 words of extra memory for PDF output out of 89155 (max. 10000000)
 
