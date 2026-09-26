@@ -4,8 +4,8 @@
 
 An example consists of a query $q$ and a retrieved set $D=\{d_1,\dots,d_N\}$. The
 system must produce either a citation-linked answer or the controlled refusal
-string \texttt{CANNOT ANSWER, INSUFFICIENT EVIDENCE}, reasoning only over the
-retrieved evidence and refusing when that evidence is insufficient. Rather than
+string \texttt{CANNOT ANSWER, INSUFFICIENT EVIDENCE}. It reasons only over the
+retrieved evidence and refuses when that evidence is insufficient. Rather than
 mapping $(q,D)$ directly to a response, we supervise an intermediate
 representation emitted as part of the output.
 
@@ -13,31 +13,31 @@ representation emitted as part of the output.
 \{\textit{supports}, \textit{partially supports}, \textit{irrelevant}\}, a
 one-sentence key fact entailed by the snippet, and a coarse source-quality label.
 The \textit{partially supports} class is deliberately broad, covering on-topic
-but incomplete, hedged, scoped or single-facet evidence, because collapsing
-retrieval into a binary useful/useless distinction produces the failure mode we
-care about: refusing whenever no single snippet is individually decisive.
+but incomplete, hedged, scoped, or single-facet evidence. This choice avoids
+the failure mode we care about: a binary useful/useless split causes refusal
+whenever no single snippet is individually decisive.
 
 \paragraph{Stage 2: conflict analysis.} The Stage-1 judgments are aggregated into
-exactly one of five labels, each prescribing a different aggregation strategy;
+exactly one of five labels, each prescribing a different aggregation strategy.
 Table~\ref{tab:taxonomy} (Appendix~\ref{app:cats}) gives each type's definition
 and the response behaviour it requires. The taxonomy separates
 \emph{complementarity} from \emph{conflict}: two snippets can contribute
 different necessary pieces without disagreeing.
 
 \paragraph{Stage 3: grounded synthesis.} Stages 1 and 2 are emitted \emph{inside}
-the \verb|<think>| block; Stage 3 is the response itself and sits outside it. The
+the \verb|<think>| block. Stage 3 is the response itself and sits outside it. The
 final response is conditioned on the conflict label, with sentence-level
 \texttt{[dX]} citations, or is the exact refusal string, terminating with
-\verb|[[END-OF-ANSWER]]| (Figure~\ref{fig:system} places this in the overall
-pipeline).
+\verb|[[END-OF-ANSWER]]|. Figure~\ref{fig:system} places this in the overall
+pipeline.
 
 \section{Dataset Generation and Validation}
 \label{sec:data}
 
-This section describes the generated dataset and how it was validated
-(Table~\ref{tab:data}). Appendix~\ref{app:data} gives the complete construction
-record, per-source distributions, retrieval protocol and human-review
-statistics.
+Table~\ref{tab:data} summarizes the generated dataset and its validation.
+Appendix~\ref{app:data} gives the complete construction record, per-source
+distributions, and retrieval protocol; Appendix~\ref{app:human-review} gives
+the human-review statistics.
 
 \begin{table}[htbp]
 \centering
@@ -51,19 +51,19 @@ statistics.
 \input{tables/tab_cats}
 \end{minipage}
 \dualcaption{table}{tab:data}{tab:cats}%
-{\textbf{Dataset composition and scale.} Conflict-type and answerability distribution of the training split (943 records, including validation) and the held-out benchmark (736). The benchmark is deliberately harder than the training distribution: fewer no-conflict cases ($28.7\%$ against $36.4\%$), a $1.5\times$ larger outdated-information share and a $2.4\times$ larger misinformation share. Full per-source composition in Appendix~\ref{app:data}}%
+{\textbf{Dataset composition and scale.} Conflict-type and answerability distribution of the training split (943 records, including validation) and the held-out benchmark (736). The benchmark is deliberately harder than the training distribution. It has fewer no-conflict cases ($28.7\%$ against $36.4\%$), a $1.5\times$ larger outdated-information share, and a $2.4\times$ larger misinformation share. Full per-source composition in Appendix~\ref{app:data}}%
 {\textbf{The four CATS components}, each reported over its own applicability denominator because the constructs apply to different subsets of examples. Appendix~\ref{app:cats} gives the full definitions, FG eligibility rules, per-type BA policies and the committee voting rule.}
 \end{table}
 
 \subsection{Training and validation}
 
-The 943-example training release (862 train / 81 validation) unions three source
-families: 458 normalised examples from the \textsc{Conflicts} collection
-\citep{cattan2025dragged}, 272 held-out refusal examples derived from
-Trust-Align \citep{song2025trustalign} and 213 examples drawn from the
-benchmark construction stream that were \emph{not} admitted to the final
-benchmark. All 213 were checked for identifier overlap against the released
-benchmark; the intersection is empty.
+The 943-example training release (862 train / 81 validation) combines three
+source families: \textsc{Conflicts} \citep{cattan2025dragged} and held-out
+refusal examples derived from Trust-Align \citep{song2025trustalign}. The
+third family draws on examples from the benchmark construction stream that
+were \emph{not} admitted to the final benchmark. We checked these examples for
+identifier overlap against the released benchmark and found the intersection
+empty. Appendix~\ref{app:data} gives the per-family counts.
 
 \subsection{An independent benchmark}
 
@@ -77,51 +77,44 @@ and a query-focused window is selected by a TAS-B dense bi-encoder
 \citep{hofstatter2021tasb}. Appendix~\ref{app:data} gives the full funnel and the
 five-document sampling rule. \textbf{(2) Track B: refusal (128).} Refusal-required examples come from the
 held-out refusal pool of Trust-Align \citep{song2025trustalign} and are
-\emph{not} web-retrieved. \textbf{(3) Track C: curated conflict (100).} Open-web retrieval does not reliably
-surface every conflict regime, one cannot query a search index for the version
-of a fact that was true two years ago. We therefore add 78 examples built from
+\emph{not} web-retrieved. \textbf{(3) Track C: curated conflict (100).} Open-web
+retrieval cannot reliably surface every conflict regime, such as a fact whose
+truth value has since changed. We therefore add 78 examples built from
 dated Wikipedia revision pairs, in the spirit of \citet{hou2024wikicontradict},
 19 multi-hop contexts from HotpotQA \citep{yang2018hotpotqa} and three
-medical/misinformation cases. The track is strongly class-targeted: all 78
-revision-pair examples are \textit{outdated-information} cases, supplying 49\% of
-that class and all 19 multi-hop examples are \textit{complementary}
+medical/misinformation cases. The track is strongly class-targeted, cleanly
+separating outdated-information and complementary cases
 (Table~\ref{tab:tracks}, Appendix~\ref{app:data}).
 
-\subsection{Annotation depth}
+\subsection{Annotation Depth \& Human Review}
 
 Each of the $10{,}343$ retrieved documents carries six fields: an adjudicated
-\textit{verdict}, an extracted \textit{key fact}, a snippet-anchored
-\textit{supporting quote}, a \textit{rationale}, a \textit{source-quality label}
-and the complete \textit{annotator vote tally}. Labels come from a weighted multi-annotator committee that votes on
-the categorical decision at each stage and then adopts the entire explanation
-bundle from the highest-weight member on the winning side, so a verdict, its
-quote and its rationale always come from one coherent interpretation rather than
-being stitched across annotators. The annotation contract requires the key fact
-to be entailed by its quote and the quote to be a contiguous verbatim span of at
-most fifty words (Appendix~\ref{app:annotation}); the prompts that enforce it are
-released with the resource (Appendix~\ref{app:annprompts}).
+\textit{verdict}, an extracted \textit{key fact}, and a snippet-anchored
+\textit{supporting quote}. It also carries a \textit{rationale}, a
+\textit{source-quality label}, and the complete \textit{annotator vote tally}.
+Labels come from a weighted multi-annotator committee that votes on the
+categorical decision at each stage. The committee then adopts the winning
+side's explanation bundle intact from its highest-weight member, keeping each
+verdict, quote, and rationale internally coherent. The annotation contract
+requires the key fact to be entailed by its quote. It also requires the quote
+to be a contiguous verbatim span of at most fifty words. Appendix~\ref{app:annotation}
+gives the formal aggregation rule and the full contract. The prompts that
+enforce it are released with the resource (Appendix~\ref{app:annprompts}).
 
-\subsection{Human review}
-
-Two human workflows, kept separate, cover the two populations. Seven reviewers
-screened the benchmark candidates, recording a retention decision, a preliminary
-conflict type and eight quality judgments: retrieval quality, evidence
-sufficiency, conflict clarity, query specificity, source reliability, the count
-of relevant documents, gold-answer feasibility and reviewer confidence. Five-way
-conflict-type agreement is $94.77\%$ ($\kappa=0.92$) and retention-decision
-agreement is $98.21\%$ ($\kappa=0.92$). Training-side review assigned each base
-example to two reviewers, giving conflict-type agreement of $83.46\%$
-($\kappa=0.77$). The benchmark second pass is \emph{sequential}, so its figures
-measure verification consistency rather than blind double annotation.
-A further, separate study checks the Stage-1 per-document verdict itself
-(supports/partially supports/irrelevant) rather than the downstream
-conflict-type label: on a class-balanced 100-pair sample, three reviewers
-agree with one another at Fleiss' $\kappa=0.83$ and with the committee's
-Stage-1 verdict at $92\%$ exact agreement ($\kappa=0.88$ against the human
-majority). Appendix~\ref{app:human-review} gives the full protocol and
-per-field agreement tables, and Appendix~\ref{app:stage1review} gives this
-Stage-1 study in full, including why it is agreement evidence rather than an
-accuracy validation.
+Two human workflows, kept separate, cover the two populations. Seven
+reviewers screened the benchmark candidates on a retention decision, a
+preliminary conflict type, and eight quality judgments
+(Appendix~\ref{app:human-review} lists each). This screening reached
+$94.77\%$ five-way conflict-type agreement (Cohen's $\kappa=0.92$) and $98.21\%$
+retention agreement ($\kappa=0.92$). Because this second pass is
+\emph{sequential}, the figures measure verification consistency rather than
+blind double annotation. Training-side review (two reviewers per example)
+reached $83.46\%$ conflict-type agreement ($\kappa=0.77$). A separate,
+class-balanced 100-pair study checks the Stage-1 per-document verdict itself,
+not the downstream conflict-type label. Three reviewers agree at Fleiss'
+$\kappa=0.83$ and agree with the committee at $92\%$ ($\kappa=0.88$ against
+the human majority). Appendix~\ref{app:human-review} and
+Appendix~\ref{app:stage1review} give the full protocols.
 
 % ============================================================
 \section{Trace-Supervised Fine-Tuning}
@@ -130,64 +123,62 @@ accuracy validation.
 \subsection{Objective and prompt variants}
 
 The supervision target is the serialised trace followed by the final response.
-Three prompt variants are used: \textbf{strict} states the full taxonomy, verdict
-heuristics and output contract ($1{,}965$ words); \textbf{runtime} keeps a
-compact structural schema ($195$ words); \textbf{minimal} supplies only the
-query, the documents and a four-sentence evidence policy ($40$ words). The
-mixture also includes direct document-verdict, conflict-type and final-response
-supervision as separate task views, so each component decision receives explicit
-signal in isolation as well as inside the full trace. We train \emph{and}
-evaluate across all three variants, which is what makes it testable whether
-conflict-aware behaviour is \emph{learned} or merely \emph{recited} from the
-instruction; \S\ref{sec:internalization} reports the difference, and
-Appendix~\ref{app:e2eprompts} gives the three prompts verbatim together with the
+Three prompt variants are used: the \textbf{strict} prompt states the full
+taxonomy, verdict heuristics, and output contract ($1{,}965$ words). The
+\textbf{runtime} prompt keeps a compact structural schema ($195$ words). The
+\textbf{minimal} prompt supplies only the query, the documents, and a
+four-sentence evidence policy ($40$ words). The mixture also supervises
+document-verdict, conflict-type, and final-response prediction as separate
+task views. This gives each component explicit signal in isolation as well as
+inside the full trace. We train and evaluate across all three variants to
+test whether conflict-aware behaviour is \emph{learned} or merely
+\emph{recited} from the instruction (\S\ref{sec:internalization}).
+Appendix~\ref{app:e2eprompts} gives the three prompts verbatim and their
 design rationale.
 
 \subsection{Fine-tuning}
 All models are fine-tuned with QLoRA
-\citep{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge}
-on the standard token-level cross-entropy of the trace and response, with no
-auxiliary loss. Appendix~\ref{app:sft} gives the hyperparameters, the checkpoint
-selection criterion and the two training mixtures (recipes~K and~L), which differ
-by model family and are needed to interpret the per-model results in
+\citep{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge},
+a parameter-efficient method that trains low-rank adapters (LoRA) atop a
+frozen, quantized base model. Training uses the standard
+token-level cross-entropy of the trace and response, with no auxiliary loss.
+Appendix~\ref{app:sft} gives the hyperparameters, the checkpoint selection
+criterion, and the two training mixtures (recipes~K and~L). These mixtures
+differ by model family and are needed to interpret the per-model results in
 \S\ref{sec:results}.
 
 % ============================================================
 \section{CATS: Conflict-Aware Trust Score}
 \label{sec:cats}
 
-Standard RAG metrics collapse distinct failures: answering when evidence is
-absent, mishandling the conflict type, making unsupported claims and omitting
+Standard RAG metrics collapse distinct failures. Answering when evidence is
+absent, mishandling the conflict type, making unsupported claims, and omitting
 the target answer are all ``a bad answer''. CATS separates them into four
 components with independent applicability.
 
 Table~\ref{tab:cats} states what each component measures and the population it is
-scored over. The definitions are operational: FG counts a claim only when the
+scored over. The definitions are operational. FG counts a claim only when the
 supporting document's \emph{gold} verdict is \textit{supports} or \textit{partially
-supports}, BA is judged against a different expected response for each conflict
-type, and STR excludes conflicting-opinion items because no single conclusion
-exists for them. Appendix~\ref{app:cats} sets out each rule; the denominators
+supports}. STR excludes conflicting-opinion items because no single conclusion
+exists for them. Appendix~\ref{app:cats} sets out each rule. The denominators
 differ, so any comparison against another framework should start there.
 
-\paragraph{Judges:} BA, FG and STR are judged by a committee of three locally
-served open-weight models with fixed weights, aggregated by weighted majority;
-factual-grounding support additionally requires corroboration by at least two
-judges and GR is never committee-judged. We compare this against human review in
-\S\ref{sec:human}. The complete judge
-bundle is one system message plus three task prompts and the five-type behaviour
-rubric, reproduced verbatim in Appendix~\ref{app:catsprompts}; metric definitions
-and aggregation are in Appendix~\ref{app:cats}.
-
-\paragraph{Aggregate scores:} the four components can also be combined into a
+\textbf{Judges:} BA, FG, and STR are judged by a committee of three locally
+served open-weight models with fixed weights, aggregated by weighted majority.
+Factual-grounding support additionally requires corroboration by at least two
+judges, and GR is never committee-judged. We compare this against human review
+in \S\ref{sec:human}. The complete judge bundle is one system message plus
+three task prompts and the five-type behaviour rubric, reproduced verbatim in
+Appendix~\ref{app:catsprompts}. Metric definitions and aggregation are in
+Appendix~\ref{app:cats}. \textbf{Aggregate scores:} the four components can also be combined into a
 single number per example, gated by the answer/refuse decision so that a wrong
 decision scores zero. We define two averages, \textbf{CATS-Prevalence} and
-\textbf{CATS-Balanced}, in Appendix~\ref{app:aggregate}, together with the
-construction and its structural properties. We do not report either in the main
-results: because a refusal-required example is scored on its decision alone,
-such examples carry $40\%$ of CATS-Balanced while making up $17.4\%$ of the
-benchmark, so a model can raise the aggregate by improving refusals without
-improving any answer. Every claim in \S\ref{sec:results} is stated on the
-components.
+\textbf{CATS-Balanced}, in Appendix~\ref{app:aggregate}. We do not report
+either in the main results. Because a refusal-required example is scored on
+its decision alone, such examples carry $40\%$ of CATS-Balanced while making
+up $17.4\%$ of the benchmark. A model can therefore raise the aggregate by
+improving refusals without improving any answer. Every claim in
+\S\ref{sec:results} is stated on the components.
 
 % ============================================================
 \section{Experimental Setup}
@@ -198,31 +189,31 @@ components.
 We fine-tune four instruction-tuned open-weight models, Qwen2.5-7B and
 Qwen2.5-32B \citep{yang2024qwen25}, Llama-3.1-8B \citep{dubey2024llama3} and
 Mistral-7B \citep{jiang2023mistral7b}, and compare each against its baseline
-version on the four CATS components. Within a cell the benchmark examples,
-prompts, decoding policy, retry policy, post-processing and evaluator are
-identical; the only difference is the presence of the LoRA adapter, so any
-difference is attributable to trace supervision. Each pair is evaluated under
-the strict and minimal prompts, with the intermediate runtime prompt reported in
-Appendix~\ref{app:full}. Generation is deterministic (temperature $0$) with profile-specific continuation
-budgets and sentinel-based stopping; retries only enlarge the token budget for
-the identical prompt, never resampling or repairing content
+version on the four CATS components. Within a cell, the benchmark examples,
+prompts, decoding policy, retry policy, post-processing, and evaluator are
+identical. Only the LoRA adapter differs (Table~\ref{tab:main}). Each pair is
+evaluated under the strict and minimal prompts, with the intermediate runtime
+prompt reported in Appendix~\ref{app:full}. Generation is deterministic
+(temperature $0$) with profile-specific continuation budgets and
+sentinel-based stopping. Retries only enlarge the token budget for the
+identical prompt, never resampling or repairing content
 (Appendix~\ref{app:inference}). Per-example scores lie in $[0,1]$, so a
-distribution-free 95\% interval half-width at $n=736$ is $\pm0.034$; we treat
-differences below this as uninformative, report exact sign tests for paired
-comparisons across the twelve model$\times$prompt cells, and use exact
-Clopper--Pearson intervals on the 128-example refusal subgroup.
+distribution-free 95\% interval half-width at $n=736$ is $\pm0.034$. We treat
+differences below this threshold as uninformative. We report exact sign
+tests for paired comparisons across the twelve model$\times$prompt cells, and
+use exact Clopper--Pearson (binomial) intervals on the 128-example refusal
+subgroup.
 
 \subsection{Ablation studies}
 
 \textbf{Oracle ablations.} To test whether the three stages are separable, we
-re-run the fine-tuned models with gold information injected one stage at a time:
-\textbf{+conflict label} supplies the gold Stage-2 type, \textbf{+per-doc notes}
-the gold Stage-1 verdicts and key facts, and \textbf{+both} supplies each. If the
-stages are distinct, an intervention should move the metrics its stage governs
-and leave the rest unchanged (\S\ref{sec:oracle}). \textbf{Comparison with prompting methods.} Two prompting-only strategies on
-baseline models separate what supervision provides from what an elicitation
-prompt can. \emph{Chain-of-Note} \citep{yu2024chainofnote} writes per-document
-reading notes before answering, the closest analogue to our Stage~1;
-\emph{few-shot Chain-of-Thought} \citep{wei2022cot} supplies worked exemplars of
-the reasoning format. Both receive the identical benchmark, decoding policy and
-evaluator.
+re-run the fine-tuned models with gold information injected one stage at a
+time (\S\ref{sec:oracle}). The \textbf{+conflict label} condition supplies the
+gold Stage-2 type, and \textbf{+per-doc notes} supplies the gold Stage-1
+verdicts and key facts. The \textbf{+both} condition supplies each.
+\textbf{Comparison with prompting methods.} \emph{Chain-of-Note}
+\citep{yu2024chainofnote} writes per-document reading notes before answering,
+the closest analogue to our Stage~1. \emph{Few-shot Chain-of-Thought}
+\citep{wei2022cot} supplies worked exemplars of the reasoning format. Both
+receive the identical benchmark, decoding policy, and evaluator
+(\S\ref{sec:comparators}).

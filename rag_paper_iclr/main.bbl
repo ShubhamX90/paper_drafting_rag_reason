@@ -60,7 +60,9 @@ Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi, Yi~Dai,
 Kelvin Guu, Kenton Lee, Zora Tung, Panupong Pasupat, and Ming-Wei Chang.
 \newblock {REALM}: Retrieval-augmented language model pre-training.
 \newblock In \emph{Proceedings of the 37th International Conference on Machine
-  Learning}, 2020.
+  Learning}, volume 119 of \emph{Proceedings of Machine Learning Research},
+  pp.\  3929--3938. PMLR, 2020.
+\newblock URL \url{https://proceedings.mlr.press/v119/guu20a.html}.
 
 \bibitem[Hofst{\"a}tter et~al.(2021)Hofst{\"a}tter, Lin, Yang, Lin, and
   Hanbury]{hofstatter2021tasb}
@@ -69,7 +71,10 @@ Sebastian Hofst{\"a}tter, Sheng-Chieh Lin, Jheng-Hong Yang, Jimmy Lin, and
 \newblock Efficiently teaching an effective dense retriever with balanced topic
   aware sampling.
 \newblock In \emph{Proceedings of the 44th International ACM SIGIR Conference
-  on Research and Development in Information Retrieval}, pp.\  113--122, 2021.
+  on Research and Development in Information Retrieval}, pp.\  113--122. ACM,
+  2021.
+\newblock \doi{10.1145/3404835.3462891}.
+\newblock URL \url{https://doi.org/10.1145/3404835.3462891}.
 
 \bibitem[Hou et~al.(2024)Hou, Pascale, Carnerero-Cano, Tchrakian, Marinescu,
   Daly, Padhi, and Sattigeri]{hou2024wikicontradict}
@@ -78,7 +83,11 @@ Yufang Hou, Alessandra Pascale, Javier Carnerero-Cano, Tigran Tchrakian, Radu
 \newblock {W}iki{C}ontradict: A benchmark for evaluating {LLM}s on real-world
   knowledge conflicts from {W}ikipedia.
 \newblock In \emph{Advances in Neural Information Processing Systems 37:
-  Datasets and Benchmarks Track}, pp.\  109701--109747, 2024.
+  Datasets and Benchmarks Track}, pp.\  109701--109747. Curran Associates,
+  Inc., 2024.
+\newblock \doi{10.52202/079017-3481}.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2024/file/c63819755591ea972f8570beffca6b1b-Paper-Datasets_and_Benchmarks_Track.pdf}.
 
 \bibitem[Hu et~al.(2021)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
   Chen]{hu2021loralowrankadaptationlarge}
@@ -94,8 +103,8 @@ Nan Huo, Jinyang Li, Bowen Qin, Ge~Qu, Xiaolong Li, Xiaodong Li, Chenhao Ma,
 \newblock {M}icro-{A}ct: Mitigate knowledge conflict in question answering via
   actionable self-reasoning.
 \newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
-  for Computational Linguistics (Volume 1: Long Papers)}, Vienna, Austria,
-  2025. Association for Computational Linguistics.
+  for Computational Linguistics (Volume 1: Long Papers)}, pp.\  18550--18574,
+  Vienna, Austria, 2025. Association for Computational Linguistics.
 \newblock URL \url{https://aclanthology.org/2025.acl-long.909/}.
 
 \bibitem[Izacard et~al.(2023)Izacard, Lewis, Lomeli, Hosseini, Petroni, Schick,
@@ -106,6 +115,7 @@ Gautier Izacard, Patrick Lewis, Maria Lomeli, Lucas Hosseini, Fabio Petroni,
 \newblock Atlas: Few-shot learning with retrieval augmented language models.
 \newblock \emph{Journal of Machine Learning Research}, 24\penalty0
   (251):\penalty0 1--43, 2023.
+\newblock URL \url{http://jmlr.org/papers/v24/23-0037.html}.
 
 \bibitem[Jain et~al.(2023)Jain, yeh Chiang, Wen, Kirchenbauer, Chu, Somepalli,
   Bartoldson, Kailkhura, Schwarzschild, Saha, Goldblum, Geiping, and
@@ -135,6 +145,8 @@ Cheng Jiayang, Chunkit Chan, Qianqian Zhuang, Lin Qiu, Tianhang Zhang, Tengxiao
 \newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
   Natural Language Processing}, pp.\  7816--7844, Miami, Florida, USA, 2024.
   Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.emnlp-main.447}.
+\newblock URL \url{https://aclanthology.org/2024.emnlp-main.447/}.
 
 \bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
   K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and Kiela]{lewis2020rag}
@@ -142,7 +154,10 @@ Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
   Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
   Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
 \newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
-\newblock In \emph{Advances in Neural Information Processing Systems}, 2020.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, pp.\  9459--9474. Curran Associates, Inc., 2020.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf}.
 
 \bibitem[Liu et~al.(2025)Liu, Ning, Halder, Qi, Xiao, Htut, Zhang, John, Min,
   Benajiba, and Roth]{liu2025opendomainquestionanswering}
@@ -152,13 +167,16 @@ Siyi Liu, Qiang Ning, Kishaloy Halder, Zheng Qi, Wei Xiao, Phu~Mon Htut,
 \newblock In \emph{Findings of the Association for Computational Linguistics:
   NAACL 2025}, pp.\  1838--1854, Albuquerque, New Mexico, 2025. Association for
   Computational Linguistics.
+\newblock ISBN 979-8-89176-195-7.
+\newblock \doi{10.18653/v1/2025.findings-naacl.99}.
+\newblock URL \url{https://aclanthology.org/2025.findings-naacl.99/}.
 
 \bibitem[Liu et~al.(2026)Liu, Zhang, Guo, Cao, Yuan, Sun, Liu, Hong, and
   Ma]{liu2026craft}
 Yu~Liu, Wenxiao Zhang, Diandian Guo, Cong Cao, Fangfang Yuan, Qiang Sun,
   Yanbing Liu, Jin~B. Hong, and Zhiyuan Ma.
-\newblock {CRAFT}: Calibrated reasoning with answer-faithful traces via
-  reinforcement learning for multi-hop question answering, 2026.
+\newblock Does faithfulness-guided alignment hurt accuracy? unlocking accurate
+  and faithful post-retrieval reasoning, 2026.
 \newblock URL \url{https://arxiv.org/abs/2602.01348}.
 
 \bibitem[{Llama Team, AI at Meta}(2024)]{dubey2024llama3}
@@ -173,7 +191,9 @@ Yifei Ming, Senthil Purushwalkam, Shrey Pandit, Zixuan Ke, Xuan-Phi Nguyen,
 \newblock {F}aith{E}val: Can your language model stay faithful to context, even
   if ``the moon is made of marshmallows''.
 \newblock In \emph{The Thirteenth International Conference on Learning
-  Representations}, 2025.
+  Representations}, pp.\  29430--29456, 2025.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2025/file/48404cd9ce03946c6b7177691f3267a1-Paper-Conference.pdf}.
 
 \bibitem[Muhamed et~al.(2025)Muhamed, Ribeiro, Dreyer, Smith, and
   Diab]{muhamed2025refusalbench}
@@ -190,6 +210,8 @@ Ori Ram, Yoav Levine, Itay Dalmedigos, Dor Muhlgay, Amnon Shashua, Kevin
 \newblock In-context retrieval-augmented language models.
 \newblock \emph{Transactions of the Association for Computational Linguistics},
   11:\penalty0 1316--1331, 2023.
+\newblock \doi{10.1162/tacl_a_00605}.
+\newblock URL \url{https://aclanthology.org/2023.tacl-1.75/}.
 
 \bibitem[Shi et~al.(2023)Shi, Chen, Misra, Scales, Dohan, Chi, Sch{\"a}rli, and
   Zhou]{shi2023largelanguagemodelseasily}
@@ -206,7 +228,9 @@ Maojia Song, Shang~Hong Sim, Rishabh Bhardwaj, Hai~Leong Chieu, Navonil
 \newblock Measuring and enhancing trustworthiness of {LLM}s in {RAG} through
   grounded attributions and learning to refuse.
 \newblock In \emph{The Thirteenth International Conference on Learning
-  Representations}, 2025.
+  Representations}, pp.\  30783--30823, 2025.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2025/file/4c88827decab6c046b881a2c3a99c76f-Paper-Conference.pdf}.
 \newblock arXiv:2409.11242.
 
 \bibitem[Su et~al.(2024)Su, Zhang, Qu, Zhu, Li, Sun, Li, Zhang, and
@@ -226,6 +250,8 @@ Tu~Vu, Mohit Iyyer, Xuezhi Wang, Noah Constant, Jerry Wei, Jason Wei, Chris
 \newblock In \emph{Findings of the Association for Computational Linguistics:
   ACL 2024}, pp.\  13697--13720, Bangkok, Thailand, 2024. Association for
   Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.findings-acl.813}.
+\newblock URL \url{https://aclanthology.org/2024.findings-acl.813/}.
 
 \bibitem[Wan et~al.(2024)Wan, Wallace, and
   Klein]{wan2024evidencelanguagemodelsconvincing}
@@ -234,6 +260,8 @@ Alexander Wan, Eric Wallace, and Dan Klein.
 \newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
   for Computational Linguistics (Volume 1: Long Papers)}, pp.\  7468--7484,
   Bangkok, Thailand, 2024. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.acl-long.403}.
+\newblock URL \url{https://aclanthology.org/2024.acl-long.403/}.
 
 \bibitem[Wang et~al.(2026)Wang, Li, Liu, and Shu]{wang2026conflictrag}
 Chenyu Wang, Yueyuan Li, Yingmin Liu, and Yang Shu.
@@ -253,11 +281,16 @@ Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia,
   Ed~Chi, Quoc~V. Le, and Denny Zhou.
 \newblock Chain-of-thought prompting elicits reasoning in large language
   models.
-\newblock In \emph{Advances in Neural Information Processing Systems}, 2022.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pp.\  24824--24837. Curran Associates, Inc., 2022.
+\newblock \doi{10.52202/068431-1800}.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf}.
 
 \bibitem[Wu et~al.(2026)Wu, Wang, Sun, Lu, Zhang, and
   Chen]{wu2026conflictaware}
-H.~Wu, C.~Wang, C.~Sun, C.~Lu, Z.~Zhang, and Y.~Chen.
+Haiyan Wu, Chenchen Wang, Chaoqun Sun, Chengxiong Lu, Zhiqiang Zhang, and
+  Yanhong Chen.
 \newblock Conflict-aware {RAG}: Multi-stage learning with conflict signals for
   robust retrieval-augmented generation.
 \newblock In \emph{Proceedings of the ACM Web Conference 2026}, pp.\
@@ -272,6 +305,8 @@ Rongwu Xu, Zehan Qi, Zhijiang Guo, Cunxiang Wang, Hongru Wang, Yue Zhang, and
 \newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
   Natural Language Processing}, pp.\  8541--8565, Miami, Florida, USA,
   2024{\natexlab{a}}. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.emnlp-main.486}.
+\newblock URL \url{https://aclanthology.org/2024.emnlp-main.486/}.
 
 \bibitem[Xu et~al.(2024{\natexlab{b}})Xu, Gao, Yu, Bi, Shen, and
   Cheng]{xu2024aliiceevaluatingpositionalfinegrained}
@@ -295,6 +330,8 @@ Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Bengio, William~W. Cohen, Ruslan
 \newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in
   Natural Language Processing}, pp.\  2369--2380, Brussels, Belgium, 2018.
   Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/D18-1259}.
+\newblock URL \url{https://aclanthology.org/D18-1259/}.
 
 \bibitem[Ye et~al.(2026)Ye, Chen, Zhong, Xiao, Zhang, Wu, and
   Shen]{ye2026seeingthrough}
@@ -310,7 +347,9 @@ Ori Yoran, Tomer Wolfson, Ori Ram, and Jonathan Berant.
 \newblock Making retrieval-augmented language models robust to irrelevant
   context.
 \newblock In \emph{The Twelfth International Conference on Learning
-  Representations}, 2024.
+  Representations}, pp.\  29862--29883, 2024.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2024/file/8011b23e1dc3f57e1b6211ccad498919-Paper-Conference.pdf}.
 
 \bibitem[Yu et~al.(2024)Yu, Zhang, Pan, Cao, Ma, Li, Wang, and
   Yu]{yu2024chainofnote}
@@ -321,6 +360,8 @@ Wenhao Yu, Hongming Zhang, Xiaoman Pan, Peixin Cao, Kaixin Ma, Jian Li, Hongwei
 \newblock In \emph{Proceedings of the 2024 Conference on Empirical Methods in
   Natural Language Processing}, pp.\  14672--14685, Miami, Florida, USA, 2024.
   Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2024.emnlp-main.813}.
+\newblock URL \url{https://aclanthology.org/2024.emnlp-main.813/}.
 
 \bibitem[Zhang \& Choi(2021)Zhang and
   Choi]{zhang2021situatedqaincorporatingextralinguisticcontexts}
@@ -329,6 +370,8 @@ Michael J.~Q. Zhang and Eunsol Choi.
 \newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in
   Natural Language Processing}, pp.\  7371--7387, Online and Punta Cana,
   Dominican Republic, 2021. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2021.emnlp-main.586}.
+\newblock URL \url{https://aclanthology.org/2021.emnlp-main.586/}.
 
 \bibitem[Zhang et~al.(2025)Zhang, Xiang, Xiao, Wang, Li, Wang, and
   Su]{zhang2025faithfulrag}
@@ -337,8 +380,11 @@ Qinggang Zhang, Zhishang Xiang, Yilin Xiao, Le~Wang, Junhui Li, Xinrun Wang,
 \newblock {F}aithful{RAG}: Fact-level conflict modeling for context-faithful
   retrieval-augmented generation.
 \newblock In \emph{Proceedings of the 63rd Annual Meeting of the Association
-  for Computational Linguistics (Volume 1: Long Papers)}, Vienna, Austria,
-  2025. Association for Computational Linguistics.
+  for Computational Linguistics (Volume 1: Long Papers)}, pp.\  21863--21882,
+  Vienna, Austria, 2025. Association for Computational Linguistics.
+\newblock ISBN 979-8-89176-251-0.
+\newblock \doi{10.18653/v1/2025.acl-long.1062}.
+\newblock URL \url{https://aclanthology.org/2025.acl-long.1062/}.
 
 \bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
   Li, Xing, Zhang, Gonzalez, and Stoica]{zheng2023judging}
@@ -347,6 +393,10 @@ Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
   Gonzalez, and Ion Stoica.
 \newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
 \newblock In \emph{Advances in Neural Information Processing Systems 36:
-  Datasets and Benchmarks Track}, 2023.
+  Datasets and Benchmarks Track}, pp.\  46595--46623. Curran Associates, Inc.,
+  2023.
+\newblock \doi{10.52202/075280-2020}.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2023/file/91f18a1287b398d378ef22505bf41832-Paper-Datasets_and_Benchmarks.pdf}.
 
 \end{thebibliography}

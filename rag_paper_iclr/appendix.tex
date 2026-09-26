@@ -1,5 +1,7 @@
 \appendix
 
+\section*{Appendix}
+
 \section{Resource Construction}
 \label{app:data}
 
@@ -41,8 +43,17 @@ live retrieval URLs across $1{,}431$ distinct domains and five documents each.
 Track~B records use placeholder URLs inherited from the upstream refusal
 resource and are uniformly five documents. Track~C records are internally
 homogeneous by source: all 78 Wikipedia-revision items have exactly four
-documents drawn from a single domain with revision-dated URLs and all 19
+documents drawn from a single domain with revision-dated URLs. All 19
 multi-hop items have exactly ten documents with no URLs.
+
+\subsection{Training set composition}
+
+The training release combines 458 normalised examples from the
+\textsc{Conflicts} collection \citep{cattan2025dragged} and 272 held-out refusal
+examples derived from Trust-Align \citep{song2025trustalign}. It also includes 213 examples
+drawn from the benchmark construction stream that were not admitted to the
+final benchmark. All 213 were checked for identifier overlap against the
+released benchmark. The intersection is empty.
 
 \subsection{Retrieval funnel}
 
@@ -53,9 +64,9 @@ Retrieval requests twenty results per query and retains at most ten, with a
 query-focused window selected by a TAS-B dense bi-encoder
 \citep{hofstatter2021tasb}. The released records carry a deterministic
 five-document view of those ten, sampled by a seeded rule that takes two from
-the top five and three from the bottom five; this is why Table~\ref{tab:data}
+the top five and three from the bottom five. This is why Table~\ref{tab:data}
 reports a mean of $5.03$ documents per benchmark record rather than ten. The
-reduction keeps the evidence set answerable while preventing the conflicting
+reduction keeps the evidence set answerable. It also prevents the conflicting
 documents from always occupying the highest-ranked positions, which would
 otherwise let a model succeed by attending to rank alone.
 
@@ -66,13 +77,13 @@ contains $1{,}221$ unique reviewed records. The remaining discontinuity is that 
 the $1{,}454$-record consolidated population down to the released benchmark is
 described by a documented predicate, acceptance, reviewer confidence, retrieval
 quality, evidence sufficiency, conflict clarity, query specificity, source
-reliability, relevant-document count and gold-answer feasibility, but no
-per-record script was retained. Relatedly, 105 of the 608 answerable benchmark
+reliability, relevant-document count and gold-answer feasibility. No
+per-record script for that selection was retained. Relatedly, 105 of the 608 answerable benchmark
 records appear in the consolidated review population only as consensus-completed
 entries rather than as first-pass reviews. The refusal track reduces from a
 200-record curated subset to the 128 released records without a documented
-reduction rule, though a 128-record refusal-quality review stratum with complete
-agreement is retained.
+reduction rule. A 128-record refusal-quality review stratum with complete
+agreement is retained, however.
 
 \subsection{Verification of the released files}
 
@@ -102,7 +113,7 @@ JSONL rather than from construction logs.}
 \end{table}
 
 \paragraph{An independent validity check on the refusal track.} Refusal-required
-examples are not merely \emph{labelled} insufficient, the document-level
+examples are not merely \emph{labelled} insufficient. The document-level
 adjudication, which was performed independently of the abstention label,
 confirms it. Decisive \textit{supports} verdicts occur on $3.6\%$ of refusal-track
 documents against $39.3\%$ elsewhere, an eleven-fold difference.
@@ -131,45 +142,45 @@ outdated/misinformation cases}%
 \label{app:annotation}
 
 Annotation is stagewise. At each stage every committee member independently
-receives the same structured input and returns a structured output; the
-committee votes only on the central categorical decision for that stage and
-then adopts the associated natural-language explanation \emph{intact} from the
+receives the same structured input and returns a structured output. The
+committee then votes only on the central categorical decision for that stage
+and adopts the associated natural-language explanation \emph{intact} from the
 highest-weight member that supported the winning decision. The method therefore
 combines committee agreement on decisions with a single internally coherent
-reasoning bundle and never averages or splices prose from different annotators.
+reasoning bundle, and it never averages or splices prose from different annotators.
 
 Formally, for a decision field with candidate values $v$, each successfully
 represented annotator $m$ contributes its configured weight $w_m$ and the
 system selects
 \[
-v^{*}=\arg\max_{v}\ \sum_{m} w_m\,\mathbf{1}[y_m=v],
+v^{*}=\arg\max_{v}\ \sum_{m} w_m\,\mathbf{1}[y_m=v].
 \]
-with exact ties broken deterministically by a fixed candidate ordering, so that
+Exact ties are broken deterministically by a fixed candidate ordering, so that
 re-running the pipeline on identical inputs reproduces identical labels. Writing
 $\mathcal{M}^{*}=\{m:y_m=v^{*}\}$ for the annotators on the winning side, the
 explanation bundle is adopted \emph{intact} from
-$m^{*}=\arg\max_{m\in\mathcal{M}^{*}} w_m$ rather than assembled field-by-field
-across annotators, so a verdict, its quote and its rationale always originate
+$m^{*}=\arg\max_{m\in\mathcal{M}^{*}} w_m$, rather than assembled field-by-field
+across annotators. As a result, a verdict, its quote and its rationale always originate
 from one coherent interpretation. Every note retains
 \texttt{\_vote\_tally}, \texttt{\_winner\_model} and \texttt{\_all\_verdicts},
 so any label can be traced to its vote.
 
-Stage-1 output is constrained: a verdict from the closed set, a key fact
+Stage-1 output is constrained. It always includes a verdict from the closed set, a key fact
 anchored to a quoted span of at most 50 words, a verdict rationale and a
 URL-derived source-quality label. The benchmark-mode Stage-1 prompt differs from
-the ordinary prompt in one consequential way: older, contradictory or otherwise
+the ordinary prompt in one consequential way. Older, contradictory or otherwise
 conflict-bearing evidence about the target is retained as \textit{partially
-supports} rather than discarded as \textit{irrelevant}, so that Stage~2 can see
+supports} rather than discarded as \textit{irrelevant}. This lets Stage~2 see
 the evidence needed to diagnose temporal and scientific conflicts at all.
-Stage-2 votes the conflict label and the answerability flag; Stage-3 votes the
-abstention decision independently of Stage-2 answerability, which is why a
+Stage-2 votes the conflict label and the answerability flag. Stage-3 votes the
+abstention decision independently of Stage-2 answerability. This is why a
 complete analysis must inspect both fields.
 
 Different retained artifacts were produced by different committee
 configurations and we report the configuration alongside the artifact rather
 than applying a single current default retrospectively. Structural validators
-check schema conformance, label inventories and document/note alignment; they do
-not establish quote entailment, factual correctness or temporal ordering, which
+check schema conformance, label inventories and document/note alignment. They do
+not establish quote entailment, factual correctness or temporal ordering. This
 is why the human review of Appendix~\ref{app:human-review} is reported
 separately rather than as a property of the automated pipeline.
 
@@ -191,15 +202,15 @@ per-document verdict (\textit{supports}, \textit{partially supports},
 directly.
 
 \paragraph{Design.} We drew a sample of 100 query--document pairs with
-existing Stage-1 LLM-committee verdicts, seeded (\texttt{20260919}), balanced
+existing Stage-1 LLM-committee verdicts, seeded (\texttt{20260919}). The sample is balanced
 by committee verdict (supports: 34; partially supports: 33; irrelevant: 33)
 and deduplicated so each normalised query appears once. The pairs are drawn
 from the holdout benchmark (46), the training set (50) and the validation
-set (4). Three reviewers each assessed all 100 pairs (300 ratings): each saw
+set (4). Three reviewers each assessed all 100 pairs (300 ratings). Each saw
 the query, the document, and the committee's Stage-1 annotation, and recorded
 agreement or a replacement verdict with a reason. Because reviewers saw the
 committee verdict before recording their own, the review is not blind, and
-anchoring may inflate the agreement figures below; there is also no
+anchoring may inflate the agreement figures below. There is also no
 independent gold-standard label, so these are agreement statistics, not
 accuracy statistics.
 
@@ -216,17 +227,17 @@ and three-rater agreement. Three-way unanimity holds on 83/100 pairs, with a
 \paragraph{Committee--human agreement.} Table~\ref{tab:stage1llm} compares the
 committee's Stage-1 verdict against each reviewer and against the human
 majority. The pooled row treats each of the 300 ratings as a paired
-observation against the same committee label repeated per reviewer; it is
+observation against the same committee label repeated per reviewer. It is
 descriptive, since the ratings cluster within 100 pairs.
 
 \begin{table}[htbp]\centering
 \input{tables/tab_stage1_llmhuman}
-\caption{\textbf{Stage-1 review: committee--human agreement.} \textsuperscript{*}Pooled statistic; the 300 ratings share 100 underlying pairs.}
+\caption{\textbf{Stage-1 review: committee--human agreement.} \textsuperscript{*}Pooled statistic. The 300 ratings share 100 underlying pairs.}
 \label{tab:stage1llm}
 \end{table}
 
 \paragraph{Where the committee and reviewers disagree.} Table~\ref{tab:stage1confusion} gives the pooled confusion matrix against all 300
-individual ratings, and the correction directions among the 27 ratings (18
+individual ratings. It also gives the correction directions among the 27 ratings (18
 distinct pairs) where a reviewer replaced the committee's verdict. Every
 recorded correction is between adjacent categories: no reviewer moved a pair
 directly between \textit{supports} and \textit{irrelevant}, matching the
@@ -249,13 +260,13 @@ agreement at the datasets' natural label prevalence, and it mixes holdout,
 training and validation records, so it must not be read as a holdout-only
 evaluation. Read together with the non-blind design, this study supports
 using the committee's Stage-1 verdict as a useful first-pass signal, checked
-against human judgment on this one sample; it does not establish the
+against human judgment on this one sample. It does not establish the
 verdict's objective accuracy across the corpus (\S\ref{sec:limitations}).
 
 \subsection{Training conflict-type review}
 
 All 658 base records were assigned to exactly two of three reviewers under a
-seeded, pair-balanced, label-interleaved allocation, giving $1{,}316$ assignments
+seeded, pair-balanced, label-interleaved allocation. This gives $1{,}316$ assignments
 with loads of $439/439/438$ and reviewer-pair counts of $220/219/219$. Reviewers
 saw the query, the retrieved snippets and the committee-assigned label, and could
 retain it or replace it, recording confidence and a reason. This is a
@@ -296,17 +307,17 @@ No conflict $373$, Complementary $289$, Outdated $130$, Conflicting opinions
 $120$ and Misinformation $31$, against released counts of $343$, $286$, $136$,
 $158$ and $20$. The largest divergences are the conflicting-opinions and
 misinformation classes. Any analysis that treats the released label as
-human-ratified would therefore overstate the evidence; we treat the review as a
+human-ratified would therefore overstate the evidence. We treat the review as a
 reliability estimate on the taxonomy, not as a corrected gold standard.
 
 \subsection{Benchmark preselection review}
 
 Seven reviewers were allocated the $1{,}878$ exact-ten candidate set under seeded
-source balancing, with non-uniform queues of $150/150/300/300/326/326/326$ and a
-source mix of ConflictingQA $258$, FreshQA $394$, SituatedQA-temporal $413$,
+source balancing, with non-uniform queues of $150/150/300/300/326/326/326$. The
+source mix is ConflictingQA $258$, FreshQA $394$, SituatedQA-temporal $413$,
 QACC $407$ and SituatedQA-geographic $406$. Each reviewer recorded an acceptance
 decision, a preliminary conflict type, confidence, retrieval quality, evidence
-sufficiency, conflict clarity, query specificity, source reliability, a
+sufficiency and conflict clarity. They also recorded query specificity, source reliability, a
 relevant-document count bin, gold-answer feasibility and free-text notes.
 
 Every one of the ten recorded fields in Table~\ref{tab:benchiaa} exceeds
@@ -314,14 +325,14 @@ $\kappa=0.92$, with the five-way conflict-type field at $94.77\%$ raw agreement
 and $\kappa=0.9217$ ($1{,}378$ of $1{,}454$ pairs agreeing).
 
 \paragraph{The second pass is sequential.} The second reviewer sees the complete
-first review and may accept, edit or reject it; across the 800 selected records
+first review and may accept, edit or reject it. Across the 800 selected records
 there are $673$ accept-as-is and $127$ edited actions. These figures therefore
 measure verification consistency and must not be presented as blind independent
-double annotation. The second pass was nonetheless able to dissent: it introduced
+double annotation. The second pass was nonetheless able to dissent. It introduced
 label values the first pass never used, including $13$ \textit{Unsure}
 conflict-type judgments and $15$ reject or borderline-reject retention decisions.
 
-\paragraph{Reconstruction caveat.} Three second-review output files were lost and
+\paragraph{Reconstruction caveat.} Three second-review output files were lost. They
 were reconstructed after the corresponding reviewers confirmed that every first
 review in their queue had been accepted as correct ($114$, $115$ and $114$
 records). Those rows are therefore attested rather than independently recorded,
@@ -334,8 +345,8 @@ The $128$ released refusal items were reviewed as a separate stratum against fou
 dedicated fields in addition to the ten preselection fields. Agreement is
 \emph{unanimous on all fourteen}: both reviewers judged all $128$ items to
 require refusal, to have a valid abstention ground truth, to carry a
-high-quality evidence-gap rationale, and to be a valid refusal benchmark item;
-they also agreed unanimously that evidence is insufficient and that no defensible
+high-quality evidence-gap rationale, and to be a valid refusal benchmark item.
+They also agreed unanimously that evidence is insufficient and that no defensible
 gold answer is possible for any of them. Because each of these fields is
 single-valued across the stratum, $\kappa$ is undefined and we report exact
 agreement rather than substituting a coefficient.
@@ -355,15 +366,15 @@ All models are fine-tuned with QLoRA
 \citep{dettmers2023qloraefficientfinetuningquantized,hu2021loralowrankadaptationlarge}
 at rank 32, $\alpha=64$ and dropout $0.05$, with learning rate
 $2\times10^{-4}$, effective batch 16, maximum sequence length $12{,}288$ and
-NEFTune $\alpha=5.0$ \citep{jain2023neftune}. Training minimises the standard
+NEFTune (training-time embedding noise) $\alpha=5.0$ \citep{jain2023neftune}. Training minimises the standard
 token-level cross-entropy of the serialised trace and final response given the
-prompt and retrieved documents; no auxiliary loss term is added. Checkpoints are
+prompt and retrieved documents. No auxiliary loss term is added. Checkpoints are
 selected on a held-out validation split by a composite score that sums
 document-verdict accuracy, response-format validity and abstention correctness,
 penalising false abstentions so that a model cannot score well by refusing
 answerable questions. A \emph{recipe} is one fixed training mixture: the set and
 proportion of task views and prompt variants a run is trained on. Qwen2.5-7B and
-Qwen2.5-32B use recipe~K; Llama-3.1-8B and Mistral-7B use recipe~L.
+Qwen2.5-32B use recipe~K. Llama-3.1-8B and Mistral-7B use recipe~L.
 
 The recipe was developed by error-directed revision rather than search.
 Table~\ref{tab:recipe} names each intervention and its measured outcome,
@@ -407,8 +418,8 @@ train/validation/benchmark split and the identical QLoRA configuration (rank
 sequence length $12{,}288$, NEFTune $\alpha=5.0$) as the trace-supervised runs
 (Appendix~\ref{app:sft}), changing only the supervision target. The
 assistant message contains \emph{only} the final grounded answer or the
-canonical refusal string, immediately followed by \texttt{[[END-OF-ANSWER]]};
-it contains no \texttt{<think>} block, document-verdict array or
+canonical refusal string, immediately followed by \texttt{[[END-OF-ANSWER]]}.
+It contains no \texttt{<think>} block, document-verdict array or
 conflict-type label. Two prompt families are trained: \textbf{final-only},
 which explicitly instructs the model to omit the trace and produce only the
 final answer, and \textbf{minimal}, the same forty-word evidence policy used
@@ -416,14 +427,14 @@ throughout the paper. Each of the 862 source examples yields 8 final-only and
 4 minimal copies (a 2:1 mixture), giving $10{,}344$ training rows. Generation
 is deterministic (temperature $0$), with the same 4-bit base-model loading and
 LoRA adapter as the trace-supervised runs. Evaluation runs the two prompt
-families through refusal-decision metrics (precision/recall/F1 for the
-answer and the refuse class, and overall classification accuracy) and, on the
-same generations, the paper's own Behavioural Adherence, Factual Grounding and
-Single-Truth Recall components; Answer Quality is the same AQ quantity defined
+families through refusal-decision metrics: precision, recall and F1 for the
+answer and the refuse class, and overall classification accuracy. On the
+same generations, it also computes the paper's own Behavioural Adherence, Factual Grounding and
+Single-Truth Recall components. Answer Quality is the same AQ quantity defined
 in Appendix~\ref{app:aggregate} (the geometric mean of Factual Grounding and
 Single-Truth Recall, or Factual Grounding alone where Single-Truth Recall does
-not apply) and reported for the trace-supervised runs in
-Table~\ref{tab:oracle} and Table~\ref{tab:full}, computed here for the
+not apply). It is reported for the trace-supervised runs in
+Table~\ref{tab:oracle} and Table~\ref{tab:full}, and computed here for the
 answer-only checkpoints as well.
 
 This ablation covers Llama-3.1-8B and Qwen2.5-7B only, not the full
@@ -492,7 +503,7 @@ canonicalise document order and identifiers, normalise label aliases, clear key
 facts on irrelevant documents, drop out-of-range citations and append a missing
 sentinel where a usable trace exists. It \emph{cannot} invent a missing trace,
 construct absent document judgments, write a conflict analysis or supply a
-missing answer; a record without a parseable trace passes through unchanged.
+missing answer. A record without a parseable trace passes through unchanged.
 
 \section{CATS Specification}
 \label{app:cats}
@@ -508,24 +519,24 @@ not support one.
 \input{tables/tab_taxonomy}
 
 \paragraph{Behaviour Adherence (BA).} Whether the answer followed the response
-policy its conflict type requires, judged against a per-type rubric: a
-no-conflict item expects a direct answer, complementary evidence expects
-synthesis across documents, conflicting opinions expect both positions
-represented without adjudication, outdated information expects the current value
+policy its conflict type requires, judged against a per-type rubric. A
+no-conflict item expects a direct answer. Complementary evidence expects
+synthesis across documents. Conflicting opinions expect both positions
+represented without adjudication. Outdated information expects the current value
 with the superseded one flagged, and misinformation expects explicit correction.
 The rubric is reproduced verbatim in Appendix~\ref{app:catsprompts}.
 
 \paragraph{Factual Grounding (FG).} Whether each extracted claim is both
 supported by an eligible retrieved document \emph{and} cited. Only documents
 whose \emph{gold} per-document verdict is \textit{supports} or \textit{partially
-supports} are eligible, so an answer that is true in the world but unsupported by
+supports} are eligible. As a result, an answer that is true in the world but unsupported by
 the retrieved set scores zero by construction. Support may be distributed across
 a document pair.
 
 \paragraph{Single-Truth Recall (STR).} Whether the response explicitly adopts the
-target answer as its own conclusion, rather than merely quoting it, presenting it
-as one of several possibilities, or attributing it to a source without endorsing
-it. It is evaluated only for items where a single correct conclusion exists: no
+target answer as its own conclusion. It fails this test if the response merely quotes the
+answer, presents it as one of several possibilities, or attributes it to a source
+without endorsing it. It is evaluated only for items where a single correct conclusion exists: no
 conflict, complementary information, outdated information and misinformation
 ($n=487$). Conflicting-opinion items are excluded because no such conclusion
 exists for them.
@@ -547,9 +558,9 @@ answer-content metrics, so
 \]
 and $\mathcal{I}_{\mathrm{STR}}\subseteq\mathcal{I}_{\mathrm{FG}}$ additionally
 requires a gold answer and a single-truth conflict type. An \emph{incorrect}
-refusal remains in these denominators with zero extracted content; it is not
+refusal remains in these denominators with zero extracted content. It is not
 silently excluded. A headline aggregate is published only when every applicable
-example has a score and every represented type has a value; otherwise the run is
+example has a score and every represented type has a value. Otherwise the run is
 marked incomplete rather than silently changing the denominator.
 
 \subsection{Grounded Refusal}
@@ -579,9 +590,9 @@ R_{\mathrm{ref}}=\frac{\mathrm{TN}}{\mathrm{TN}+\mathrm{FP}},
 \]
 and analogously $F_{1,\mathrm{ref}}$. Decision accuracy is
 $(\mathrm{TP}+\mathrm{TN})/N$. Both orientations are reported because a model can
-have near-perfect answer recall while refusing far too rarely, and because the
+have near-perfect answer recall while refusing far too rarely. They are also reported because the
 benchmark is $82.6\%$ answerable, so answering everything already yields
-$608/736=0.826$ accuracy (\S\ref{sec:cats}).
+$608/736=0.826$ accuracy (\S\ref{sec:refusal}).
 
 \subsection{Committee voting rule for BA and STR}
 
@@ -602,7 +613,7 @@ d_i=\mathbf{1}[W_i^{+}>W_i^{-}],\qquad
 u_i=\frac{W_i^{+}}{W_i^{+}+W_i^{-}}.
 \]
 A weighted tie is negative. Timeout, API and parse failures are removed before
-forming these sums; an all-judge failure is recorded as an evaluation failure,
+forming these sums. An all-judge failure is recorded as an evaluation failure,
 not interpreted as a confident negative.
 
 \subsection{Behaviour Adherence}
@@ -621,7 +632,7 @@ give $h_i=1$ but different $b_i$.
 
 Let $\mathcal{D}_i^{+}$ be the documents whose gold per-document verdict is
 \textit{supports} or \textit{partially supports}. The deterministic extractor
-returns at most eight claims; for claim $k$, let $\mathcal{C}_{ik}$ be its
+returns at most eight claims. For claim $k$, let $\mathcal{C}_{ik}$ be its
 deduplicated cited-document set. FG uses \emph{raw priority} rather than
 confidence, since its judge schema emits no per-document confidence. With
 $\mathcal{J}_{ik}$ the valid judges,
@@ -640,7 +651,7 @@ claim-specific support set is
 \]
 For cross-document support, let $x_{ikj}$ be judge $j$'s binary vote that two
 documents jointly support the claim, with mass $X_{ik}=\sum_j\max(1,p_j)x_{ikj}$
-and count $U_{ik}=\sum_j x_{ikj}$; the same thresholds give
+and count $U_{ik}=\sum_j x_{ikj}$. The same thresholds give
 $\chi_{ik}=\mathbf{1}[X_{ik}>\tau_{ik}\wedge U_{ik}\geq m_{ik}]$ and accepted
 combination set $\mathcal{D}^{\times}_{ik}$. A claim earns credit only when
 accepted support is \emph{actually cited}:
@@ -667,7 +678,7 @@ at least one other (see Limitations).
 
 \subsection{Single-Truth Recall}
 
-STR applies when a gold answer exists and $t_i\in\{1,2,4,5\}$; type 3 is excluded
+STR applies when a gold answer exists and $t_i\in\{1,2,4,5\}$. Type 3 is excluded
 because conflicting-opinion cases need not have one canonical proposition. Let
 $\mathcal{G}_i$ contain $M_i$ gold answer items. Applying the same weighted rule
 to each item $\ell$, let $e_{i\ell}$ be the committee decision that the response
@@ -726,13 +737,13 @@ on answerable content and the part earned on the refusal decision alone.
 
 
 The three-step construction is as follows. Grounding and recall are averaged
-\emph{geometrically} into an answer-quality term; that term is averaged
-\emph{harmonically} with behaviour adherence; and the result is multiplied by the
+\emph{geometrically} into an answer-quality term. That term is averaged
+\emph{harmonically} with behaviour adherence. The result is then multiplied by the
 grounded-refusal decision, which is $1$ when the answer/refuse choice was correct
 and $0$ otherwise. Both means are used because they penalise imbalance: a high
 score on one component cannot compensate for a low score on another, and a wrong
 decision sets the example to zero regardless of everything else. CATS-Prevalence
-is the plain mean over the benchmark; CATS-Balanced weights each conflict type
+is the plain mean over the benchmark. CATS-Balanced weights each conflict type
 equally.
 
 Per example, grounding and recall first form the answer-quality pillar
@@ -757,7 +768,7 @@ g_i q_i,& A_i=1,\ q_i\text{ only},\\
 g_i,& A_i=1,\text{ neither available}.
 \end{cases}
 \]
-The last three are auditable compatibility branches; complete benchmark runs use
+The last three are auditable compatibility branches. Complete benchmark runs use
 only the first two. The decision gate means a wrong answer/refuse decision cannot
 be rescued downstream, and the harmonic fusion penalises an answer that is weak
 on either behaviour or answer quality rather than letting a strong one mask it.
@@ -801,7 +812,7 @@ refusal-quality judgment exists across the runs.
 answerable and refusal subgroups within each conflict type gives refusal-required
 examples $40\%$ of the type-balanced score against $17.4\%$ of the data. One
 type-3 refusal example carries roughly twelve times the influence of one type-1
-answerable example and the misinformation class, $5\%$ of the data, determines
+answerable example. And the misinformation class, $5\%$ of the data, determines
 $20\%$ of the score.
 
 \paragraph{There is a non-trivial floor.} A model with zero usable answer content
@@ -850,12 +861,12 @@ the human--human statistics are computed (Table~\ref{tab:human}).
 \input{tables/tab_judges}
 \end{minipage}
 \dualcaption{table}{tab:human}{tab:judges}%
-{\textbf{Evaluator validation against independent human review.} Rows are Factual Grounding, Single-Truth Recall and Behaviour Adherence. Columns are human--committee agreement and $\kappa$, human--human $\kappa$, and \emph{judges}, the nominal $\alpha$ among the three committee models. Human--committee uses all accepted reviewer rows; human--human and \emph{judges} use the 300-response complete two-reviewer frame. The reliability ordering is identical on both instruments: grounding and recall are reliable, behaviour is not. Grounded Refusal is deterministic and therefore not judged}%
-{\textbf{Per-judge agreement with human reviewers, and committee-internal agreement.} Top: each judge's behaviour agreement with human reviewers over 650 aligned judgment-level rows (the 300 two-reviewer responses plus 50 single-reviewed), alongside its configured priority. The anchor judge is empirically the best human-aligned of the three, and the full committee edges its best single member. Bottom: agreement among the three judges on the 300-response frame; the final column is mean pairwise $\kappa$.}
+{\textbf{Evaluator validation against independent human review.} Rows are Factual Grounding, Single-Truth Recall and Behaviour Adherence. Columns are human--committee agreement and $\kappa$, human--human $\kappa$, and \emph{judges}, the nominal $\alpha$ (a chance-corrected agreement coefficient for more than two raters) among the three committee models. Human--committee uses all accepted reviewer rows. Human--human and \emph{judges} use the 300-response complete two-reviewer frame. The reliability ordering is identical on both instruments: grounding and recall are reliable, behaviour is not. Grounded Refusal is deterministic and therefore not judged}%
+{\textbf{Per-judge agreement with human reviewers, and committee-internal agreement.} Top: each judge's behaviour agreement with human reviewers over 650 aligned judgment-level rows (the 300 two-reviewer responses plus 50 single-reviewed), alongside its configured priority. The anchor judge is empirically the best human-aligned of the three, and the full committee edges its best single member. Bottom: agreement among the three judges on the 300-response frame. The final column is mean pairwise $\kappa$.}
 \end{table}
 
 The result is a per-component reliability ordering identical on two independent
-instruments, human--committee agreement and committee-internal agreement, and it
+instruments, human--committee agreement and committee-internal agreement. This ordering
 bounds what we may claim. Factual Grounding and Single-Truth Recall are reliable
 ($\kappa=0.78$ and $0.79$ against humans; $89.9\%$ and $90.8\%$ raw agreement).
 Behaviour Adherence is not: an independent human panel agrees with the committee
@@ -863,9 +874,9 @@ on only $74.5\%$ of behaviour judgments ($\kappa=0.41$), and the three judges
 agree among themselves at $\alpha=0.46$.
 
 Consequently we treat behaviour claims differently from grounding claims. All
-twelve observed BA differences lie below the human--committee disagreement rate,
-so while the improvement is statistically consistent ($11/12$ cells, $p=0.006$),
-we state it qualitatively and decline to interpret individual BA margins,
+twelve observed BA differences lie below the human--committee disagreement rate.
+The improvement is statistically consistent ($11/12$ cells, $p=0.006$),
+but we state it qualitatively. We decline to interpret individual BA margins,
 particularly in the misinformation regime.
 
 The agreement frame is \textbf{300 generated responses}, each independently
@@ -874,20 +885,20 @@ model families $\times$ three prompt profiles $\times$ untuned/fine-tuned),
 stratified by conflict type, with correct refusals excluded before assignment.
 Reviewers judged behaviour
 adherence against the per-type rubric, selected supporting documents for each
-displayed claim and judged whether the response asserted the gold target;
-metric pages were separated so that a factual impression could not silently
+displayed claim and judged whether the response asserted the gold target.
+Metric pages were separated so that a factual impression could not silently
 change a behaviour label.
 
 A further 50 responses received a single review, because one reviewer completed
-half an assigned queue; these carry no human--human comparison and are excluded
-from the agreement frame, but their judgments are retained where a single
+half an assigned queue. These carry no human--human comparison and are excluded
+from the agreement frame. Their judgments are nonetheless retained where a single
 review suffices. No judgment is imputed. Reported statistics therefore name
-their denominator explicitly, and the denominators differ by construction: the
-\emph{response-level} human--human frame is 300, whereas \emph{judgment-level}
+their denominator explicitly, and the denominators differ by construction. The
+\emph{response-level} human--human frame is 300, whereas the \emph{judgment-level}
 human--committee comparison pools every accepted review and so is 650
 ($300\times2$ complete pairs plus 50 singles). Claim-level grounding is counted
 in claim units rather than responses ($477$ human--human, $1{,}029$
-human--committee), and the human-consensus frame is 256 behaviour and 194
+human--committee). The human-consensus frame is 256 behaviour and 194
 strict-recall samples.
 
 Coverage caveats. The study covers two of the four model families and the
@@ -898,14 +909,14 @@ grounding denominators are aligned in logic but not identical.
 
 \paragraph{Agreement is not uniform across the taxonomy.} Table~\ref{tab:bytype}
 gives the per-conflict-type breakdown. Three patterns matter. Claim-level
-grounding is near-perfect on No-conflict items ($\kappa=0.972$ human--human) and
+grounding is near-perfect on No-conflict items ($\kappa=0.972$ human--human). It is
 weakest on Outdated ($\kappa=0.566$), where deciding whether a superseded
 document still supports a claim is genuinely ambiguous. Human behaviour agreement
 is lowest on Complementary ($\kappa=0.536$) and Outdated ($\kappa=0.505$). And
 the committee's behaviour judgments track humans well on Conflicting opinions
 ($\kappa=0.641$) but poorly on Complementary ($\kappa=0.279$) and Misinformation
 ($\kappa=0.149$). Reported as a single number, behaviour reliability would hide
-the fact that it is concentrated in two regimes.
+that it is concentrated in two regimes.
 
 \input{tables/tab_bytype}
 
@@ -914,15 +925,15 @@ compares each judge separately against human reviewers over the 650 aligned
 judgment-level rows.
 The anchor judge agrees best ($0.743$ agreement, $\kappa=0.405$), the third judge
 next ($0.735$, $\kappa=0.339$) and the second judge least ($0.643$,
-$\kappa=0.229$); the full weighted committee reaches $\kappa=0.407$, marginally
+$\kappa=0.229$). The full weighted committee reaches $\kappa=0.407$, marginally
 above its best individual member. Committee-internal agreement on the
 300-response frame is $\alpha=0.871$ for grounding, $0.678$ for recall and $0.457$ for
 behaviour, with the behaviour spread concentrated between judge pairs (pairwise
 $\kappa$ ranges from $0.368$ to $0.611$).
 
 \paragraph{Consensus frame.} Restricting to the samples where both reviewers agree
-and comparing that consensus against the committee raises agreement as expected:
-behaviour $0.789$ ($\kappa=0.483$, $n=256$), strict recall $0.948$
+and comparing that consensus against the committee raises agreement as expected.
+Behaviour reaches $0.789$ ($\kappa=0.483$, $n=256$), strict recall $0.948$
 ($\kappa=0.876$, $n=194$) and claim-level grounding $0.949$ ($\kappa=0.888$,
 $n=428$). Consensus filtering improves interpretability but retains easier cases
 disproportionately, so we report it alongside rather than instead of the
@@ -932,9 +943,8 @@ merely reviewer noise.
 
 \paragraph{Alignment integrity.} Claim-level comparisons require pairing human and
 committee claim inventories. All three analyses report \emph{zero} claim-alignment
-issues, and all 650 accepted human reviews matched a committee judgment with no
-missing matches, so no unit was dropped or approximately aligned
-(Figure~\ref{fig:sigrel}).
+issues. All 650 accepted human reviews matched a committee judgment with no
+missing matches, so no unit was dropped or approximately aligned.
 
 \section{Citation Analysis}
 \label{app:citation}
@@ -954,12 +964,12 @@ two prompting strategies with trace supervision on answer content and on refusal
 calibration.
 
 We analyse cited-document behaviour with metrics that are not part of CATS and
-do not alter any CATS component or aggregate; they are supplementary post-hoc
+do not alter any CATS component or aggregate. They are supplementary post-hoc
 diagnostics computed from the same claim-level extraction used by Factual
-Grounding, partitioned into a recall side (does the model cite the support
+Grounding. These diagnostics are partitioned into a recall side (does the model cite the support
 that exists?) and a precision side (is what it cites the right evidence?).
 
-Table~\ref{tab:citdefs} defines each metric; Table~\ref{tab:citresults}
+Table~\ref{tab:citdefs} defines each metric. Table~\ref{tab:citresults}
 reports the changes.
 
 \paragraph{Unit of analysis.} Every metric below is computed over
@@ -998,13 +1008,13 @@ $\frac{\text{gr.}\wedge\text{cit.}\wedge\text{clean}}{\text{all claims}}$ &
 nothing OK\\
 \bottomrule\end{tabular}}
 \caption{\textbf{Citation-metric definitions.} ``Approved'' means the cited
-document is in the committee's claim-specific support set; ``gold-positive''
+document is in the committee's claim-specific support set. ``Gold-positive''
 means its gold per-document verdict is \textit{supports} or \textit{partially
-supports}, independent of which specific claim is being checked; ``clean''
+supports}, independent of which specific claim is being checked. ``Clean''
 means no soft-extra and no hard-negative citation. The two strict-grounded
-rates share a base condition (committee-grounded, cited) and differ only in
+rates share a base condition (committee-grounded, cited). They differ only in
 what they tolerate: the gold-clean rate forbids hard negatives but allows
-soft extras, the committee-clean rate forbids both, making it the single most
+soft extras, whereas the committee-clean rate forbids both, making it the single most
 demanding number in this section. $\uparrow$/$\downarrow$ after the metric
 name marks whether higher or lower is the better direction. All fractions
 count distinct cited documents or evaluated claims as noted in the Unit
@@ -1017,9 +1027,9 @@ column.}
 {\tabstyle\setlength{\tabcolsep}{3pt}
 \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lrrr@{}}\toprule
 \textbf{Metric} & \textbf{mean $\Delta$} & \textbf{min} & \textbf{max}\\\midrule
-Citation sufficiency (support recall) & $+0.363$ & $-0.008$ & $+0.869$\\
-Strict grounded, gold-clean & $+0.358$ & $-0.002$ & $+0.811$\\
-Strict grounded, committee-clean & $+0.339$ & $+0.119$ & $+0.651$\\
+Citation sufficiency (support recall) & $\mathbf{+0.363}$ & $-0.008$ & $+0.869$\\
+Strict grounded, gold-clean & $\mathbf{+0.358}$ & $-0.002$ & $+0.811$\\
+Strict grounded, committee-clean & $\mathbf{+0.339}$ & $\mathbf{+0.119}$ & $+0.651$\\
 Gold-positive precision & $+0.003$ & $-0.004$ & $+0.014$\\
 Soft-extra citation rate & $+0.006$ & $-0.058$ & $+0.074$\\
 Hard-negative citation rate & $-0.003$ & $-0.014$ & $+0.004$\\
@@ -1032,7 +1042,7 @@ baseline, across the twelve end-to-end cells.}
 
 Only the recall side moves. The strict committee-clean metric, which requires a
 claim to be committee-supported, cited and free of both extraneous and
-incorrect citations, is positive in all twelve cells and is the single most
+incorrect citations, is positive in all twelve cells. It is the single most
 demanding citation number we report.
 
 \FloatBarrier
@@ -1040,11 +1050,11 @@ demanding citation number we report.
 Two further observations. Untuned models under minimal prompts post
 \emph{higher} claim-specific citation precision than their own fine-tuned
 counterparts in all four cases ($0.736$--$0.867$ against $0.713$--$0.800$)
-while citing almost nothing (recall $0.036$--$0.139$): precision over a
+while citing almost nothing (recall $0.036$--$0.139$). This is precision over a
 near-empty denominator, not a quality signal.
-And the recall-side metrics correlate with Factual Grounding at
-$\rho=0.93$--$0.98$, so they are largely redundant with it, whereas every
-precision-side metric sits at $|\rho|\leq0.46$ against every CATS component and
+The recall-side metrics also correlate with Factual Grounding at
+$\rho=0.93$--$0.98$, so they are largely redundant with it. Every
+precision-side metric, by contrast, sits at $|\rho|\leq0.46$ against every CATS component and
 therefore carries information the framework does not otherwise capture. Behaviour
 Adherence is the CATS component least related to citation behaviour, which is an
 independent check that its orthogonality requirement holds in practice.
@@ -1088,13 +1098,13 @@ abstention from citing. Every model moves down-and-right when fine-tuned.}
 \section{Bounding Factual Grounding}
 \label{app:deconfound}
 
-The \emph{lower} bound includes the missed refusals; the \emph{upper} bound
+The \emph{lower} bound includes the missed refusals. The \emph{upper} bound
 restricts to the like-for-like population where the model answered \emph{and} the
 gold label is answerable. The intervals separate in all four minimal-prompt cells
 and in only two others (Qwen2.5-7B runtime, Mistral-7B strict). Instruction
 volume is also not monotonically helpful for baseline models: grounding is higher
-under the shorter runtime prompt than the strict one in all four families, and in
-the extreme case Llama-3.1-8B reaches $\mathrm{FG}=0.897$ while correctly
+under the shorter runtime prompt than the strict one in all four families. In
+the extreme case, Llama-3.1-8B reaches $\mathrm{FG}=0.897$ while correctly
 refusing $2$ of $128$ refusal-required items, so its grounding is computed over a
 markedly easier population.
 
@@ -1127,7 +1137,7 @@ model-dependence of the denominator itself.
     \includegraphics[width=0.95\textwidth]{figures/fig11_fg_denominator.png}
     \caption{The Factual-Grounding denominator confound. Left: FG on the
     like-for-like population, with bars giving the bound and vertical marks the
-    reported value; crosses mark cells where the intervals overlap and no gap is
+    reported value. Crosses mark cells where the intervals overlap and no gap is
     established. Right: the denominator $\textit{fg\_n}=608+\textit{missed
     refusals}$ is itself model-dependent, so baseline models are scored on up to
     ${\sim}130$ extra items whose evidence is insufficient by construction.}
@@ -1151,9 +1161,9 @@ model-dependence of the denominator itself.
 \dualcaption{figure}{fig:internal}{fig:bastrict}%
 {Behaviour across the prompt ladder. Solid lines are trace-tuned
 models, dashed lines untuned. Fine-tuned behaviour is essentially flat as the
-instruction is stripped away; untuned grounding and refusal collapse}%
+instruction is stripped away. Untuned grounding and refusal collapse}%
 {Behaviour Adherence under the \textbf{strict} prompt, baseline
-against trace-tuned. Deltas are annotated; bold green marks a gain exceeding
+against trace-tuned. Deltas are annotated. Bold green marks a gain exceeding
 the $\pm0.034$ noise floor.}
 \end{figure}
 
@@ -1198,20 +1208,20 @@ should be read as directional rather than as point estimates.
 compress into a narrow band once the instruction no longer names the
 taxonomy, and every model gains}%
 {Mean effect of each oracle on every metric. Fine-tuned models gain
-on the targeted metrics; untuned models are harmed uniformly, most severely
+on the targeted metrics. Untuned models are harmed uniformly, most severely
 on grounding under the conflict-label oracle.}
 \end{figure}
 
 
-The flatness is a property of the whole ladder, not only its endpoints: across
+The flatness is a property of the whole ladder, not only its endpoints. Across
 all twenty model$\times$metric cells the intermediate runtime condition never
 falls more than $0.030$ outside the strict--minimal interval for a trace-tuned
 model, inside the $\pm0.034$ noise floor. Single-truth recall shows the same
 pattern, with baseline spreads of $0.047$--$0.196$. The result also reproduces on
-measurements never part of CATS: analysing cited-document behaviour separately
+measurements never part of CATS. Analysing cited-document behaviour separately
 (Appendix~\ref{app:citation}), baseline citation sufficiency swings by $0.730$
 across the prompt ladder while fine-tuned sufficiency swings by $0.011$, a factor
-of roughly seventy, on an instrument built after and independently of the
+of roughly seventy. This holds on an instrument built after and independently of the
 framework whose claim it corroborates.
 
 
@@ -1238,7 +1248,7 @@ Two caveats keep the claim honest. The effects are small in absolute terms, so i
 is their \emph{consistency} across cells rather than their magnitude that carries
 the evidence. And supplying perfect Stage-1 \emph{and} Stage-2 information still
 leaves most of the residual error in place, which locates that error in Stage-3
-synthesis, in gold-annotation noise, or in judge strictness; we have not
+synthesis, in gold-annotation noise, or in judge strictness. We have not
 separated those three.
 
 For baseline models every oracle \emph{hurts}, and the conflict label is
@@ -1251,8 +1261,8 @@ on what prompting alone can achieve.
     \centering
     \includegraphics[width=0.95\textwidth]{figures/fig5_oracle_mechanism.png}
     \caption{Each oracle moves the metric it targets and essentially nothing
-    else. Green bars are targeted metrics, grey bars are specificity controls;
-    diamonds mark means, points individual model$\times$prompt cells.}
+    else. Green bars are targeted metrics, grey bars are specificity controls.
+    Diamonds mark means, points individual model$\times$prompt cells.}
     \label{fig:oraclefig}
 \end{figure}
 
@@ -1265,15 +1275,15 @@ Behaviour Adherence ($\approx0.82$) and Single-Truth Recall ($\approx0.75$) stay
 normal, against FG of $0.81$--$0.88$ for the same model elsewhere, a roughly
 two-hundred-fold drop isolated to one cell. Normal behaviour and recall with near-zero grounding means the model produced
 adequate, fact-containing answers whose claim-level citation linkage went
-unrecovered by the scorer; the independently computed citation metrics for these
-runs are ordinary, localising the fault to grounding extraction rather than
+unrecovered by the scorer. The independently computed citation metrics for these
+runs are ordinary, which localises the fault to grounding extraction rather than
 generation. Because answer quality fuses geometrically with FG, these rows
 also yield the aggregate floor of exactly $0.400$
 (Appendix~\ref{app:aggregate}). We exclude Qwen2.5-32B from both run types
 here so baseline and fine-tuned comparisons remain balanced.
 
 Separately, three benchmark records carry a numeric conflict identifier
-disagreeing with their authoritative textual label; applicability from the
+disagreeing with their authoritative textual label. Applicability from the
 numeric field would give a single-truth denominator of 484 rather than 487.
 Every reported run shows 487, so no result is affected.
 
@@ -1281,11 +1291,11 @@ Every reported run shows 487, so no result is affected.
 \label{app:annprompts}
 
 We release the full resource and the prompt suite used to build and evaluate it.
-The release comprises: the \textbf{training/validation split} (943 examples) and
+The release comprises the \textbf{training/validation split} (943 examples) and
 the \textbf{held-out benchmark} (736 examples), together carrying $10{,}343$
 adjudicated evidence units, each with a per-document verdict, an extracted key
 fact, a snippet-anchored supporting quote, a verdict rationale, a source-quality
-label and the complete annotator vote tally; the \textbf{stagewise annotation
+label and the complete annotator vote tally. It also comprises the \textbf{stagewise annotation
 prompts} (system prompt and user template for each of the three annotation
 stages), which define the annotation contract described in
 Appendix~\ref{app:annotation}; the \textbf{end-to-end inference prompts} for all
@@ -1304,20 +1314,20 @@ available at \url{https://anonymous.4open.science/r/rag_reason-2F8F/}.
 Varying the prompt is what makes it testable whether conflict-aware behaviour has
 been \emph{learned} or is merely being \emph{recited} from the instruction. A
 model that produces the trace only when the strict prompt describes it may be
-following the prompt; a model that still produces it under the minimal prompt,
-which never mentions the trace, the taxonomy or the citation format, has learned
+following the prompt. A model that still produces it under the minimal prompt,
+which never mentions the trace, the taxonomy or the citation format, has instead learned
 a mapping from retrieval context to behaviour. Training and evaluating across all
 three variants is therefore an instrument, not a data-augmentation trick, and
 \S\ref{sec:internalization} reports the resulting gap.
 
 The three end-to-end instruction strengths are reproduced verbatim below. Each
-condition is a system prompt plus a user template; the placeholders are filled
+condition is a system prompt plus a user template. The placeholders are filled
 with the query and the retrieved documents at generation time. Only typographic
 normalisation was applied for inclusion here and no wording was changed.
 
 The ladder is a controlled reduction in \emph{instruction}, not in task. The
 underlying evidence problem, the retrieved set and the expected target are
-identical across the three; what changes is how much of the procedure the prompt
+identical across the three. What changes is how much of the procedure the prompt
 restates (Table~\ref{tab:promptladder}):
 
 \begin{table}[htbp]\centering{\tabstyle\setlength{\tabcolsep}{3pt}
@@ -1348,13 +1358,13 @@ between models given \emph{these forty words} and nothing more.
 
 Two details in the strict prompt are worth flagging because they are referenced
 elsewhere. It requires citations on at least $80\%$ of answer sentences, whereas
-the evaluator marks a citation pass at $75\%$; the specification and the scoring
+the evaluator marks a citation pass at $75\%$. The specification and the scoring
 threshold are related but not identical, and we report both rather than eliding
 the gap. It also asks the model to order cited documents by the source-quality
 label it assigned in Stage~1, which is one route by which the URL-whitelist
 heuristic of Appendix~\ref{app:annotation} can influence answer composition.
 
-The three oracle conditions of \S\ref{sec:oracle} use the same three instruction
+The three oracle conditions of \S\ref{sec:setup} use the same three instruction
 strengths with an additional block injecting the gold conflict label, the gold
 per-document notes, or both. Those twelve further templates are released with the
 artifacts but are not reproduced here, since they differ from the corresponding
@@ -1384,7 +1394,7 @@ evaluation time. Only typographic normalisation was applied.
 
 This is the \emph{entire} bundle. Grounded Refusal has no prompt because it is
 computed deterministically, and no natural-language-inference prompt appears
-because the active grounding path does not use one; earlier NLI-based grounding
+because the active grounding path does not use one. Earlier NLI-based grounding
 code exists in the repository but is not the protocol behind any number reported
 here.
 
@@ -1397,7 +1407,7 @@ states outright that answerability correctness, factual entailment, citation
 validity, unsupported-claim detection and single-truth recall must not be used as
 hidden criteria. It supplies exactly one rubric line, for the sample's own
 conflict type, rather than asking the judge to score all five behaviours. This is
-the orthogonality requirement of \S\ref{sec:cats} in its operational form, and it
+the orthogonality requirement of \S\ref{sec:cats} in its operational form. It
 is corroborated empirically: Behaviour Adherence is the CATS component least
 correlated with citation behaviour (Appendix~\ref{app:citation}). The prompt also
 defines a refusal as adherent when the evidence genuinely does not support an
@@ -1407,7 +1417,7 @@ rather than scored as failures.
 \paragraph{Factual Grounding is deliberately permissive, so it is an upper bound
 on strict grounding.} The prompt enumerates seven distinct routes to support,
 including paraphrase, entailment, more-specific instances, more-general
-statements, containing ranges and partial coverage of a claim's substance, and it
+statements, containing ranges and partial coverage of a claim's substance. It also
 instructs the judge to ``bias toward inclusion when in doubt''. This is a design
 choice: the metric is meant to measure whether an answer \emph{uses and cites}
 retrieved evidence, not whether each claim is strictly entailed. It does mean our
@@ -1422,7 +1432,7 @@ conflict-type label and the benchmark preselection fields, but \emph{not} the
 per-document verdicts (Appendix~\ref{app:human-review}). The instruction's
 operative function is to stop the judge re-litigating document relevance, which it
 does regardless of provenance, so we do not expect a material effect on the
-reported grounding scores; but the description is inaccurate and a corrected
+reported grounding scores. But the description is inaccurate, and a corrected
 wording should be used in any future version.
 
 \subsection{Shared system message}
@@ -1450,7 +1460,7 @@ throughout. Raw agreement and $\kappa$ answer different questions and are always
 reported together, because a strongly imbalanced field can show high raw
 agreement and near-zero $\kappa$ without either number being wrong. A dash in a
 $\kappa$ column marks a field that is single-valued across its stratum, where
-chance-corrected agreement is undefined; we report exact agreement rather than
+chance-corrected agreement is undefined. We report exact agreement rather than
 substituting a coefficient. Nothing is imputed for missing judgments. And
 committee-internal agreement is agreement among model judges under a fixed
 prompt and serving protocol, never to be read as human inter-annotator agreement.
@@ -1461,14 +1471,14 @@ prompt and serving protocol, never to be read as human inter-annotator agreement
 
 Table~\ref{tab:iaafull} covers both resource-review workflows. Two features are
 worth naming. In the training workflow, the retain-or-change and confidence
-fields show high raw agreement with very low $\kappa$; this is a prevalence
+fields show high raw agreement with very low $\kappa$. This is a prevalence
 effect, since most reviewers accepted the committee label and reported high
-confidence, and it is why the five-way taxonomy field is the appropriate headline
+confidence. It is why the five-way taxonomy field is the appropriate headline
 statistic rather than an average across fields. In the refusal-quality stratum,
 every field is unanimous across all 128 items, which is why those rows carry
 exact agreement and no coefficient.
 
-Reviewers are denoted \textsc{r1}--\textsc{r4} throughout; the mapping is fixed
+Reviewers are denoted \textsc{r1}--\textsc{r4} throughout. The mapping is fixed
 across all tables in this appendix but is otherwise arbitrary and carries no
 ordering or ranking.
 
@@ -1481,7 +1491,7 @@ stratum, including the six reviewer pairs, the five conflict types, the per-mode
 strata and the per-judge comparison, with positive- and negative-specific
 agreement and the full confusion cells. The reviewer-pair rows show that
 agreement is not uniform across annotators either: human behaviour agreement
-ranges from $0.819$ to $1.000$ across pairs, and the smallest pairs involve the
+ranges from $0.819$ to $1.000$ across pairs. The smallest pairs involve the
 reviewer who completed half an assigned queue, so their high coefficients rest on
 very few items and should not be read as evidence of superior reliability.
 
@@ -1490,8 +1500,8 @@ very few items and should not be read as evidence of superior reliability.
 \FloatBarrier
 
 Table~\ref{tab:catscontfull} reports the continuous grounding-ratio comparisons.
-These are complementary to the claim-level statistics rather than redundant:
-claim-level agreement asks whether reviewers make the same individual support
+These are complementary to the claim-level statistics rather than redundant.
+Claim-level agreement asks whether reviewers make the same individual support
 decisions, while the ratio compares the proportion of an answer they judge
 grounded. A reviewer pair can agree on most claims yet differ on the ratio when
 their extracted claim sets differ in size.
@@ -1517,10 +1527,71 @@ must be read together: its decision accuracy of $0.825$ looks respectable, but
 the model correctly refuses one of 128 refusal-required items, visible only in
 its refusal F1 of $0.015$. The per-family Behaviour Adherence gains are $+0.096$
 (Mistral-7B), $+0.068$ (Llama-3.1-8B), $+0.047$ (Qwen2.5-32B) and $+0.000$
-(Qwen2.5-7B); the Qwen baselines already score $0.789$ and $0.811$ under the
+(Qwen2.5-7B). The Qwen baselines already score $0.789$ and $0.811$ under the
 strict prompt against $0.660$ for Mistral-7B, leaving less room for supervision
 to add.
 
 Table~\ref{tab:full} gives all twelve model$\times$prompt cells, base and fine-tuned.
 
 \input{tables/tab_full}
+
+\section{Limitations, Expanded}
+\label{app:limitations-expanded}
+
+The main-text Limitations section (\S\ref{sec:limitations}) keeps the three
+caveats that bound what our central claims mean. This appendix gives six
+further, narrower limitations trimmed from the main text for space.
+
+\paragraph{Shared model families between annotation and evaluation.} The
+annotation committee and the evaluation committee draw on the same three
+open-weight model families, with different weightings. The constructs differ
+(document adjudication versus answer judging), and Grounded Refusal is
+deterministic and outside the committee entirely. But the evaluator is partly
+scoring labels produced by related models. The human study in \S\ref{sec:human}
+is our external check on this and it covers two of the four model families.
+
+\paragraph{Aggregate properties.} The type-balanced aggregate assigns $40\%$ of
+its weight to refusal-required examples, which score decision correctness only,
+against $17.4\%$ of the data. One type-3 refusal example carries roughly twelve
+times the influence of one type-1 answerable example. And the misinformation
+class, $5\%$ of the data, determines $20\%$ of the score. A model with zero
+usable answer content but perfect refusal calibration would score $0.400$. This
+is why we report components first and aggregates second
+(Appendix~\ref{app:aggregate}).
+
+\paragraph{Recipe asymmetry and scale.} Qwen models use recipe~K and
+Llama/Mistral recipe~L. No completed Qwen matrix exists for recipe~L. Recipes
+J/K/L change several ingredients together and are principled recipe revisions
+rather than single-factor ablations. All models are in the 7B--32B range and
+Mistral-7B remains over-abstaining under every recipe we tried, a model-family
+limitation we report in full.
+
+\paragraph{Annotation quality.} Supporting quotes are snippet-\emph{anchored}
+rather than fully verbatim: $81$--$83\%$ are exact contiguous substrings and
+${\sim}96\%$ are traceable to the snippet, with ${\sim}4\%$ showing no detectable
+overlap. Source-quality labels come from an explicit URL whitelist rule
+(Appendix~\ref{app:annotation}), not from an independent credibility assessment,
+and are systematically pushed toward \textit{low} on the refusal track, whose
+upstream source uses placeholder URLs. Three benchmark records carry a numeric
+conflict identifier inconsistent with their authoritative textual label. We
+verified this did not affect any reported result.
+
+\paragraph{Human review coverage.} The benchmark second review pass is
+sequential rather than blind, so its agreement figures measure verification
+consistency. Of the 943 consolidated training rows, 285 are consensus-completed
+instead of genuine two-reviewer pairs and 105 of the 608 answerable benchmark
+records appear only as consensus-completed entries. Several funnel stages
+($1{,}878$ assigned candidates against $1{,}221$ reviewed; 200 curated refusals
+against 128 released) have no retained per-record selector. We report the
+counts as observed rather than inferring a rule.
+
+\paragraph{Comparator scope.} The prompting comparators cover three of the four
+model families and one prompt configuration each. They are not exhaustive
+prompt-engineering baselines. One comparator metric shifted substantially
+between our earlier evaluation and this one, in a way most consistent with a
+corrected answer-extraction step. We therefore base the comparator conclusion on
+abstention behaviour and citation hygiene, which are stable across both, rather
+than on grounding alone. The answer-only SFT comparator
+(\S\ref{sec:answeronly}, Appendix~\ref{app:answeronly}) covers two of the four
+model families (Llama-3.1-8B, Qwen2.5-7B) and its own two-prompt ladder,
+narrower than the four-model, three-prompt matrix reported elsewhere.

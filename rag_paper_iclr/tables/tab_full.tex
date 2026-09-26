@@ -2,29 +2,29 @@
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll rrrrr rrr@{}}
 \toprule \textbf{Model} & \textbf{Prompt} & \textbf{Run} & \textbf{Dec-Acc} & \textbf{Ref-F1} & \textbf{BA} & \textbf{FG} & \textbf{STR} & \textbf{AQ} & \textbf{CATS-P} & \textbf{CATS-B}\\\midrule
 Qwen2.5-7B & strict & base & 0.707 & 0.429 & 0.811 & 0.617 & 0.561 & 0.524 & 0.450 & 0.459\\
-Qwen2.5-7B & strict & SFT & 0.967 & 0.911 & 0.780 & 0.838 & 0.687 & 0.677 & 0.630 & 0.684\\
+Qwen2.5-7B & strict & SFT & \textbf{0.967} & \textbf{0.911} & 0.780 & \textbf{0.838} & \textbf{0.687} & \textbf{0.677} & \textbf{0.630} & \textbf{0.684}\\
 Qwen2.5-7B & runtime & base & 0.784 & 0.361 & 0.768 & 0.651 & 0.648 & 0.541 & 0.453 & 0.375\\
-Qwen2.5-7B & runtime & SFT & 0.966 & 0.906 & 0.774 & 0.829 & 0.693 & 0.690 & 0.629 & 0.679\\
+Qwen2.5-7B & runtime & SFT & \textbf{0.966} & \textbf{0.906} & \textbf{0.774} & \textbf{0.829} & \textbf{0.693} & \textbf{0.690} & \textbf{0.629} & \textbf{0.679}\\
 Qwen2.5-7B & minimal & base & 0.827 & 0.031 & 0.737 & 0.031 & 0.757 & 0.033 & 0.022 & 0.017\\
-Qwen2.5-7B & minimal & SFT & 0.958 & 0.881 & 0.768 & 0.837 & 0.686 & 0.680 & 0.617 & 0.659\\
+Qwen2.5-7B & minimal & SFT & \textbf{0.958} & \textbf{0.881} & \textbf{0.768} & \textbf{0.837} & 0.686 & \textbf{0.680} & \textbf{0.617} & \textbf{0.659}\\
 Qwen2.5-32B & strict & base & 0.855 & 0.367 & 0.789 & 0.851 & 0.733 & 0.724 & 0.574 & 0.432\\
-Qwen2.5-32B & strict & SFT & 0.963 & 0.905 & 0.821 & 0.812 & 0.749 & 0.686 & 0.661 & 0.707\\
+Qwen2.5-32B & strict & SFT & \textbf{0.963} & \textbf{0.905} & \textbf{0.821} & 0.812 & \textbf{0.749} & 0.686 & \textbf{0.661} & \textbf{0.707}\\
 Qwen2.5-32B & runtime & base & 0.855 & 0.389 & 0.799 & 0.864 & 0.780 & 0.760 & 0.600 & 0.455\\
-Qwen2.5-32B & runtime & SFT & 0.962 & 0.901 & 0.804 & 0.814 & 0.758 & 0.701 & 0.658 & 0.716\\
+Qwen2.5-32B & runtime & SFT & \textbf{0.962} & \textbf{0.901} & \textbf{0.804} & 0.814 & 0.758 & 0.701 & \textbf{0.658} & \textbf{0.716}\\
 Qwen2.5-32B & minimal & base & 0.826 & 0.015 & 0.747 & 0.108 & 0.773 & 0.105 & 0.086 & 0.057\\
-Qwen2.5-32B & minimal & SFT & 0.966 & 0.911 & 0.809 & 0.822 & 0.738 & 0.687 & 0.652 & 0.716\\
+Qwen2.5-32B & minimal & SFT & \textbf{0.966} & \textbf{0.911} & \textbf{0.809} & \textbf{0.822} & 0.738 & \textbf{0.687} & \textbf{0.652} & \textbf{0.716}\\
 Llama-3.1-8B & strict & base & 0.762 & 0.255 & 0.721 & 0.705 & 0.634 & 0.577 & 0.426 & 0.363\\
-Llama-3.1-8B & strict & SFT & 0.973 & 0.926 & 0.805 & 0.852 & 0.727 & 0.706 & 0.680 & 0.744\\
+Llama-3.1-8B & strict & SFT & \textbf{0.973} & \textbf{0.926} & \textbf{0.805} & \textbf{0.852} & \textbf{0.727} & \textbf{0.706} & \textbf{0.680} & \textbf{0.744}\\
 Llama-3.1-8B & runtime & base & 0.826 & 0.030 & 0.751 & 0.897 & 0.720 & 0.746 & 0.510 & 0.335\\
-Llama-3.1-8B & runtime & SFT & 0.974 & 0.930 & 0.806 & 0.849 & 0.705 & 0.690 & 0.673 & 0.748\\
+Llama-3.1-8B & runtime & SFT & \textbf{0.974} & \textbf{0.930} & \textbf{0.806} & 0.849 & 0.705 & 0.690 & \textbf{0.673} & \textbf{0.748}\\
 Llama-3.1-8B & minimal & base & 0.825 & 0.015 & 0.743 & 0.074 & 0.710 & 0.055 & 0.029 & 0.018\\
-Llama-3.1-8B & minimal & SFT & 0.976 & 0.934 & 0.795 & 0.857 & 0.714 & 0.694 & 0.672 & 0.732\\
+Llama-3.1-8B & minimal & SFT & \textbf{0.976} & \textbf{0.934} & \textbf{0.795} & \textbf{0.857} & \textbf{0.714} & \textbf{0.694} & \textbf{0.672} & \textbf{0.732}\\
 Mistral-7B & strict & base & 0.845 & 0.352 & 0.660 & 0.624 & 0.563 & 0.489 & 0.378 & 0.303\\
-Mistral-7B & strict & SFT & 0.927 & 0.826 & 0.793 & 0.796 & 0.644 & 0.632 & 0.620 & 0.677\\
+Mistral-7B & strict & SFT & \textbf{0.927} & \textbf{0.826} & \textbf{0.793} & \textbf{0.796} & \textbf{0.644} & \textbf{0.632} & \textbf{0.620} & \textbf{0.677}\\
 Mistral-7B & runtime & base & 0.826 & 0.200 & 0.676 & 0.739 & 0.590 & 0.566 & 0.398 & 0.299\\
-Mistral-7B & runtime & SFT & 0.929 & 0.831 & 0.760 & 0.762 & 0.613 & 0.593 & 0.587 & 0.657\\
+Mistral-7B & runtime & SFT & \textbf{0.929} & \textbf{0.831} & \textbf{0.760} & \textbf{0.762} & \textbf{0.613} & \textbf{0.593} & \textbf{0.587} & \textbf{0.657}\\
 Mistral-7B & minimal & base & 0.823 & 0.000 & 0.727 & 0.079 & 0.700 & 0.073 & 0.048 & 0.025\\
-Mistral-7B & minimal & SFT & 0.933 & 0.839 & 0.786 & 0.792 & 0.627 & 0.620 & 0.608 & 0.663\\
+Mistral-7B & minimal & SFT & \textbf{0.933} & \textbf{0.839} & \textbf{0.786} & \textbf{0.792} & 0.627 & \textbf{0.620} & \textbf{0.608} & \textbf{0.663}\\
 \bottomrule\end{tabular*}}
 \caption{\textbf{End-to-end results, all twelve model$\times$prompt cells} (24 rows). Dec-Acc is decision accuracy; GR-P/R/F1 are answer-positive; Ref-F1 is refusal-positive. $n=736$ throughout. Oracle-condition rows are summarised in Table~\ref{tab:oracle}.}\label{tab:full}
 \end{table}
